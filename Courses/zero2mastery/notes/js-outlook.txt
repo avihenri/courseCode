@@ -1,0 +1,105 @@
+JAVASCRIPT TYPES
+------------------------
+1. Number
+2. String
+-- \ in a string says ignore next 'this isn/'t nice' will work with apos
+3. Boolean
+4. Undefined
+5. Null
+6. Symbol (New ES6)
+7. Object
+
+JAVASCRIPT COMPARISONS
+------------------------
+!== not equal
+=== equal (exactly)
+>= equal or greater
+<= equal or less than
+> greater than
+< less than
+
+JAVASCRIPT VARIABLE
+------------------------
+var 
+-- needs to start with a letter, $ or _
+let (ES6)
+const (ES6)
+
+-- prompt() opens a dialog box (changes into string) number(variable) to change from string to number
+-- alert() - pop up
+-- shift enter allows new line in console
+
+JAVASCRIPT CONDITIONALS
+------------------------
+if
+else
+else if
+<!-- ternary operator -->
+<!-- switch -->
+
+
+JAVASCRIPT LOGICAL OPERATORS
+-----------------
+&& and
+|| or
+! not                                                                                                                                           
+S
+
+JAVASCRIPT FUNCTIONS
+-----------------
+var a = function name() {}
+function name() {}
+return
+<!-- () => (new in ECMAScript 6) -->
+
+JAVASCRIPT DATA STRUCTURES
+-----------------
+Array
+Object
+
+JAVASCRIPT LOOPING
+-----------------
+for
+while
+do 
+forEach (new in ECMAScript 5) 
+
+
+JAVASCRIPT KEYWORDS
+-----------------
+break
+case
+catch
+class
+const
+continue
+debugger
+default
+delete
+do
+else
+export
+extends
+finally
+for
+function
+if
+import
+in
+instanceof
+new
+return
+super
+switch
+this
+throw
+try
+typeof
+var
+void
+while
+with
+yield
+
+
+

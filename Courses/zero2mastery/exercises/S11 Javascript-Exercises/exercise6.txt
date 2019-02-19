@@ -1,0 +1,52 @@
+// using this array,
+// var array = ["Banana", "Apples", "Oranges", "Blueberries"];
+
+
+// 1. Remove the Banana from the array.
+array.pop(); - wrong should be shift();
+
+// 2. Sort the array in order.
+array.sort(); yup
+
+// 3. Put "Kiwi" at the end of the array.
+var newArray = array.concat(["Kiwi"]); shoudl be push("Kiwi");
+
+// 4. Remove "Apples" from the array.
+array.splice(0, 1);
+
+// 5. Sort the array in reverse order. (Not alphabetical, but reverse
+// the current Array i.e. ['a', 'c', 'b'] becomes ['b', 'c', 'a'])
+array.reverse();
+
+you should have at the end:
+["Kiwi", "Oranges", "Blueberries"]
+
+// using this array,
+// var array2 = ["Banana", ["Apples", ["Oranges"], "Blueberries"]];
+// access "Oranges".
+console.log([1][1][0]);
+
+Notes:
+Array..
+var nameOfArray = ["first  item", "second item", "third-item"];
+To access..
+console.log([1]); will access second item
+Can have numbers, booleans, functions or mixed but thats not ideal
+Can have an array within an array..
+var array = [
+    ["item1", "item2", "item3"]
+];
+To access..
+console.log(array[0][2]); will access item3
+
+Predefined method for arrays..
+nameOfArray (in console)
+= first item, second item
+nameOfArray.shift(); will remove first item
+nameOfArray.pop(); will remove third item
+nameOfArray.push(fourth item); adds another item and returns where it is in the array by number
+nameOfArray.concat(["fifth", "sixth"]); adds array to the end of the first array
+nameOfArray.sort(); sorts array but only sorts original & not added items like fifth & sixth as it 
+    needs to be added to a variable like nameOfArray
+var newArray = ["first  item", "second item", "third-item"];
+var addtoNewArray = newArray.concat([fourth item]); will add and save all items
