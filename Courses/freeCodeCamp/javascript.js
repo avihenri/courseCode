@@ -47,4 +47,15 @@
     // literal quotes in strings
         var sampleStr = "Alan said, \"Peter is learning JavaScript\".";
         // Output: Alan said, "Peter is learning JavaScript".
+
+    // Escape Sequences in Strings
+        // Code	Output
+        // \'	single quote
+        // \"	double quote
+        // \\	backslash
+        // \n	newline
+        // \r	carriage return
+        // \t	tab
+        // \b	backspace
+        // \f	form feed
         
