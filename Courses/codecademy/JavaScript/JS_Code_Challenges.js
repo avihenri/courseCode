@@ -210,4 +210,59 @@
         console.log(truthyOrFalsy(0)) // Should print false - yup
       
     
+    // Challenge 9 - numImaginaryFriends()
+        /* 
+            Instructions
+                1. A person's number of imaginary friends are always 33% of their total friends.
+                Write a function, numImaginaryFriends(), that takes in the total number of friends a person has and returns the number of imaginary friends they have.
+                Since friends can only come in whole numbers, be sure to round your result before returning it.
+        */
+
+        const numImaginaryFriends = friends => {
+            return Math.round(friends / 100 * 33);
+        }        
+        console.log(numImaginaryFriends(18)) // Output: 6 as answer is 5.94
+
+
+    // Challenge 10 - sillySentence()
+        /* 
+            Instructions
+                1. Write a function, sillySentence(), that has 3 string parameters and returns the following silly sentence with the blanks filled 
+                in by the arguments passed into the function:
+        */
+        const sillySentence = (adjective, verb, noun) => {
+            return `I am so ${adjective} because I ${verb} coding! Time to write some more awesome ${noun}!`;
+        }
+        console.log(sillySentence('excited', 'love', 'functions')); // I am so excited because I love coding! Time to write some more awesome functions!
+
     
+    // Challenge 11 - howOld()
+        /*
+            Instructions
+                1. Write a function, howOld(), that has two number parameters, age and year, and returns how old someone who is 
+                currently that age was (or will be) during that year. Handle three different cases:
+
+                If the year is in the future, you should return a string in the following format:
+                'You will be [calculated age] in the year [year passed in]'
+                If the year is before they were born, you should return a string in the following format:
+                'The year [year passed in] was [calculated number of years] years before you were born'
+                If the year is in the past but not before the the person was born, you should return a string in the following format:
+                'You were [calculated age] in the year [year passed in]'
+        */
+            const howOld = (age, year) => {
+                const theCurrentYear = 2019;
+                const yearDiff = year - theCurrentYear;
+                const newAge = age + yearDiff;
+                if (newAge < 0) {
+                return `The year ${year} was ${newAge} years before you were born`;
+                } else if (age < newAge) {
+                `You will be ${newAge} in the year ${year}`;
+                } else {
+                `You were ${newAge} in the year ${year}`;
+                }
+            }            
+            console.log(howOld(30, 1987));
+
+            // TO GET CURRENT YEAR
+                // let dateToday = new Date();
+                // let thisYear = dateToday.getFullYear();
