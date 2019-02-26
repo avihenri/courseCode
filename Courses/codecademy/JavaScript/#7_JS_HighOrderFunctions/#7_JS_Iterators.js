@@ -47,3 +47,52 @@
                   const bigNumbers = [100, 200, 300, 400, 500];
                   const smallNumbers = bigNumbers.map(bigNumbers => bigNumbers / 100);
                   console.log(smallNumbers); // [ 1, 2, 3, 4, 5 ]
+            
+            
+            // The .filter() Method
+                  // like .map but it returns a new array according to a condition that = true or false
+                  const words = ['chair', 'music', 'pillow', 'brick', 'pen', 'door']; 
+
+                  const shortWords = words.filter(word => {
+                    return word.length < 6;
+                  });
+
+                  console.log(words); // Output: ['chair', 'music', 'pillow', 'brick', 'pen', 'door']; 
+                  console.log(shortWords); // Output: ['chair', 'music', 'brick', 'pen', 'door']
+
+                  const randomNumbers = [375, 200, 3.14, 7, 13, 852];
+                  // Call .filter() on randomNumbers below
+                  const smallNumbers = randomNumbers.filter(number => {
+                        return number < 250;
+                   })
+                                   
+                  
+                  const favoriteWords = ['nostalgia', 'hyperbole', 'fervent', 'esoteric', 'serene'];
+                  // Call .filter() on favoriteWords below
+                  const longFavoriteWords = favoriteWords.filter(word => {
+                    return word.length > 7;
+                  })
+                  
+            
+            // The .findIndex() Method
+                  // finds the location of an element in an array
+                  // returns the index of the first item that evaluated to true
+                  const jumbledNums = [123, 25, 78, 5, 9]; 
+                  const lessThanTen = jumbledNums.findIndex(num => {
+                    return num < 10;
+                  });
+                  console.log(lessThanTen); // Output: 3 
+                  console.log(jumbledNums[3]); // Output: 5
+
+                  const animals = ['hippo', 'tiger', 'lion', 'seal', 'cheetah', 'monkey', 'salamander', 'elephant'];
+                  const foundAnimal = animals.findIndex(index => {
+                    return index === 'elephant';
+                  })       
+                  const startsWithS = animals.findIndex(index => {
+                    return index[0] === 's';
+                  })
+
+            // The .reduce() Method
+                  
+                  
+
