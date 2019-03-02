@@ -266,3 +266,65 @@
             // TO GET CURRENT YEAR
                 // let dateToday = new Date();
                 // let thisYear = dateToday.getFullYear();
+
+
+    // Challenge 14 - tipCalculator()
+        /*
+            Instructions
+                1.
+                Create a function, tipCalculator(), that has two parameters, a string representing the quality of the service received and a number representing the total cost.
+
+                Return the tip, as a number, based on the following:
+                'bad' should return a 5% tip
+                'ok' should return a 15% tip
+                'good' should return a 20% tip 
+                'excellent' should return a 30% tip
+                all other inputs should default to 18%
+        */
+        function tipCalculator(quality, total) {
+            if (quality === 'bad') {
+            return total * .05;
+            } else if (quality === 'ok') {
+            return total * .15;
+            } else if (quality === 'good') {
+            return total * .2;
+            } else if (quality === 'excellent') {
+            return total * .3;
+            } else {
+            return total * .18;
+            }    
+        }
+        console.log(tipCalculator('good', 100)) //should return 20
+
+
+    // Challenge 15 - toEmoticon()
+        /*
+            Instructions
+                1.
+                Write a function, toEmoticon(), that takes in a string and returns the corresponding emoticon as a string. Use a switch/case, and cover these cases:
+
+                'shrug' should return '|_{"}_|'
+                'smiley face' should return ':)'
+                'frowny face' should return':('
+                'winky face' should return ';)'
+                'heart' should return '<3'
+                any other input should return '|_(* ~ *)_|'
+        */
+       const toEmoticon = (emoString) => {
+        switch (emoString) {
+          case 'shrug':
+            return '|_{"}_|';
+          case 'smiley face':
+            return ':)';
+          case 'frowny face':
+            return ':(';
+          case 'winky face':
+            return ';)';
+          case 'heart': 
+            return '<3';
+          default:
+            return '|_(* ~ *)_|';
+        }
+      }
+      console.log(toEmoticon("whatever"))
+
