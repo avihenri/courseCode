@@ -24,3 +24,31 @@ Methods: .getAverageRating(), .toggleCheckOutStatus(), and .addRating()
 If you’re looking for a challenge, try to create the four classes without using the steps below.
 */
 
+class Media {
+    constructor(title) {
+      this._title = title;
+      this._isCheckedOut = false;
+      this._ratings = [5, 3, 4, 1]; // test with 5, 3, 4, 1
+    }
+    get title() {
+      return this._title;
+    }
+    get isCheckedOut() {
+      return this._isCheckedOut;
+    }
+    get ratings() {
+      return this._ratings;
+    }
+    set isCheckedOut(status) {
+      this._isCheckedOut = status;
+    }
+    toggleCheckOutStatus() {
+      this._isCheckedOut = !this._isCheckedOut;
+    }
+    getAverageRating() {
+      let ratingTot = this._ratings.reduce((currentSum, rating) => currentSum + rating, 0);
+      return ratingTot / this._ratings.length;
+    }
+  }
+  
+  console.log(Media.getAverageRating);
