@@ -74,3 +74,55 @@ and, importantly, prevent pollution of the global namespace and potential naming
         // Fuel Capacity of AeroJet : 800
         // Fuel Capacity of SkyJet : 500
 
+        // Named Exports
+        // named exports allow us to export data through the use of variables.
+        let availableAirplanes = [
+          {
+          name: 'AeroJet',
+          fuelCapacity: 800,
+            availableStaff: [
+              'pilots', 'flightAttendants', 'engineers', 'medicalAssistance', 'sendorOperators'
+            ]
+        },
+          {
+          name: 'SkyJet',
+          fuelCapacity: 500,
+            availableStaff: [
+              'pilots', 'flightAttendants'
+            ]
+        }
+          ];
+        
+        let flightRequirements = {
+          requiredStaff: 4,
+        };
+        
+        function meetsStaffRequirements(availableStaff, requiredStaff) {
+          if (availableStaff.length >= requiredStaff) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+        
+        export {availableAirplanes, flightRequirements, meetsStaffRequirements};
+
+        // Names Imports
+          // To import objects stored in a variable, we use the import keyword and include the variables in a set of {}.
+          import {availableAirplanes, flightRequirements, meetsStaffRequirements} from './airplane';
+
+          function displayFuelCapacity() {
+            availableAirplanes.forEach(function(element){    
+            console.log('Fuel Capacity of ' + element.name + ' : ' + element.fuelCapacity);
+            });  
+          }
+          
+          displayFuelCapacity();
+          
+          function displayStaffStatus() {
+            availableAirplanes.forEach(function(element) {  
+              console.log(element.name + ' meets staff requirements: ' + meetsStaffRequirements(element.availableStaff, flightRequirements.requiredStaff) );
+            });
+          }
+          
+          displayStaffStatus();
