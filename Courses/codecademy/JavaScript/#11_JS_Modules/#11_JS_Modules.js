@@ -190,4 +190,64 @@ and, importantly, prevent pollution of the global namespace and potential naming
 
             // Export as
             // The as keyword allows us to give a variable name an alias
-             
+            import {availableAirplanes, flightRequirements, meetsStaffRequirements, meetsSpeedRangeRequirements} from './airplane';
+
+            function displayFuelCapacity() {
+              availableAirplanes.forEach(function(element) {
+                console.log('Fuel Capacity of ' + element['name'] + ': ' + element['fuelCapacity']);
+              });
+            }            
+            displayFuelCapacity();            
+            function displayStaffStatus() {
+              availableAirplanes.forEach(function(element) {
+               console.log(element['name'] + ' meets staff requirements: ' + meetsStaffRequirements(element['availableStaff'], flightRequirements['requiredStaff']) );
+              });
+            }            
+            displayStaffStatus();            
+            function displaySpeedRangeStatus() {
+              availableAirplanes.forEach(function(element){
+                console.log(element['name'] + ' meets speed range requirements: ' + meetsSpeedRangeRequirements(element['maxSpeed'], element['minSpeed'], flightRequirements['requiredSpeedRange']));
+              });  
+            }            
+            export { availableAirplanes as aircrafts, flightRequirements as flightReqs, meetsStaffRequirements as meetsStaffReq, meetsSpeedRangeRequirements as meetsSpeedRangeReqs };
+
+            //Import as
+            import {aircrafts, flightReqs, meetsStaffReqs, meetsSpeedRangeReqs} from './airplane';
+
+            function displayFuelCapacity() {
+                aircrafts.forEach(function(element) {
+                   console.log('Fuel Capacity of ' + element['name'] + ': ' + element['fuelCapacity']);
+            });
+            }                        
+            displayFuelCapacity();                        
+            function displayStaffStatus() {
+               aircraft.forEach(function(element) {
+                 console.log(element['name'] + ' meets staff requirements: ' + meetsStaffReqs(element['availableStaff'], flightReqs['requiredStaff']) );
+            });
+            }                        
+            displayStaffStatus();                        
+            function displaySpeedRangeStatus() {
+                 aircraft.forEach(function(element){
+                    console.log(element['name'] + ' meets speed range requirements: ' + meetsSpeedRangeReqs(element['maxSpeed'], element['minSpeed'], flightReqs['requiredSpeedRange']));
+             });  
+            }                        
+            export { availableAirplanes as aircrafts, flightRequirements as flightReqs, meetsStaffRequirements as meetsStaffReq, meetsSpeedRangeRequirements as meetsSpeedRangeReqs };
+
+            // Combining Export Statements - use named exports and default exports together
+            // Combining Import Statements
+
+            /*
+            Review
+              We just learned how to use JavaScript modules. Let’s review what we learned:
+
+              Modules in JavaScript are reusable pieces of code that can be exported from one program and imported for use in another program.
+
+              module.exports exports the module for use in another program.
+              require() imports the module for use in the current program.
+              ES6 introduced a more flexible, easier syntax to export modules:
+
+              default exports use export default to export JavaScript objects, functions, and primitive data types.
+              named exports use the export keyword to export data in variables.
+              named exports can be aliased with the as keyword.
+              import is a keyword that imports any object, function, or data type.
+              */
