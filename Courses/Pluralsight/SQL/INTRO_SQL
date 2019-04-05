@@ -1,0 +1,14 @@
+-- SQL
+
+    -- CAUSE = command, written in capital letters
+    -- PARAMETER = list of columns, data ypes or values (arguments)
+
+CREATE TABLE -- CREATES A NEW TABLE WITH THE BELOW
+CREATE TABLE celebs (id, INTEGER, name TEXT, age INTEGER);
+
+-- adds a column to the table
+ALTER TABLE movies
+ADD COLUMN  ratings int;
+
+-- remove column
+ALTER TABLE movies DROP COLUMN ratings;
