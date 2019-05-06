@@ -120,22 +120,65 @@ Exercise
 // Advanced array functions
     // array_slice - returns a new array that contains a certain part of a specific array from an offset.
     $numbers = [1,2,3,4,5,6];
-    print_r(array_slice($numbers, 3)); // discards first 3 items
+    print_r(array_slice($numbers, 3)); // discards first 3 items will print 4, 5, 6
     // when you want only two items after the first 3
     $numbers = [1,2,3,4,5,6];
-    print_r(array_slice($numbers, 3, 2)); 
+    print_r(array_slice($numbers, 3, 2));  // will print 4, 5
+    print_r($numbers); // will print 1,2,3,4,5,6
 
     // array_splice - does exactly the same, however it will also remove the slice returned from the original array
     $numbers = [1,2,3,4,5,6];
     print_r(array_splice($numbers, 3, 2));
     print_r($numbers);
+        // output: Array ( [0] => 4  [1] => 5) Array(  [0] => 1  [1] => 2  [2] => 3  [3] => 6)
 
 
 // Arrays with keys
+    // Arrays = ordered maps. Values have keys with order. Each item will increment by 1 in the index
+    $phone_numbers = [
+        "Alex" => "415-235-8573",
+        "Jessica" => "415-492-4856",
+      ];      
+      print_r($phone_numbers); // prints above array
+      echo "Alex's phone number is " . $phone_numbers["Alex"] . "\n"; // Alex's phone number is 415-235-8573
+      echo "Jessica's phone number is " . $phone_numbers["Jessica"] . "\n"; // Jessica's phone number is 415-492-4856
 
+      // Add an item to array using a key - use brackers operator
+      $phone_numbers = [
+        "Alex" => "415-235-8573",
+        "Jessica" => "415-492-4856",
+      ];      
+      $phone_numbers["Michael"] = "415-955-3857"; // will now be in index 2
 
+      // array_key_exists - check if key exists in an array
+      $phone_numbers = [
+        "Alex" => "415-235-8573",
+        "Jessica" => "415-492-4856",
+      ];      
+      if (array_key_exists("Alex", $phone_numbers)) {
+          echo "Alex's phone number is " . $phone_numbers["Alex"] . "\n";
+      } else {
+          echo "Alex's phone number is not in the phone book!";
+      }      // Alex's phone number is 415-235-8573
+      if (array_key_exists("Michael", $phone_numbers)) {
+          echo "Michael's phone number is " . $phone_numbers["Michael"] . "\n";
+      } else {
+          echo "Michael's phone number is not in the phone book!";
+      }     // Michael's phone number is not in the phone book!
 
+      // array_keys - extract keys of the array
+      $phone_numbers = [
+        "Alex" => "415-235-8573",
+        "Jessica" => "415-492-4856",
+      ];      
+      print_r(array_keys($phone_numbers)); // Alex & Jessica (in array form)
 
+      // array_values - get array values
+      $phone_numbers = [
+        "Alex" => "415-235-8573",
+        "Jessica" => "415-492-4856",
+      ];      
+      print_r(array_values($phone_numbers)); // prints phone numbers in array form
 
 
 
