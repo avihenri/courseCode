@@ -130,4 +130,48 @@ Exercise
     print_r(array_splice($numbers, 3, 2));
     print_r($numbers);
 
+
+// Arrays with keys
+
+
+
+
+
+
+
+// Strings
+
+
+
+
+
+
+
+// For Loops
+
+
+
+
+
+
+// While Loops
+
+
+
+
+
+
+
+// Functions
+
+
+
+
+
+
+
+// Objects
+
+
+
     ?>
