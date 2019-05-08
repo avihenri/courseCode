@@ -331,9 +331,60 @@ Exercise
 
 
 // For Loops
+    // For loops are simple loops which helps us iterate over an iterable variable by using an index. 
+    // There are two types of for loops - a simple (C style) for loop, and a foreach loop.
+    // For loop
+        // iterate over an array using index
+        $odd_numbers = [1,3,5,7,9];
+        for ($i = 0; $i < count($odd_numbers); $i=$i+1) { // i being index
+            $odd_number = $odd_numbers[$i];
+            echo $odd_number . "\n";
+        }
+        /* 
+            The first line of the for loop defines 3 parts:
+            1. The initialization statement - in our case, we initialize the iterator variable $i to 0.
+            2. The condition statement - this statement gets evaluated in every loop. The loop stops when this condition is unmet. 
+               This will happen when the iterator variable $i will be larger than the length of the array.
+            3. The increment statement - this statement is executed every iteration to increase the index variable by the needed amount. 
+                Usually, we will increase $i by 1. There are two shorter ways of increasing a variable by 1 as well. We can use $i+=1 or $i++ as well.
+        */
 
+    // Foreach loop
+        // iterates on all members of an array or object
+        $odd_numbers = [1,3,5,7,9];
+        foreach ($odd_numbers as $odd_number) {
+          echo $odd_number . "\n";
+        }
+            // instead of iterating as an index, get the item from the array directly into the array variable
+        // array with keys
+        $phone_numbers = [
+            "Alex" => "415-235-8573",
+            "Jessica" => "415-492-4856",
+          ];          
+          foreach ($phone_numbers as $name => $number) {
+            echo "$name's number is $number.\n";
+          }
+          /* Alex's number is 415-235-8573.
+            Jessica's number is 415-492-4856. */
 
-
+        // EXERCISE
+        <?php
+        $even_numbers = [2,4,6,8,10,12,14,16,18,20];        
+        foreach ($even_numbers as $even_numbers) {
+             echo $even_numbers . "\n";
+        }
+        ?>
+        /* OUTPUT 
+        2
+        4
+        6
+        8
+        10
+        12
+        14
+        16
+        18
+        20 */
 
 
 
