@@ -557,7 +557,25 @@ while ($index < count($numbers)) {
 
 
 // Objects
-
-
-
+    // In object oriented programming, a class is a definition of an object, 
+    // whereas an object is an instance of an object, meaning that from one class you can create many objects.
+    class Student {
+        // constructor
+        public function __construct($first_name, $last_name) {
+            $this->first_name = $first_name;
+            $this->last_name = $last_name;
+        }    
+        public function say_name() {
+            echo "My name is " . $this->first_name . " " . $this->last_name . ".\n";
+        }
+    }    
+    $alex = new Student("Alex", "Jones");
+    $alex->say_name(); // My name is Alex Jones.
     ?>
+        /* Important definitions related to objects:
+            Classes define how objects behave. Classes do not contain data.
+            Objects are instances of classes, which contain data.
+            Members are variables that belong to an object.
+            Methods are functions that belong to an object, and have access to its members.
+            Constructor is a special method that is executed when an object is created. */
+            
