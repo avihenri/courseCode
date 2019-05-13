@@ -37,7 +37,7 @@ Exercise
     $x = 195793;
     $y = 256836;
     $sum = $x + $y;
-    echo "The sum of $x and $y is $sum." // The sum of 195793 and 256836 is 452629.
+    echo "The sum of $x and $y is $sum."; // The sum of 195793 and 256836 is 452629.
 
 
 // Simple arrays
@@ -219,13 +219,13 @@ Exercise
 
 
       // EXERCISE
-      <?php
+      
       $numbers = "38,42,58,48,33,59,87,17,20,8,98,14,62,66,14,62,97,66,74,78,66,2,79,29,72,6,3,71,46,68,48,4,12,52,66,48,14,39,63,69,81,61,21,77,10,44,39,82,19,77,100,98,53,95,30,17,30,96,68,47,81,52,82,11,13,83,10,14,49,96,27,73,42,76,71,15,81,36,77,38,17,2,29,100,26,86,22,18,38,64,82,51,39,7,88,53,82,30,98,86";
       // TODO: split the $numbers variable to an array
       // called $number_list      
       $number_list = explode(",", $numbers);      
       print_r($number_list);
-      ?>
+      
       /* Array (
     [0] => 38
     [1] => 42
@@ -368,12 +368,12 @@ Exercise
             Jessica's number is 415-492-4856. */
 
         // EXERCISE
-        <?php
+        
         $even_numbers = [2,4,6,8,10,12,14,16,18,20];        
         foreach ($even_numbers as $even_numbers) {
              echo $even_numbers . "\n";
         }
-        ?>
+        
         /* OUTPUT 
         2
         4
@@ -465,7 +465,7 @@ Exercise
 Use a while loop to print all odd numbers in an array. Use the continue statement to skip loops and avoid printing even numbers.
 Remember - you will need to use the \n character sequence at the end of the echo statement to continue to the next line.
 Tip: to test whether a number is even, check if the number modulus 2 is equal to zero ($number % 2 == 0). */
-<?php
+
 $numbers = [56, 65, 26, 86, 66, 34, 78, 74, 67, 18, 34, 73, 45, 67, 75, 10, 60, 80, 74, 16, 86, 34, 12, 23, 42, 72, 36, 3, 73, 9, 92, 81, 94, 54, 97, 74, 45, 55, 70, 94, 96, 81, 86, 86, 84, 4, 32, 8, 96, 86, 87, 18, 84, 87, 59, 48, 32, 90, 17, 22, 82, 79, 66, 28, 17, 14, 80, 83, 66, 36, 21, 89, 68, 2, 51, 65, 20, 87, 48, 5, 1, 16, 60, 53, 84, 90, 16, 2, 37, 73, 57, 70, 57, 69, 68, 1, 24, 40, 72, 97];
 
 // TODO: Print odd numbers only
@@ -478,7 +478,7 @@ while ($index < count($numbers)) {
     }    
     echo "$number\n";
 }
-?>
+
 
 /* OUTPUT: 
 65
@@ -543,7 +543,7 @@ while ($index < count($numbers)) {
         echo sum([1,2,3,4,5,6,7,8,9,10]); // OUTPUT: 55
 
     // EXERCISE:
-    <?php
+    
     // Write the function squared_sum here    
     function squared_sum($numbers) {
          $sum = 0;        
@@ -553,7 +553,7 @@ while ($index < count($numbers)) {
         return $sum;
     }    
     echo squared_sum([56, 65, 26, 86, 66, 34, 78, 74, 67, 18, 34, 73, 45, 67, 75, 10, 60, 80, 74, 16, 86, 34, 12, 23, 42, 72, 36, 3, 73, 9, 92, 81, 94, 54, 97, 74, 45, 55, 70, 94, 96, 81, 86, 86, 84, 4, 32, 8, 96, 86, 87, 18, 84, 87, 59, 48, 32, 90, 17, 22, 82, 79, 66, 28, 17, 14, 80, 83, 66, 36, 21, 89, 68, 2, 51, 65, 20, 87, 48, 5, 1, 16, 60, 53, 84, 90, 16, 2, 37, 73, 57, 70, 57, 69, 68, 1, 24, 40, 72, 97]);    
-    ?> // OUTPUT: 382629
+  // OUTPUT: 382629
 
 
 // Objects
