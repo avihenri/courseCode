@@ -578,4 +578,44 @@ while ($index < count($numbers)) {
             Members are variables that belong to an object.
             Methods are functions that belong to an object, and have access to its members.
             Constructor is a special method that is executed when an object is created. */
-            
+    
+    // Inheritance - allows us to reuse code we've written and extend it
+    class Student {
+        // constructor
+        public function __construct($first_name, $last_name) {
+            $this->first_name = $first_name;
+            $this->last_name = $last_name;
+        }
+    
+        public function say_name() {
+            echo "My name is " . $this->first_name . " " . $this->last_name . ".\n";
+        }
+    }    
+    $alex = new Student("Alex", "Jones");
+    $alex->say_name();    // My name is Alex Jones.
+    class MathStudent extends Student {
+        function sum_numbers($first_number, $second_number) {
+            $sum = $first_number + $second_number;
+            echo $this->first_name . " says that " . $first_number . " + " . $second_number . " is " . $sum;
+        }
+    }    
+    $eric = new MathStudent("Eric", "Chang");
+    $eric->say_name(); // My name is Eric Chang.
+    $eric->sum_numbers(3, 5); // Eric says that 3 + 5 is 8
+
+    /* Exercise
+        Create a class called Car with a constructor that receives the brand and make year of the car, 
+        and a function called print_details that prints out the details of the car.
+        For example, for a 2006 Toyota car, the following line would be printed out:
+        This car is a 2006 Toyota. */
+        class Car { 
+            public function __construct($model, $year) {
+                 $this->model = $model;
+                $this->year = $year;
+            }            
+            public function print_details() {
+                 echo "This car is a " . $this->year . " " . $this->model . ".\n";   
+            }
+        }        
+        $car = new Car("Toyota", 2006);
+        $car->print_details();
