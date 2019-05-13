@@ -620,4 +620,4 @@ while ($index < count($numbers)) {
         $car = new Car("Toyota", 2006);
         $car->print_details();
 
-        // checking git!
+        // checking git! and again! damn password in VisialSC wasn't right
