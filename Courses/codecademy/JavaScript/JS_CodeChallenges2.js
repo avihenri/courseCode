@@ -131,3 +131,47 @@
                 //     You can use any technique you want to accomplish this task.
                     
                 //     You can test your function when you're ready by passing in the greetings array or by making your own array!
+
+                const shoutGreetings = arr => arr.map(word => word.toUpperCase() + '!');
+
+                    /*
+                    // As a function declaration AND using a loop:
+                    function shoutGreetings(arr) {
+                        let shoutArray = []
+                        for(let i = 0; i<arr.length; i++){
+                            shoutArray.push(arr[i].toUpperCase() + '!')
+                        }
+                        return shoutArray
+                    }
+                    */
+                    const greetings = ['hello', 'hi', 'heya', 'oi', 'hey', 'yo']
+
+                    console.log(shoutGreetings(greetings))
+                    // OUTPUT - [ 'HELLO!', 'HI!', 'HEYA!', 'OI!', 'HEY!', 'YO!' ]
+
+
+               // sortYears()
+                /*    Instructions
+                    1.
+                    Write a function sortYears() that takes in an array of years, and, using the built-in .sort() method, returns 
+                    that array with the years sorted in descending order.
+
+                    You can test your function when you’re ready by passing in the years array or by making your own array of years!
+                    */
+                   const sortYears = arr => arr.sort(function(a, b){return b-a});                   
+                   const years = [1970, 1999, 1951, 1982, 1963, 2011, 2018, 1922]                   
+                   console.log(sortYears(years))
+
+                // justCoolStuff()
+                    /*   Instructions
+                        1.
+                        Write a function justCoolStuff() that takes in two arrays of strings, and, using the built-in .filter() method, returns an array with the items that are present in both arrays.
+                        
+                        let arr1 = ['this', 'not this', 'nor this'];
+                        let arr2 = ['thing 1', 'thing 2', 'this'];
+                        
+                        justCoolStuff(arr1, arr2); // Should return ['this']
+                        You can test your function when you’re ready by passing in the myStuff and coolStuff arrays or by making arrays of your own!
+                    */
+                                             
+            
