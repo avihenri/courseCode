@@ -131,3 +131,41 @@
             die()	echo()	empty()	exit()	eval()
             include()	include_once()	isset()	list()	require()
             require_once()	return()	print()	unset()	 
+*/
+    
+    // PHP echo statement
+        // Simple string display
+        echo 'One line simple string.<br />'; 
+        echo 'Two line simple string example<br />'; 
+        echo 'Tomorrow I \'ll learn PHP global variables.<br />'; 
+        echo 'This is a bad command : del c:\\*.* <br />'; 
+        // Variable inside echo statement
+        $abc='We are learning PHP';
+        $xyz='w3resource.com';
+        echo "$abc at $xyz <br />";
+        // Simple variable display
+        echo $abc;
+        echo "<br />"; // creating a new line
+        echo $xyz;
+        echo "<br />"; // creating a new line
+        // Displaying arrays
+        $fruits=array('fruit1'=>'Apple','fruit2'=>'Banana');
+        echo "Fruits are : {$fruits['fruit1']} and 
+        {$fruits['fruit2']}" ;
+            
+            /*Output:
+            We are learning PHP at w3resource.com
+            We are learning PHP
+            w3resource.com
+            Fruits are : Apple and Banana */
+
+        // PHP echo and HTML paragraph element
+            // simple html statement.
+            echo 'One line simple string.<br />';
+            // display strings within paragraph with different color.
+            echo "<p> <font color=blue>One line simple string in 
+            blue color</font> </p>";
+            echo "<p> <font color=red>One line simple string in red 
+            color</font> </p>";
+            echo "<p> <font color=green> One line simple string in 
+            green color</font> </p>";
