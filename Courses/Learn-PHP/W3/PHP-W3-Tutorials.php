@@ -169,3 +169,5 @@
             color</font> </p>";
             echo "<p> <font color=green> One line simple string in 
             green color</font> </p>";
+
+            //PHP $GLOBALS (super global) variable
