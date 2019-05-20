@@ -170,4 +170,101 @@
             echo "<p> <font color=green> One line simple string in 
             green color</font> </p>";
 
-            //PHP $GLOBALS (super global) variable
+//PHP $GLOBALS (super global) variable
+        // super global variable which can be used instead of 'global' keyword to access variables from global scope
+        <?php
+        $s = 25;
+        $t = 50;
+        function subtraction()
+        {
+        $GLOBALS['v'] = $GLOBALS['t'] - $GLOBALS['s'];
+        } 
+        subtraction();
+        echo $v;
+        ?> 
+
+// PHP: $_SERVER
+        // an array which holds information of headers, paths, script locations
+        /* $_SERVER has following basic properties:
+        1. Set by web server.
+        2. Directly related to the runtime environment of the current php script.
+        3. It does the same job as $HTTP_SERVER_VARS used to do in previous versions of PHP */
+
+// PHP: $_REQUEST, $_POST, $_GET
+        // super global variable which is widely used to collect data after submitting html forms.
+        // Suppose we want to see what data have been entered by the user in the name field, then code to do that will be:
+        <?php
+        $name=$_REQUEST['name']; // $_POST is in the form so method
+        echo $name;
+        ?>
+        // $_POST
+            // This super global variable is widely used to handle form data
+            <form name="contact" method="post" action="next.php"> </form>
+            // Code of msg.php file:.
+            <?php
+            echo "YOU have submitted the form"; 
+            ?>
+            <?php
+            if ($_POST['send'])
+            include ('msg.php');
+            ?>
+        // $_GET
+            // Here is an example:
+            <html>
+            <head>
+            <title>Php contact form</title>
+            </head>
+            <body>
+            <a href="get-pass.php?r=w3resourse.com&s=online-tutorial">This is to send data</a>  
+            </body>
+            </html>
+            // Code of get-pass.php file:
+            <?php 
+            echo $_GET['r']."is an ".$_GET['s'];
+            ?>
+
+// PHP : $_FILES, $_ENV, $_COOKIE, $_SESSION
+        // $_FILES
+            // super global variable which can be used to upload files.
+            // Here is the html code (upload.php): 
+            <html>
+            <body>
+            <form action="upload_file.php" method="post"
+            enctype="multipart/form-data">
+            <label for="file">Filename:</label>
+            <input type="file" name="file" id="file" />
+            <br />
+            <input type="submit" name="submit" value="Submit" />
+            </form>
+            </body>
+            </html>
+            // Code of files.php file:
+            <?php
+            if ($_FILES["file"] > 0)
+            {
+            echo "You have selected a file to upload";
+            }
+            ?>
+        
+        // $_ENV
+            // used to return the environment variables from the web server.
+            <?php
+            echo "my username is ".$_ENV['username'];
+            ?>
+
+        // $_COOKIE
+            // Cookies are small text files loaded from a server to a client computer storing some information regarding 
+            // the client computer, so that when the same page from the server is visited by the user, necessary information can 
+            // be collected from the cookie itself, decreasing the latency to open the page.
+            <?php
+            setrawcookie();
+            print_r($_COOKIE);
+            ?>
+
+        // $_SESSION
+            // start a session by session_start();Then all the variables you store within a $_SESSION, you can access it from anywhere on the server.
+            <?php
+            session_start();
+            $_SESSION['w3resource']='The largest online tutorial';
+            echo $_SESSION['w3resource'];
+            ?>
