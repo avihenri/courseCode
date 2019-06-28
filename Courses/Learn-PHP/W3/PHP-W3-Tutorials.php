@@ -172,7 +172,7 @@
 
 //PHP $GLOBALS (super global) variable
         // super global variable which can be used instead of 'global' keyword to access variables from global scope
-        <?php
+     
         $s = 25;
         $t = 50;
         function subtraction()
@@ -181,7 +181,7 @@
         } 
         subtraction();
         echo $v;
-        ?> 
+    
 
 // PHP: $_SERVER
         // an array which holds information of headers, paths, script locations
