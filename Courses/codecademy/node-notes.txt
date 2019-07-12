@@ -1,0 +1,22 @@
+global.process = info about current processes like task manager
+process.env = stores & controls info about the environment 
+e.g = it contains PWD property which holds a string of the directory the process is located
+	web app may might perfrom different tasks tan if it is live so
+	we could store this info in process.env
+	1. could add property to process.env = NODE_ENV	 with value of either production or development
+	if (process.env.NODE_ENV === 'development'){
+  	console.log('Testing! Testing! Does everything work?');
+	}
+process.memoryUsage() - returns info on CPU of current process (return example below)
+	{ rss: 26247168,
+ 	 heapTotal: 5767168,
+ 	 heapUsed: 3573032,
+ 	 external: 8772 }
+	heap = means different things - specific data structure, block of memory
+	process.memoryUsage().heapUsed = returns bytes of memory for current process
+process.argv - holds an array of cmd line values provided when process was initiated
+	first array el = path to Node
+	second array el = path to file thats running
+	following el = any cmd line arguments provided 
+	(eg. node myProgram.js testing several features)
+	console.log(process.argv[3]); // Prints 'several'
