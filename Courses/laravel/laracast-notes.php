@@ -174,8 +174,47 @@
                 got loaclhost to check it worked-->
 
 <!-- EPISODE 9 - DIRECTORY STRUCTURE REVIEW -->
+        <!-- just goes through the directory - may be helpful if stuck -->
+
 
 <!-- EPISODE 10 - FORM HANDLING & CSRF PROTECTION -->
+        <!-- Going to create a create task page that has a form that writes to the db  -->
+        <!-- web.php  - POST route -->
+        Route::post('/tasks', 'TasksController@store');
+        <!-- create a new page called create.blade.php-->
+        <h1>Create New Tasks</h1>
+            <form action="/tasks" method="POST" > 
+            {{ csrf_field() }} <!-- this is a hidden field with a security token -->
+                <div>
+                    <input type="text" name="title" placeholder="Task Title">
+                </div>
+
+                <div>
+                    <textarea name="description" placeholder="Task Description"></textarea>
+                </div>
+
+                <div>
+                    <button type="submit">Create Task</button>
+                </div>
+            </form>
+            <!-- In our taskController we need an new function to view the page -->.
+            public function create() 
+            {
+                return view('tasks.create');
+            }
+            <!-- and another to store the data - this is the long way -->
+            public function store() 
+            {
+                $task = new Task();
+                $task->title = request('title');
+                $task->description = request('description');
+                $task->save();
+
+                return redirect('/tasks');
+
+                // return request()->all(); from the form - brings back json
+            }
+
 
 <!-- EPISODE 11 - ROUTING CONVENTIONS WORTH FOLLOWING -->
 
