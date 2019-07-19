@@ -139,7 +139,9 @@
          php artisan mirgate <!-- migrates the table you just created -->
 
 <!-- EPISODE 8 - ELOQUENT, NAMESPACING, & MVC=ModelViewContainer -->
-        
+        <!-- Tinker docs - https://laravel-news.com/laravel-tinker -->
+        <!-- Eloquent docs - https://laravel.com/docs/5.8/eloquent -->
+
     <!-- To Create a model -->
         php artisan make:model Task
         <!-- this will now be in app/Task.php -->
@@ -170,7 +172,66 @@
             }
             <!-- create a file index.blade.php in a tasks folder 
                 got loaclhost to check it worked-->
-        
+
+<!-- EPISODE 9 - DIRECTORY STRUCTURE REVIEW -->
+
+<!-- EPISODE 10 - FORM HANDLING & CSRF PROTECTION -->
+
+<!-- EPISODE 11 - ROUTING CONVENTIONS WORTH FOLLOWING -->
+
+<!-- EPISODE 12 - FAKING PATCH AND DELETE REQUESTS -->
+
+<!-- EPISODE 13 - FORM DELETE REQUESTS -->
+
+<!-- EPISODE 14 - CLEANER CONTROLLERS &MASS ASSIGNMENT CONCERNS -->
+
+<!-- EPISODE 15 - TWO LAYERS OF VALIDATION -->
+
+<!-- EPISODE 16 - YOUR FIRST ELOQUENT RELATIONSHIP -->
+
+<!-- EPISODE 17 - FORM ACTION CONSIDERTIONS -->
+
+<!-- EPISODE 18 - CREATE NEW PROJECT TASKS -->
+
+<!-- EPISODE 19 - BETTER ENCAPSULATION -->
+
+<!-- EPISODE 20 - WHEN IN DOUBT -->
+
+<!-- EPISODE 21 - CORE CONCEPTS: SERVICE CONTAINER & AUTO-RESOLUTION -->
+
+<!-- EPISODE 22 - CORE CONCEPTS: SERVICE PROVIDERS -->
+
+<!-- EPISODE 23 - CORE CONCEPTS: CONFIGURATION & ENVIROMENTS -->
+
+<!-- EPISODE 24 - A FULL REGISTRATION SYSTEM IN MINUTES -->
+
+<!-- EPISODE 25 - CORE CONCEPTS: MIDDLEWARE -->
+
+<!-- EPISODE 26 - YOU MAY ONLY VIEW YOUR PROJECTS -->
+
+<!-- EPISODE 27 - AUTHORIZATION ESSENTIALS -->
+
+<!-- EPISODE 28 - SIMPLER DEBUGGING WITH LARAVEL TELESCOPE -->
+
+<!-- EPISODE 29 - DON'T FORGET READABILITY -->
+
+<!-- EPISODE 30 - MAILABLES -->
+
+<!-- EPISODE 31 - MODEL HOOKS AND SEESAWS -->
+
+<!-- EPISODE 32 - CUSTOM EVENTS AND LISTNERS -->
+
+<!-- EPISODE 33 - USER NOTIFICATIONS -->
+
+<!-- EPISODE 34 - LARAVEL AND THE FORNT-END --> 
+
+<!-- EPISODE 35 - COLLECTION ESSENTIALS -->
+
+<!-- EPISODE 36 - SESSIONS AND FLASH MESSAGING -->
+
+<!-- EPISODE 37 - LARAVEL TESTING CRASH COURSE -->
+
+<!-- EPISODE 38 - THE NEXT STEPS -->
             
 
 
