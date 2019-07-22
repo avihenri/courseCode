@@ -301,7 +301,7 @@
             'description' => 'required'
         ]));
         return redirect('/tasks');
-        <!-- was -->
+        <!-- the above was -->
         $validated = request()->validate([
             'title' => ['required', 'min:3', 'max:255'],
             'description' => 'required'
