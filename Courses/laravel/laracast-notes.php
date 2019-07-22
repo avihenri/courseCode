@@ -295,7 +295,7 @@
     <!-- to add validation we use request()->validate() -->
     <!-- $errors is an object that is available all the time -->
 
-    <!-- you can one line what we did in TaskController -->
+    <!-- you can one line what we did in TaskController old example below -->
         Task::create(request()->validate([
             'title' => ['required', 'min:3', 'max:255'],
             'description' => 'required'
