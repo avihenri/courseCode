@@ -218,15 +218,100 @@
 
 <!-- EPISODE 11 - ROUTING CONVENTIONS WORTH FOLLOWING -->
 
+    <!-- Routing - web.php
+        GET /tasks (index) - show all resources        
+        GET /tasks/create (create) - form to display to create a task
+        GET /tasks/taskid (show) - show existing task
+        POST /tasks (store) - add a resource
+        GET /tasks/taskid/edit (edit) - display resource that needs updated
+        PATCH /tasks/taskid - update a resource
+        DELETE /tasks/taskid - delete a resource
+        -->
+        Route::resource('tasks', 'TasksController'); <!-- short version but it includes GET/POST/PATCH/DELETE requests -->
+        <!-- // To see what routes you have go to terminal - php artisan route:list
+        // | Domain | Method    | URI               | Name          | Action                                       | Middleware   |
+        // |        | GET|HEAD  | /                 |               | Closure                                      | web          |
+        // |        | GET|HEAD  | api/user          |               | Closure                                      | api,auth:api |
+        // |        | GET|HEAD  | tasks             | tasks.index   | App\Http\Controllers\TasksController@index   | web          |
+        // |        | POST      | tasks             | tasks.store   | App\Http\Controllers\TasksController@store   | web          |
+        // |        | GET|HEAD  | tasks/create      | tasks.create  | App\Http\Controllers\TasksController@create  | web          |
+        // |        | GET|HEAD  | tasks/{task}      | tasks.show    | App\Http\Controllers\TasksController@show    | web          |
+        // |        | PUT|PATCH | tasks/{task}      | tasks.update  | App\Http\Controllers\TasksController@update  | web          |
+        // |        | DELETE    | tasks/{task}      | tasks.destroy | App\Http\Controllers\TasksController@destroy | web          |
+        // |        | GET|HEAD  | tasks/{task}/edit | tasks.edit    | App\Http\Controllers\TasksController@edit    | web          |
+        // |        | GET|HEAD  | your-profile      |               | Closure                                      | web          |
+
+        // Long version -
+        // Route::get('/tasks', 'TasksController@index');
+        // Route::get('/tasks/create', 'TasksController@create');
+        // Route::get('/tasks/{taskid}/show', 'TasksController@show');
+        // Route::post('/tasks', 'TasksController@store');
+        // Route::get('/tasks/{taskid}/edit', 'TasksController@edit');
+        // Route::patch('/tasks/{taskid}', 'TasksController@update');
+        // Route::delete('/tasks/{taskid}', 'TasksController@destroy'); -->
+        <!-- **Remember to add the functions to the controller - app/Http/Controllers/TaskController.php** or do the below.. -->
+
+        <!-- You can make a controller a resource when you make it  -->
+        <!-- BASH --> php artisan make:controller NewController -r -m -post 
+                <!-- This provides a controller with the boilerplate code so all the functions index, create, show, edit, update, destroy -->
+                <!-- the -m & -Post creates a post model -->          
+        
+
 <!-- EPISODE 12 - FAKING PATCH AND DELETE REQUESTS -->
 
-<!-- EPISODE 13 - FORM DELETE REQUESTS -->
+        <!-- Patch & Delete are not availbale in form method -->
+            <!-- we need to add them in the controller -->
+            
 
-<!-- EPISODE 14 - CLEANER CONTROLLERS &MASS ASSIGNMENT CONCERNS -->
+<!-- EPISODE 13 - FORM DELETE REQUESTS -->
+    <!-- dd('hello!'); // dd() is die & don't - good for debugging -->
+        <!-- use findOrFail istead of just fail to show 404 error rather than a debug error -->
+            <!-- the below should go in the form -->
+            @method('PATCH') <!-- <-- is the blade option of {{ method_field('PATCH') }}  -->      
+            <!-- OR -->
+            @method('DELETE')
+
+            @csrf <!-- <-- is the blade option {{ csrf_field() }} -->
+
+
+<!-- EPISODE 14 - CLEANER CONTROLLERS & MASS ASSIGNMENT CONCERNS -->
+            <!-- Laravel route model binding -->
+            MassAssignmentException <!-- looks like you are trying to mass update things which isn't great -->
+            <!-- to fix this we need to add what fields we want to be fillable in our model app/task.php -->
+            class Task extends Model
+            {
+                protected $fillable = [
+                    'title', 'description'
+                ];
+                <!-- or do the opposite add all the fields you dont want fillable -->
+                protected $guarded = [
+                    'password', 'blah'
+                ];
+            }
+            <!-- cleaner code is within the TaskController & commented out is what it was -->
 
 <!-- EPISODE 15 - TWO LAYERS OF VALIDATION -->
+    <!-- request function you can do what you need with the request data -->
+    <!-- to add validation we use request()->validate() -->
+    <!-- $errors is an object that is available all the time -->
+
+    <!-- you can one line what we did in TaskController -->
+        Task::create(request()->validate([
+            'title' => ['required', 'min:3', 'max:255'],
+            'description' => 'required'
+        ]));
+        return redirect('/tasks');
+        <!-- was -->
+        $validated = request()->validate([
+            'title' => ['required', 'min:3', 'max:255'],
+            'description' => 'required'
+        ]);
+        Task::create($validated);
+        return redirect('/tasks');
 
 <!-- EPISODE 16 - YOUR FIRST ELOQUENT RELATIONSHIP -->
+
+
 
 <!-- EPISODE 17 - FORM ACTION CONSIDERTIONS -->
 
