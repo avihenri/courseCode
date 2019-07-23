@@ -261,6 +261,28 @@
 
         <!-- Patch & Delete are not availbale in form method -->
             <!-- we need to add them in the controller -->
+
+            <!-- // To see what routes you have go to terminal - php artisan route:list
+// | Domain | Method    | URI               | Name          | Action                                       | Middleware   |
+// |        | GET|HEAD  | /                 |               | Closure                                      | web          |
+// |        | GET|HEAD  | api/user          |               | Closure                                      | api,auth:api |
+// |        | GET|HEAD  | tasks             | tasks.index   | App\Http\Controllers\TasksController@index   | web          |
+// |        | POST      | tasks             | tasks.store   | App\Http\Controllers\TasksController@store   | web          |
+// |        | GET|HEAD  | tasks/create      | tasks.create  | App\Http\Controllers\TasksController@create  | web          |
+// |        | GET|HEAD  | tasks/{task}      | tasks.show    | App\Http\Controllers\TasksController@show    | web          |
+// |        | PUT|PATCH | tasks/{task}      | tasks.update  | App\Http\Controllers\TasksController@update  | web          |
+// |        | DELETE    | tasks/{task}      | tasks.destroy | App\Http\Controllers\TasksController@destroy | web          |
+// |        | GET|HEAD  | tasks/{task}/edit | tasks.edit    | App\Http\Controllers\TasksController@edit    | web          |
+// |        | GET|HEAD  | your-profile      |               | Closure                                      | web          |
+
+// Long version -
+// Route::get('/tasks', 'TasksController@index');
+// Route::get('/tasks/create', 'TasksController@create');
+// Route::get('/tasks/{taskid}/show', 'TasksController@show');
+// Route::post('/tasks', 'TasksController@store');
+// Route::get('/tasks/{taskid}/edit', 'TasksController@edit');
+// Route::patch('/tasks/{taskid}', 'TasksController@update'); -->
+// Route::delete('/tasks/{taskid}', 'TasksController@destroy');
             
 
 <!-- EPISODE 13 - FORM DELETE REQUESTS -->
@@ -311,27 +333,164 @@
 
 <!-- EPISODE 16 - YOUR FIRST ELOQUENT RELATIONSHIP -->
 
+        <!-- CREATING A SUBTASK MODEL -->
+            <!-- With migration file & factory -->
+            php artisan make:model Subtask -m -f
+            <!-- factories app/database/factories -->
+            <!-- we can then check if a task has a subtask -->
+            <!-- we should ad an if statement to check for subtasks
+                otherwise there will be an empty div for those without
+                     -->
+            @if ($task->subtask->count())
+                <div>
+                    @foreach ($task->subtask as $subt)
+                        <li>{{ $subt->description }}</li>
+                    @endforeach
+                </div>
+            @endif
+            <!-- inverse of this - a subtask belows to a task -->
+            <!-- In the model subtask.php add the below -->
+            public function task()
+            {
+                return $this->belongsTo(Task::class);
+            }
+            <!--  to check.. check in tinker -->
+            >>> App\Task::first()->subtask
+                => Illuminate\Database\Eloquent\Collection {#2986
+                    all: [
+                    App\Subtask {#2972
+                        id: 1,
+                        task_id: 10,
+                        description: "Finish Laracasts",
+                        completed: 0,
+                        created_at: "2019-07-22 00:00:00",
+                        updated_at: "2019-07-22 00:00:00",
+                    },
+                    ],
+                }
+                >>> $subtask = App\Subtask::first();
+                => App\Subtask {#2980
+                    id: 1,
+                    task_id: 10,
+                    description: "Finish Laracasts",
+                    completed: 0,
+                    created_at: "2019-07-22 00:00:00",
+                    updated_at: "2019-07-22 00:00:00",
+                }
+                >>> $subtask->task;
+                => App\Task {#2969
+                    id: 10,
+                    title: "What is going on!!",
+                    description: "Who knows!! FGSFGSFGS",
+                    created_at: "2019-07-22 14:12:33",   
+                    updated_at: "2019-07-22 14:15:55",
+                }
+
+           
+<!-- EPISODE 17 - FORM ACTION CONSIDERTIONS 8m-->
+        <!-- To access an element in the console do the following - good for testing -->
+        <!-- highlight the element & go to console eg. form element-->
+        $0
+        <!-- to submit the form -->
+        $0.submit()
+
+        <!-- MassAssignment error -->
+        <!-- remember you can do the following to protect all fields-->
+        protected $guarded =[];
+        <!-- or.. to protect specific field-->
+        protected $fillable = ['name'];
+         <!--check a checkbox is completed  -->
+         {{ $subt->completed ? 'checked' : ''}}       
 
 
-<!-- EPISODE 17 - FORM ACTION CONSIDERTIONS -->
+<!-- EPISODE 18 - CREATE NEW PROJECT TASKS 10m-->
 
-<!-- EPISODE 18 - CREATE NEW PROJECT TASKS -->
+  <!-- we added error code to an error include file -->
+         <!-- added validation to subtask description field in the store method in controlloer-->
+         $attributes = request()->validate(['description' => 'required|min:3|max:255']);
+         <!-- This is a better way - add your own method to Task.php -->
+            $task->addSubtask($attributes); // we don't need the task id like below as we have access to the task with $task
+             <!-- // This is one way of doing it
+            // Subtask::create([
+            //     'task_id' => $task->id,
+            //     'description' => request('description')
+            // ]); -->
+        return back();
+        <!-- and the below in Task.php -->
+        public function addSubtask($subtask)
+        {
+                <!-- // This is better as we have a relationship with subtask with the the above method so we can do the below -->
+                <!-- // $this->tasks()->create(['description' => $description]) or the below os better.. -->
+            $this->subtask()->create($subtask); <!-- changed from 'description' as the validation attributes in controller is pulling through the data -->
+                    <!-- // Could do the below like what we did in the TaskSubtaskController
+                //    return Subtask::create([
+                //         'task_id' => $this->id,
+                //         'description' => $description
+                //     ]); -->
+        }
 
-<!-- EPISODE 19 - BETTER ENCAPSULATION -->
+<!-- EPISODE 19 - BETTER ENCAPSULATION 8m-->
+        <!-- Encapsulation: Hide internal state & values inside a class -->
+        <!-- complete/incomplete classes - in subtask.php -->
+        public function complete($completed = true)
+        {
+            $this->update(compact('completed')); // or ['completed' => $completed]
+        }
+        public function incomplete()
+        {
+            $this->complete(false);
+        }
+        <!-- Below are a few ways to do an if statement to toggle the complete/incomplete -->
+                <!-- this was the original code before the classes
+                $subtask->complete(request()->has('completed')); // this class is in Subtask.php
+                    $subtask->update([
+                        'completed' => request()->has('completed')
+                    ]); -->
+        
+        <!-- FEW WAYS TO DO THE AN IF STATEMENT - -->
+         if (request()->has('completed')) {
+                $subtask->complete();
+            } else {
+                $subtask->incomplete();
+            }
 
-<!-- EPISODE 20 - WHEN IN DOUBT -->
+        request()->has('completed') ? $subtask->complete() : $subtask->incomplete();
 
-<!-- EPISODE 21 - CORE CONCEPTS: SERVICE CONTAINER & AUTO-RESOLUTION -->
+        
+        $method = request()->has('completed') ? 'complete' : 'incomplete';
+        $subtask->$method();
 
-<!-- EPISODE 22 - CORE CONCEPTS: SERVICE PROVIDERS -->
+<!-- EPISODE 20 - WHEN IN DOUBT 5.5m-Just a side track video -->
 
-<!-- EPISODE 23 - CORE CONCEPTS: CONFIGURATION & ENVIROMENTS -->
+    <!-- You can create a new controller for multiple things
+        for example:
+            We could do a completed tasks controller to handle the 
+            storing and destroying of subtasks from the last video -->
 
-<!-- EPISODE 24 - A FULL REGISTRATION SYSTEM IN MINUTES -->
 
-<!-- EPISODE 25 - CORE CONCEPTS: MIDDLEWARE -->
+<!-- EPISODE 21 - CORE CONCEPTS: SERVICE CONTAINER & AUTO-RESOLUTION 15.5m-->
+        <!-- service container & auto resolving -->
+        <!-- Filesystem -->
+        <!-- app() out of the laravel container -->
+        app(Filesystem::class);
+        <!-- call methods on app() web.php-->
+        app()->bind('example', function () {
+                return new \App|Example'
+        });
+        Route::get('/', function () {
+            dd(app('example'));
+            return view ('welcome');
+        });
+    
+<!-- EPISODE 22 - CORE CONCEPTS: SERVICE PROVIDERS 15.5m-->
 
-<!-- EPISODE 26 - YOU MAY ONLY VIEW YOUR PROJECTS -->
+<!-- EPISODE 23 - CORE CONCEPTS: CONFIGURATION & ENVIROMENTS 12m-->
+
+<!-- EPISODE 24 - A FULL REGISTRATION SYSTEM IN MINUTES 6m-->
+
+<!-- EPISODE 25 - CORE CONCEPTS: MIDDLEWARE 10m-->
+
+<!-- EPISODE 26 - YOU MAY ONLY VIEW YOUR PROJECTS 10m-->
 
 <!-- EPISODE 27 - AUTHORIZATION ESSENTIALS -->
 
