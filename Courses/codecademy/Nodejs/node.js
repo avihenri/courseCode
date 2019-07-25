@@ -78,3 +78,70 @@ console.log('Heya!'); // to check, follow the below
             // Current memory usage: 4052440.
             // After using the loop to add elements to the array, the process is using 911792 more bytes of memory.
     
+// Core Modules and Local Modules
+    // Modules = is a colletion of code in a separate file to help manage readability - instead of having everyting in one file
+    // each file can be used by using the require() function
+    // it is essential for creating scalable programs that incorporate libraries & frameworks
+    // Node has several modules to help perform common tasks = core modules
+        // Core modules are located in the lib/ folder
+        // we pass the module name in the require() function (local modules, so not core, we pass the path to the module. For Core we just pass the name)
+            // Require in the 'events' core module:
+            let events = require('events');
+    // The require() function includes logic under the hood - doc to help https://nodejs.org/api/modules.html#modules_modules
+        // first checks if the argument is a core module
+            // if not - it will move to different attepts to locate it 
+        // example:
+            // dog.js
+            module.exports = class Dog { 
+            // module.exports: each file has this in node & it holds everything in the file/module that is available to use in a require
+                constructor(name) {
+                this.name = name;
+                }            
+                praise() {
+                return `Good dog, ${this.name}!`;
+                }
+            };
+            // app.js
+            let Dog = require('./dog.js'); // now holds the module.exports
+            // if no file extension is provided require() assumes it so if './dog was passed it would know it is ./dog.js
+            const tadpole = new Dog('Tadpole');
+            console.log(tadpole.praise());
+    // EXERCISE:
+        // PROGRAM WHERE A DOG CAN FIGHT A CAT
+            // cat.js | dog.js = classes
+            // assign cat.js module.exports
+            module.exports = class Cat {
+                constructor(name, clawStrength) {
+                  this.name = name;
+                  this.clawStrength = clawStrength;
+                }
+              };
+            // do the same for dog.js
+            module.exports = class Dog {
+                constructor(name, toothStrength) {
+                  this.name = name;
+                  this.toothStrength = toothStrength;
+                }
+              };
+            // NOW DOG & CAT CLASSES ARE BEING EXPORTED
+            // Now require them in app.js
+              // Require modules in:
+                let Dog = require('./dog.js');
+                let Cat = require('./cat.js');              
+                let fight = (dog, cat) => {
+                    if (dog.toothStrength > cat.clawStrength) {
+                        console.log(`${dog.name} wins!`);
+                    }
+                    else if (dog.toothStrength < cat.clawStrength) {
+                        console.log(`${cat.name} wins!`);
+                    }
+                    else {
+                        console.log(`${dog.name} and ${cat.name} are equally skilled fighters!`);
+
+                    }
+                }
+                const myDog = new Dog('Rex', Math.random());
+                const myCat = new Cat('Tabby', Math.random());
+                fight(myDog, myCat);
+            // now do node app.js in bash and see who wins - it is random & it worked
+
