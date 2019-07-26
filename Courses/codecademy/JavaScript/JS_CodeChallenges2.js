@@ -170,8 +170,121 @@
                         let arr1 = ['this', 'not this', 'nor this'];
                         let arr2 = ['thing 1', 'thing 2', 'this'];
                         
-                        justCoolStuff(arr1, arr2); // Should return ['this']
+                        justCoolStuff(arr1, arr2); // Should return ['this'] 
                         You can test your function when you’re ready by passing in the myStuff and coolStuff arrays or by making arrays of your own!
                     */
-                                             
-            
+
+                   function justCoolStuff(arr1, arr2) {
+                    return arr1.filter(item => arr2.includes(item));
+                  }
+                  const coolStuff = ['gameboys', 'skateboards', 'backwards hats', 'fruit-by-the-foot', 'pogs', 'my room', 'temporary tattoos'];
+                  const myStuff = [ 'rules', 'fruit-by-the-foot', 'wedgies', 'sweaters', 'skateboards', 'family-night', 'my room', 'braces', 'the information superhighway']; 
+                  console.log(justCoolStuff(myStuff, coolStuff)) // output: [ 'fruit-by-the-foot', 'skateboards', 'my room' ]
+                  
+                // isTheDinnerVegan()
+                   /* Instructions
+                    1.
+                    Write a function isTheDinnerVegan() that takes in an array of food objects in the format:
+                    {name: 'cabbage', source: 'plant' }
+                    and returns a boolean value based on whether or not every item in the array has entirely plant-based origins.
+                    const meal = [{name: 'arugula', source: 'plant'}, {name: 'tomatoes', source: 'plant'}, {name: 'lemon', source:'plant'}, {name: 'olive oil', source: 'plant'}];
+                    isTheDinnerVegan(meal); // Should return true
+                    You can test your function when you’re ready by passing in the dinner array or by making your own!           */          
+                    const isTheDinnerVegan = arr => arr.every(food => food.source === 'plant');                  
+               
+                    // const dinner = [{name: 'hamburger', source: 'meat'}, {name: 'cheese', source: 'dairy'}, {name: 'ketchup', source:'plant'}, {name: 'bun', source: 'plant'}, {name: 'dessert twinkies', source:'unknown'}];
+                    // console.log(dinner.every(isTheDinnerVegan));
+                    // // Should print false                    
+                    const meal = [{name: 'arugula', source: 'plant'}, {name: 'tomatoes', source: 'plant'}, {name: 'lemon', source:'plant'}, {name: 'olive oil', source: 'plant'}];                    
+                    console.log(isTheDinnerVegan(meal));
+
+                  //  sortSpeciesByTeeth()
+                      /*  Instructions
+                        1.
+                        Write a function sortSpeciesByTeeth() that takes in an array of species objects in the format:
+                        {speciesName: 'shark', numTeeth: 50 }
+                        and sorts the array in ascending order based on the average number of teeth that species possesses (numTeeth) .
+                        You’ll need to access each object’s .numTeeth property. Feel free to either write a named comparison function, or use an anonymous function for your argument to .sort().
+                        You can test your function when you’re ready by passing in the speciesArray array or by making your own! */
+
+                        const speciesArray = [ {speciesName:'shark', numTeeth:50}, {speciesName:'dog', numTeeth:42}, {speciesName:'alligator', numTeeth:80}, {speciesName:'human', numTeeth:32}];
+
+                        const sortSpeciesByTeeth = arr => {
+                        arr.sort((a,b) => {return a.numTeeth - b.numTeeth});
+                        return arr;
+                        }
+                        /* output
+                            [ { speciesName: 'human', numTeeth: 32 },
+                                { speciesName: 'dog', numTeeth: 42 },
+                                { speciesName: 'shark', numTeeth: 50 },
+                                { speciesName: 'alligator', numTeeth: 80 } ]
+                        */
+
+                   // findMyKeys()
+                      /* Instructions
+                       1.
+                       Write a function, findMyKeys(), that takes in an array of strings which may or may not contain 'keys'. If the keys are in the array, your 
+                       function should return the index at which they can be found. If they’re not in the array, your function should return -1.                       
+                       const drawer = ['rubber bands', 'tape', 'old menus', 'batteries'];
+                       findMyKeys(drawer);
+                       // Should return -1
+                       You can use any technique you want to accomplish this task. Though, if you look, there’s a built-in method that will make pretty quick work of it.                       
+                       You can test your function when you’re ready by passing in the randomStuff array or by making your own array! */
+
+                       const findMyKeys = arr => arr.findIndex(item => item === 'keys');
+                       const randomStuff = ['credit card', 'screwdriver', 'receipt', 'gum', 'keys', 'used gum', 'plastic spoon'];
+                        console.log(findMyKeys(randomStuff))
+                        // Should print 4
+
+                    // dogFactory()
+                        /*Instructions
+                        1.
+                        Write a function, dogFactory(). It should:                        
+                        have 3 parameters: name, breed, and weight (in that order)
+                        expect name and breed to be strings
+                        expect weight to be a number
+                        return an object
+                        have each of those parameters as keys on the returned object returned with the values of the arguments that were passed in */
+
+                        // to return an object, do the following..
+                        const dogFactory = (name, breed, weight) => {
+                            return {
+                                name: name,
+                                breed: breed,
+                                weight: weight        
+                            }
+                        }
+
+                        // Answer:
+                        const dogFactory = (name, breed, weight) => {
+                            return {
+                                _name: name,
+                                _breed: breed,
+                                _weight: weight,        
+                            get name() {
+                            return  this._name;
+                            },
+                            set name(newName) {
+                            return  this._name = newName;
+                            },
+                            get breed() {
+                            return this._breed;
+                            
+                            },
+                            set breed(newBreed) {
+                            return  this._breed = newBreed;
+                            }, 
+                            get weight() {
+                            return this._weight;
+                            },
+                            set weight(newWeight) {
+                            return  this._weight = newWeight;
+                            }, 
+                            bark(){
+                                return 'ruff! ruff!';
+                            },
+                            eatTooManyTreats() {
+                                return this._weight++;
+                            }
+                            } 
+                        }
