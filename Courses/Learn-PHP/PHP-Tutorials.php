@@ -572,7 +572,7 @@ while ($index < count($numbers)) {
     $alex = new Student("Alex", "Jones");
     $alex->say_name(); // My name is Alex Jones.
     ?>
-        /* Important definitions related to objects:
+         <!-- Important definitions related to objects:
             Classes define how objects behave. Classes do not contain data.
             Objects are instances of classes, which contain data.
             Members are variables that belong to an object.
@@ -620,4 +620,4 @@ while ($index < count($numbers)) {
         $car = new Car("Toyota", 2006);
         $car->print_details();
 
-        // checking git! and again! damn password in VisialSC wasn't right
+         checking git! and again! damn password in VisialSC wasn't right -->
