@@ -27,7 +27,7 @@ Introduction to Grids */
             display: grid;
             width: 500px;
             grid-template-columns: 100px 200px; 
-            /* 1st creates no of colms, 2nd width of each colum, this is two cols 1st @ 100px & 2nd @ 200px */
+            /* amount of widths is the no of colms, this is two cols 1st @ 100px & 2nd @ 200px */
           }
           /* Percentages */
           .grid {
@@ -67,5 +67,86 @@ Introduction to Grids */
           }
 
     /* Fraction */
-    
+        /* fr = new unit for css grid 
+            defines colms/rows as fractions of the grid
+            helps prevent overflow */
+            .grid { 
+              display: grid; 
+              width: 1000px; 
+              height: 400px; 
+              grid-template: 2fr 1fr 1fr / 1fr 3fr 1fr; 
+            }
+            /* rows = 3 (1@2fr = 200px & the others @1fr = 100px each) 400px
+                colms = 3 (1st & last @1fr 200px & 2nd @3fr 600px) 1000px
+                Can use other units with fr. 
+                fr just takes up the available space */
 
+    /* Repeat */
+        /* a function - to define your columns & rows */
+        .grid {
+          display: grid;
+          width: 300px;
+          grid-template-columns: repeat(3, 100px); /* 3 columns @ 100px */
+        }
+        /* repeat(5, 1fr) would split your table into five equal rows or columns.
+          the 2nd parameter can take multiple values - */
+         .grid { grid-template-columns: repeat(2, 20px 50px); }
+          /* will create 4 colms 1 = 20px 2 = 50px 3rd = 20px 4th = 50px */
+      
+    /* minmax */
+        .grid {
+          display: grid;
+          grid-template-columns: 100px minmax(100px, 500px) 100px;
+        }
+        /* 1st & 3rd col = 100px & 2nd will be between 100px & 500px depending on page size */
+
+    /* grid-gap */
+        .grid { 
+          display: grid; 
+          width: 320px; 
+          grid-template-columns: repeat(3, 1fr); 
+          grid-column-gap: 10px; 
+        }
+        /* gap wont be added to beginning or end
+           320px wide = 20px to gaps & 100px per colm
+           the same for grid-row-gap
+           or grid-gap: 20px 10px; 1st = rows & 2nd = colms */
+    
+    /* Grid Items */
+        .item {
+          grid-row-start: 1; /* grid lines */
+          grid-row-end: 3; /* grid lines */
+        }
+        /* the aboce takes up 2 rows - rows 1 & 2
+          grid lines start at 1 & end value is 1 greater the no of rows
+           - 5 rows = 1-6 or 8 rows = 1-9
+          start at row you want to begin & end 1 row greater than you want
+           - want rows 2, 3 & 4 = start: 2 & end: 5 */
+           .item {
+            grid-row: 1 / 3; /* shorthand of above */
+          }  
+          /* same for grid-column-start, grid-column-end and grid-column */
+          .item {
+            grid-column: 4 / span 2; /* span keyword helps you see its spanning 2 cols */            
+          }
+          /* below is the shorthand for all - */
+          .item {
+            grid-area: 2 / 3 / 4 / span 5;
+          }
+          /* order of values -
+           1. grid-row-start
+           2. grid-column-start
+           3. grid-row-end
+           4. grid-column-end *
+
+
+      /* At this point, we’ve covered a great deal of different ways to manipulate the grid and the items inside it to create interesting layouts.
+
+        grid-template-columns: defines the number and sizes of the columns of the grid
+        grid-template-rows: defines the number and sizes of the rows of the grid
+        grid-template: is a shorthand for defining both grid-template-columns and grid-template-rows in one line
+        grid-gap: puts blank space between rows and/or columns of the grid
+        grid-row-start: and grid-row-end: makes elements span certain rows of the grid
+        grid-column-start: and grid-column-end: makes elements span certain columns of the grid
+        grid-area: is a shorthand for grid-row-start, grid-column-start, grid-row-end, and grid-column-end, all in one line
+     */
