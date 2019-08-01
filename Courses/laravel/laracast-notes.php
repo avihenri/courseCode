@@ -281,8 +281,8 @@
 // Route::get('/tasks/{taskid}/show', 'TasksController@show');
 // Route::post('/tasks', 'TasksController@store');
 // Route::get('/tasks/{taskid}/edit', 'TasksController@edit');
-// Route::patch('/tasks/{taskid}', 'TasksController@update'); -->
-// Route::delete('/tasks/{taskid}', 'TasksController@destroy');
+// Route::patch('/tasks/{taskid}', 'TasksController@update'); 
+// Route::delete('/tasks/{taskid}', 'TasksController@destroy'); -->
             
 
 <!-- EPISODE 13 - FORM DELETE REQUESTS -->
