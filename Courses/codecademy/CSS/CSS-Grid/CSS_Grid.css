@@ -275,13 +275,13 @@ Introduction to Grids */
               They will only be as tall as necessary to contain their content (the words Card 1, etc).
             If we specify a height for the .card elements, they will not stretch the height of their row even if align-items: stretch; is set. */
         
-    /* Aligm Content */
+    /* Align Content */
       /* along the column axis
           start, end, stretch, space around (equal amount of space on each side), space-between (equal amount of space between items), space-evenly (even amount of space at either end) */
           main {
             display: grid;
             height: 600px;
-            rows: 200px 200px;
+            grid-template-rows: 200px 200px;
             grid-template-areas: "top"
                                  "bottom"; 
             align-content: center;
