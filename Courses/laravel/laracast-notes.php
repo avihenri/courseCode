@@ -139,7 +139,7 @@
          php artisan mirgate <!-- migrates the table you just created -->
 
 <!-- EPISODE 8 - ELOQUENT, NAMESPACING, & MVC=ModelViewContainer -->
-        <!-- Tinker docs - https://laravel-news.com/laravel-tinker -->
+        <!-- Tinker docs - https://laravel-news.com/php-tinker -->
         <!-- Eloquent docs - https://laravel.com/docs/5.8/eloquent -->
 
     <!-- To Create a model -->
@@ -172,6 +172,10 @@
             }
             <!-- create a file index.blade.php in a tasks folder 
                 got loaclhost to check it worked-->
+
+                <!-- in html - show titles  -->
+                @foreach ($tasks as $task)
+                    <li>{{ $task->title }}</li>
 
 <!-- EPISODE 9 - DIRECTORY STRUCTURE REVIEW -->
         <!-- just goes through the directory - may be helpful if stuck -->
