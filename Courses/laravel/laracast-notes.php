@@ -176,6 +176,7 @@
                 <!-- in html - show titles  -->
                 @foreach ($tasks as $task)
                     <li>{{ $task->title }}</li>
+                @endforeach
 
 <!-- EPISODE 9 - DIRECTORY STRUCTURE REVIEW -->
         <!-- just goes through the directory - may be helpful if stuck -->
