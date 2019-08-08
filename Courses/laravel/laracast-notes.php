@@ -217,7 +217,7 @@
 
                 return redirect('/tasks');
 
-                // return request()->all(); from the form - brings back json
+                <!-- // return request()->all(); from the form - brings back json -->
             }
 
 
