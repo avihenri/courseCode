@@ -336,6 +336,15 @@
         Task::create($validated);
         return redirect('/tasks');
 
+        <!-- error handling for input in html -->
+            {{ $errors->has('title') ? 'is-danger' : '' }}
+
+        <!-- Add old() so if there are any errors the input values are still there -->
+            {{ old('title') }}
+
+        <!-- confirmed valadation rule -->
+            'password' => 'required|confirmed'
+
 <!-- EPISODE 16 - YOUR FIRST ELOQUENT RELATIONSHIP -->
 
         <!-- CREATING A SUBTASK MODEL -->
