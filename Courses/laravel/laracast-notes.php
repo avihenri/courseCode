@@ -299,7 +299,24 @@
             @method('DELETE')
 
             @csrf <!-- <-- is the blade option {{ csrf_field() }} -->
-
+            <!-- 
+                delete should be a separate form
+                for example:
+             -->
+             <form action="/projects/{{ $project->id}}" method="POST" >
+                 {{ method_field('DELETE') }} <!-- or  @method('DELETE') -->
+                 @csrf 
+                 <div class="field">
+                     <div class="control">
+                         <button type="submit" class="button">Delete Project</button>
+                     </div>
+                 </div>
+             </form>
+             <!-- Test it works witha die & dump in the destroy method-->
+                    dd('hello');
+                    <!-- Can put.. -->
+                    Project::findOrFail($id)->delete();
+                    return redirect('/projects');
 
 <!-- EPISODE 14 - CLEANER CONTROLLERS & MASS ASSIGNMENT CONCERNS -->
             <!-- Laravel route model binding -->
