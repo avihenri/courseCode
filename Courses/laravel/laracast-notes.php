@@ -549,3 +549,16 @@
             
 
 
+<!-- AUTHENTICATION DOC NOTES -->
+    <!-- guards: how users are authenticated for each request -->
+    <!-- providers: defines how users are retrieved from your persistent storage -->
+
+    <!-- PRE-BUILT CONTROLLERS -->
+        <!-- RegisterController: new user registration | to remove: Auth::routes(['register' => false]);-->
+        <!-- LoginController: handles authentication -->
+        <!-- ForgotPasswordController: handles emailing links for resetting passwords -->
+        <!-- ResetPasswordController: logic to reset passwords -->
+
+    <!-- ROUTING -->
+    php artisan make:auth
+        <!-- this creates required views (resources/views/auth & resources/views/layouts) and a HomeController -->
