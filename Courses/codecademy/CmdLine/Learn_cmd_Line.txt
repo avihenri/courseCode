@@ -1,0 +1,13 @@
+https://www.codecademy.com/articles/command-line-commands
+
+******* NAVAGATION *******
+ls -> displays files and folders of where you articles
+pwd -> 'print working directory' it prints the name of the directory you are in
+cd -> 'change directory' it moves you into the directory folder you entered | cd .. -> moves you back/up
+mkdir -> 'make directory' it creates a directory and the name of the directoryis the argument
+touch -> creates a new file inside the directory
+
+******* MANIPULATION *******
+ls -a -> shows the files starting with a dot which are usually hidden
+ls -l -> lists all contents in long format (shows permissions)
+ls -t -> orders files & directories  by time they were modified
