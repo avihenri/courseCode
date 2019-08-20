@@ -11,3 +11,23 @@ touch -> creates a new file inside the directory
 ls -a -> shows the files starting with a dot which are usually hidden
 ls -l -> lists all contents in long format (shows permissions)
 ls -t -> orders files & directories  by time they were modified
+ls -alt -> lists contents, includes hidden files in long format ordered by date & time it was last modified
+cp -> copies files or directories | cp frida.txt lincoln.txt = we copy the contents of frida.txt into lincoln.txt.
+cp * = selects all items
+cp m*.txt = selects all files starting with m & ending in .txt
+mv -> moves files | source file first, directory last 
+mv -> also renames files | old file first and new file last
+rm -> removes files
+rm -r -> removes all recursive files in directory
+
+******* REDIRECTION *******
+stdin -> Standard Input, info inputted into terminal through keyboard or input device
+stdout -> Standard Output, info outputted after a process is run
+stderr -> Standard Error, error message outputted if failed
+>  -> redircts stdout to a file | echo "Hello" > hello.txt = The standard output "Hello" is redirected by > to the file hello.txt.
+cat -> outputs the contents of a file
+>>  -> stdout on left & appends it to fileon right
+< --> takes stdin from a file on right & inputs it into the program on left
+| -> takes stdout on left & pipes it as stndin to cmd on right
+wc ->  displays number of lines, words & characters
+sort -> sorts contents alphabetically.. cat lakes.txt | sort > sorted-lakes.txt ..this will sort contents of lakes and put it into sorted-lakes
