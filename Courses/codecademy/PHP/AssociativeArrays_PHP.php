@@ -142,6 +142,17 @@
               */
 
               // Numerical Keys
+                    // use integers instead of strings for keys
+                    $num_array = [1000 => "one thousand", 100 => "one hundred", 600 => "six hundred"];
+                    echo $num_array[1000]; // Prints: one thousand
+                    // we can mix and match ordered & associated arrays
+                    $ordered = [99, 1, 7, 8];
+                    $ordered["special"] = "Cool!";
+                    echo $ordered[3]; // Prints: 8
+                    echo $ordered["special"]; // Prints: Cool!
 
-              
+
+
+
+
 
