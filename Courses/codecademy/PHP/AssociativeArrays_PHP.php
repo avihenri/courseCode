@@ -263,7 +263,6 @@
 
         // QUIZ QUESTIONS CORRECT ANSWERS
             // 1. In PHP, arrays are always maps
-
             // 5 = 5
             $arr = ["hello", "there"]; 
             $arr["young"] = "wizard"; 
