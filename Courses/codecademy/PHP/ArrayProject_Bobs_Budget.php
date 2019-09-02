@@ -28,3 +28,52 @@ $socialSecurity = $grossSalary * .062;
 $incomeSegments = [[9700, .88], [29775, .78], [8675, .76]];
 
 // Write your code below:
+
+// 1. Use $incomeSegments to calculate Bob’s $netIncome after this set of taxes.
+$netIncome = ($incomeSegments[0][0] * $incomeSegments[0][1]) + ($incomeSegments[1][0] * $incomeSegments[1][1]) + ($incomeSegments[2][0] * $incomeSegments[2][1]);
+print_r("Net Income: " . $netIncome . "\n");
+
+// 2. Social security tax -   Subtract $socialSecurity from $netIncome
+$annualIncome = $netIncome - $socialSecurity;
+print_r("Annual Income: " . $annualIncome . "\n");
+
+// 3. Annual Expenses (car & vacations)
+$annualIncome -= $annualExpenses["vacations"];
+$annualIncome -= $annualExpenses["carRepairs"];
+print_r("Annual income after deducting Annual Expenses: £" . $annualIncome . "\n");
+
+// 4 & 5. Montly Expenses (rent, Utilities, Health In)
+$monthlyIncome = $annualIncome / 12;
+print_r($monthlyIncome . "\n");
+$monthlyIncome -= $monthlyExpenses["rent"];
+$monthlyIncome -= $monthlyExpenses["utilities"];
+$monthlyIncome -= $monthlyExpenses["healthInsurance"];
+print_r("Monthly income after monthly expesnes: £" . $monthlyIncome . "\n");
+
+// 6 & 7. Weekly Expenses
+$weeklyIncome = $monthlyIncome / 4.33;
+print_r("Weekly Income: " . $weeklyIncome . "\n");
+$weeklyExpenses = [
+  "gas" => 25,
+  "food" => 90,
+  "entertainment" => 47
+];
+$weeklyIncome -= $weeklyExpenses["gas"];
+$weeklyIncome -= $weeklyExpenses["food"];
+$weeklyIncome -= $weeklyExpenses["entertainment"];
+print_r("Weekly income after deducting weekly expenses: £" . $weeklyIncome . "\n");
+
+$annualSavings = $weeklyIncome * 52;
+print_r("Annual savings will be: " . $annualSavings . "\n");
+
+/* outputs:
+Gross Salary: 48150
+Net Income: 38353.5
+Annual Income: 35368.2
+Annual income after deducting Annual Expenses: £33368.2
+2780.6833333333
+Monthly income after monthly expesnes: £880.68333333333
+Weekly Income: 203.39107005389
+Weekly income after deducting weekly expenses: £41.391070053888
+Annual savings will be: 2152.3356428022
+*/
