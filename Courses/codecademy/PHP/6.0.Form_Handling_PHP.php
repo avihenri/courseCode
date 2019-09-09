@@ -85,4 +85,39 @@
             PHP can be used to generate HTML files.
             We embed PHP scripts within HTML by inserting PHP code between the opening (<//?php) and closing (?>) tags. -->
 
+<?php
+// HTML FORM HANDLING IN PHP
+// Introduction
+    // The below translates to HTML
+    <?php echo "<p>PHP interprets this and turns it into HTML</p>";?>
+    // or shorthand : 
+    <?="<p>PHP interprets this and turns it into HTML</p>";?>
+
+    // Request Superglobals
+        // Superglobals = automatic global variables - available in all scopes
+        $GLOBALS // contains associative array of var's which define in global scope of the script
+        $_SERVER // contains associative array of var's such as, headers, paths & cript locations - created by the web server
+        $_GET // contains associative array of var's passed to current script using query parameteres in the URL
+        $_POST // contains associative array of var's passed to current script using a form submitted using POST method
+        $_FILES // contains associative array of var's of items uploaded to current script via POST
+        $_COOKIE // contains associative array of var's passed to the current sctip via http cookies
+        $_SESSION // contains associative array of var's session variables - https://www.php.net/manual/en/ref.session.php
+        $_REQUEST //  contains the contents of $_GET, $_POST & $_COOKIE
+        $_ENV // contains associative array of var's passed to current script via environment method
+
+
+        // Review
+        // You’re ready to start handling forms in PHP!
+
+        // To review:
+
+        // <?= is shorthand for <?php echo.
+        // PHP provides superglobals which can be accessed anywhere in the script.
+        // $_GET is an associative array containing data from a GET request.
+        // $_POST is an associative array containing data from a POST request.
+        // $_REQUEST is an associative array containing data from both GET and POST requests. It should only be used if you don’t care which method was used.
+        // The array keys in the PHP request superglobals are set by the name attributes in the HTML form, which need to be unique.
+        // The action attribute is used to specify which file should handle data from the form request.
+
+
 
