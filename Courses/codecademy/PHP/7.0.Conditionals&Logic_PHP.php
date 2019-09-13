@@ -62,3 +62,69 @@
 
         )
         */
+
+    // Comparison Operators
+        // expressions that evaluate to TRUE & FALSE 
+        // < less than
+        // <= less than or equal to
+        // > greater than
+        // >= greater than or equal to
+        
+        function chooseCheckoutLane($num) {
+            if ($num <= 12) {
+              return "express lane";
+            } else {
+              return "regular lane";
+            }
+          }
+          function canIVote($age) {
+            if ($age >= 18) {
+              return "yes";
+            } else {
+              return "no";
+            }
+          }
+          echo chooseCheckoutLane(8) . "\n"; // express lane
+          echo chooseCheckoutLane(14). "\n"; // regular lane
+          echo canIVote(15). "\n"; // no
+          echo canIVote(30). "\n"; // yes
+
+    // Identical and Not Identical Operators
+        // === Identical operator - returns true if left operand is exactly the same the right 
+        $greeting = "hello";
+        $greeting === "hello"; // Evaluates to: TRUE
+        "hello" === "hel" . "lo";   // Evaluates to: TRUE
+        $greeting === "HELLO"; // Evaluates to: FALSE - not exactly the same
+        // !== not identical operator - returns true if two operators are different & false if they are the same
+        $num = 5;
+        $num !== 5; // Evaluates to: FALSE
+        10 !== 10; // Evaluates to: FALSE
+        $num !== 20; // Evaluates to: TRUE        
+        $greeting = "hello";
+        "hello" !== "hello"; // Evaluates to: FALSE
+        $greeting !== "HELLO"; // Evaluates to: TRUE
+        // == equals operator - similar to identical but less trict so "hello" & "HELLO" would be true (hard to predict results)
+        function agreeOrDisagree($str1, $str2) {
+            if ($str1 === $str2) {
+              return "You agree!";
+            } else {
+              return "You disagree!";
+            }
+          }
+          echo agreeOrDisagree("Yup", "nope") . "\n"; // You disagree!
+          echo agreeOrDisagree("Hello", "HELLO") . "\n"; // You disagree!
+          echo agreeOrDisagree("nope", "nope") . "\n"; // You agree!
+          
+          function checkRenewalMonth($renewal) {
+            $curMonth = date("F");
+            if ($curMonth === $renewal) {
+              return "Time to renew";
+            } else {
+              return "Welcome!";
+            }
+          }          
+          echo checkRenewalMonth("April") . "\n"; // Welcome!
+          echo checkRenewalMonth("June") . "\n"; // Welcome!
+          echo checkRenewalMonth("September") . "\n"; // Time to renew
+
+
