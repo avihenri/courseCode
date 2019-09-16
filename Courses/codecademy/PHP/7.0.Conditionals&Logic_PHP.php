@@ -127,4 +127,27 @@
           echo checkRenewalMonth("June") . "\n"; // Welcome!
           echo checkRenewalMonth("September") . "\n"; // Time to renew
 
+    // Elseif Statements
+        /*
+          Consider letter grades on a school assignment:
+            If the grade is less than 60, it’s an F
+            Or else, if the grade is less than 70, it’s a D.
+            Or else, if the grade is less than 80, it’s a C.
+            Or else, if the grade is less than 90, it’s a B.
+            Or else, it’s an A.
+        */
+        $grade = 88;
+        if ($grade < 60) {
+        echo "You got an F";
+        } elseif ($grade < 70) {
+        echo "You got a D";
+        } elseif ($grade < 80) {
+        echo "You got a C";
+        } elseif ($grade < 90) {
+        echo "You got a B";
+        } else {
+        echo "You got an A";
+        }
+
+  
 
