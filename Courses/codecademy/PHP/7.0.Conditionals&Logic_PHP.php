@@ -149,5 +149,122 @@
         echo "You got an A";
         }
 
-  
+  // WORKING EXAMPLE - DNA MATCH
+      function whatRelation($dnaPerc) {
+        if ($dnaPerc === 0) {
+          echo "not genetically related" . "\n";
+        } elseif ($dnaPerc < 3) {
+          echo "third cousins" . "\n";
+        } elseif ($dnaPerc < 6) {
+          echo "second cousins" . "\n";
+        } elseif ($dnaPerc < 14) {
+          echo "first cousins" . "\n";
+        } elseif ($dnaPerc < 35) {
+          echo  "grandparent and grandchild, aunt/uncle and niece/nephew, or half siblings" . "\n";
+        } elseif ($dnaPerc < 100) {
+          echo  "parent and child or full siblings" . "\n";
+        } else {
+          echo "identical twins" . "\n";
+        }
+      }
+      whatRelation(100);
+      whatRelation(45);
+      whatRelation(35);
+      whatRelation(34);
+      whatRelation(14);
+      whatRelation(7);
+      whatRelation(3);
+      whatRelation(1);
+      whatRelation(0);  
+      /* OUTPUT 
+      identical twins
+      parent and child or full siblings
+      parent and child or full siblings
+      grandparent and grandchild, aunt/uncle and niece/nephew, or half siblings
+      grandparent and grandchild, aunt/uncle and niece/nephew, or half siblings
+      first cousins
+      second cousins
+      third cousins
+      not genetically related
+      */
+
+  // Switch Statements
+      if ($letter_grade === "A"){
+        echo "Terrific";
+      } elseif ($letter_grade === "B") {
+        echo "Good";
+      } elseif ($letter_grade === "C") {
+        echo "Fair";
+      } elseif ($letter_grade === "D") {
+        echo "Needs Improvement";
+      } elseif ($letter_grade === "F") {
+        echo "See me!";
+      } else {
+        echo "Invalid grade"; 
+      }
+      // better for a switch
+      switch ($letter_grade){
+        case "A":
+          echo "Terrific";
+          break;
+        case "B":
+          echo "Good";
+          break;
+        case "C":
+          echo "Fair";
+          break;
+        case "D":
+          echo "Needs Improvement";
+          break;
+        case "F":
+          echo "See me!";
+          break;
+        default:
+          echo "Invalid grade"; 
+      }
+
+      //  WORKIG EXAMPLE - US GOV CLASSIFICATIONS OF AIR QUALITY 
+        function airQuality($color) {
+          switch ($color) {
+              case "green":
+              echo "good" . "\n";
+              break;
+              case "yellow":
+              echo "moderate" . "\n";
+              break;
+              case "orange":
+              echo "unhealthy for sensitive groups" . "\n";
+              break;
+              case "red":
+              echo "unhealthy" . "\n";
+              break;
+              case "purple":
+              echo "very unhealthy" . "\n";
+              break;
+              case "maroon":
+              echo "hazardous" . "\n";
+              break;
+            default:
+              echo "invalid color" . "\n";      
+          } 
+        }      
+        airQuality("green");
+        airQuality("yellow");
+        airQuality("orange");
+        airQuality("red");
+        airQuality("purple");
+        airQuality("maroon");
+        airQuality("blue");
+        /* OUTPUT
+          good
+          moderate
+          unhealthy for sensitive groups
+          unhealthy
+          very unhealthy
+          hazardous
+          invalid color
+          */
+ 
+      
+      
 
