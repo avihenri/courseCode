@@ -266,5 +266,72 @@
           */
  
       
-      
+  // Switch Statements: Fall through
+      // fall through = when no break is in places and all code is run in switch
+      $letter = "a";
+      switch ($letter) {
+        case "a":
+          echo "a";
+        case "b":
+          echo "b";
+        case "c":
+          echo "c";
+        case "d":
+          echo "d";
+      } // OUTPUT = abcd
 
+      switch ($day_of_week) {
+        case "Monday":
+        case "Tuesday":
+          echo "Just getting started!";
+          break;
+        case "Wednesday":
+          echo "Humpday!";
+          break;
+        case "Thursday":
+        case "Friday":
+          echo "Almost the weekend!";
+          break;
+        case "Saturday":
+        case "Sunday":
+          echo "Enjoy!";
+          break;
+      } // if $day_of_week has the value "Monday" or "Tuesday", the string "Just getting started!" will be printed.
+
+      function returnSeason($month) {
+        switch ($month) {
+        case "December":
+        case "January":
+        case "February":
+        return "winter";
+        break;
+        case "March":
+        case "April":
+        case "May":
+        return "spring";
+        break;
+        case "June":
+        case "July":
+        case "August":
+        return "summer";
+        break;
+        case "September":
+        case "October":
+        case "November":
+        return "fall";
+        break;
+        default: 
+        return "invalid month";
+        }
+      }
+      
+      echo returnSeason("February"); // winter
+      echo "\n\n";  
+      echo returnSeason("April"); // spring
+      echo "\n\n";
+      echo returnSeason("August"); // summer
+      echo "\n\n";
+      echo returnSeason("October");  // fall
+
+  // Ternary Operator
+  
