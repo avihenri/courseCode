@@ -333,5 +333,110 @@
       echo "\n\n";
       echo returnSeason("October");  // fall
 
-  // Ternary Operator
-  
+  // Ternary Operator ( ?: )
+      // takes 3 operands & returns a value
+        // first operand = condition to check  followed by a ?
+        // second operand = expression to return if true followed by a colon
+        // third operand = return expression if false
+      // longer way 
+      $isClicked = FALSE;
+      if ( $isClicked ) {
+        $link_color = "purple";
+      } else {
+        $link_color = "blue";
+      }
+      // Ternary way
+      $isClicked = FALSE;
+      $link_color = $isClicked ? "purple" : "blue";
+
+  // Truthy & Falsy
+      if ("What's going on?"){
+        echo "Let us explain…";
+      } 
+      // Prints: Let us explain…
+
+      // Most values and expressions are treated as truthy, so we’ll focus on those that are falsy:
+        // falsy values = empyt string, null, undefined or undeclared var, empty array, 0 and "0"
+        if ("") {
+          echo "this will not print";
+        } elseif (null) {
+          echo "this will not print";
+        } elseif ([]) {
+          echo "this will not print";
+        } elseif (0) {
+          echo "this will not print";
+        } elseif ("0") {
+          echo "this will not print";
+        } else {
+          echo "Finally!";
+        } /* Output: Finally!.*/
+
+        function truthyOrFalsy($val) {
+          if ($val) {
+            echo "True";
+          } else {
+            echo "False";
+          }
+        }
+        
+        truthyOrFalsy(0); // False
+        truthyOrFalsy("undefined"); // True
+        truthyOrFalsy(5); // True
+        truthyOrFalsy("hi"); // True
+        truthyOrFalsy(" "); // True
+        truthyOrFalsy(""); // False
+
+  // User Input: readline()
+        // readline() = takes a string that promts the user, waits for the user to enter test into the terminal & returns the value
+        echo "Hi, I'm Aisle Nevertell. What's your name?\n";
+        $name = readline(">> ");
+        echo "\nNice to meet you, $name";
+        // with conditionals
+        echo "\nWhat's your favorite color?\n";
+        $color = readline(">> ");
+        if ($color === "green"){
+          echo "\nCool, that's my favorite too!";
+        } else {
+          echo "\nOh, $color is nice, I guess…";
+        }
+
+        $name = readline(">> ");
+        $name_length = strlen($name);        
+        if ($name_length > 8) {
+          echo "Hi, ${name}. That's a long name.";
+        } elseif ($name_length > 3) {
+          echo "Hi, ${name}.";
+        } else {
+          echo "Hi, ${name}. That's a short name.";
+        }
+
+        /*
+
+        BOOLEANS AND COMPARISON OPERATORS
+        Review
+        Woah! We covered a lot in this lesson. Good work. Let’s review what we learned:
+
+        Conditionals make it possible for programs to decide how to react to a wide variety of situations.
+        if statements allow us to run a block of code if a condition is met.
+        The boolean data type is either the value TRUE or FALSE and is the foundation of programmatic decision making.
+        We use else to include a block of code to run when the condition is not met.
+        Comparison operators evaluate a relationship between two operands and return a boolean value.
+            The less than operator (<)
+            The less than or equal to operator (<=)
+            The greater than operator (>)
+            The greater than or equal to operator (>=)
+            The Identical operator (===)
+            The not identical operator (!==)
+        We can write conditionals with multiple if statements using the elseif construction.
+        Instead of using a series of if statements when we want to compare a value, expression, or variable against many different possible values and run different 
+        code depending on which it matches, we can use a switch statement.
+        The keyword break tells the computer to break out of the switch statement, without it, it will fall through the rest of the switch executing all the code until 
+        it reaches a break or the end of the statement.
+        A ternary operator (?:) is shorthand conditional operator. It takes three operands (a condition to check, an expression to return if the condition is TRUE, and
+         an expression to return if the condition is FALSE).
+        Any value or expression inside a condition will be converted to TRUE or FALSE. We consider values that will convert to TRUE to be truthy and values that will 
+        convert to FALSE to be falsy.
+        We can get user input from the terminal with the readline() function.
+        That really is a lot… Take some time to practice and review! You’re doing great.
+        */
+
