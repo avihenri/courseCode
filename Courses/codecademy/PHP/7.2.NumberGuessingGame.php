@@ -23,7 +23,7 @@ function guessNumber() {
   global $guess_high, $guess_low, $correct_guesses, $play_count;
   $play_count++;
   $randomNum = rand(1, 10);
-  echo "\nGuess a number between 1 and 10.\n"
+  echo "\nGuess a number between 1 and 10.\n";
   $guess = readline(">> ");
   $guess = intval($guess); // or $guess = intval(readline(">> "));
   
