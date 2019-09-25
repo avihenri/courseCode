@@ -17,7 +17,7 @@ $correct_guesses = 0;
 $guess_high = 0;
 $guess_low = 0;
 
-echo "You need to guess a number between 1 and 10. After several rounds you will be told a percentage of how many you got correct. You will be informed whether you tend to guess too high or too low.";
+echo "You need to guess a number between 1 and 10. After several rounds you will be told a percentage of how many you got correct. You will be informed whether you tend to guess too high or too low.\n";
 
 function guessNumber() {
   global $guess_high, $guess_low, $correct_guesses, $play_count;
@@ -26,5 +26,29 @@ function guessNumber() {
   echo "\nGuess a number between 1 and 10.\n";
   $guess = readline(">> ");
   $guess = intval($guess); // or $guess = intval(readline(">> "));
-  
+  echo "\nRound: " . $play_count . "\nMy Number: " . $randomNum . "\nYour Guess: " . $guess . "\n";
+if ($guess === $randomNum) {
+  $correct_guesses++;
+} else if ($guess > $randomNum) {
+  $guess_high++;
+} else if ($guess < $randomNum) {
+  $guess_low++;
 }
+  $percent_correct = $correct_guesses/$play_count * 100;
+  echo "\nYou got " . $percent_correct . "% the same.\n";
+  if ($guess_high > $guess_low) {
+    echo "\nWhen you guessed wrong, you tended to guess high.\n";
+  } else if ($guess_low > $guess_high) {
+    echo "\nWhen you guessed wrong, you tended to guess low.\n";
+  }
+}
+
+guessNumber();
+guessNumber();
+guessNumber();
+guessNumber();
+guessNumber();
+guessNumber();
+guessNumber();
+guessNumber();
+guessNumber();
