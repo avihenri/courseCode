@@ -1,7 +1,6 @@
 <?php
 
 // LOGICAL OPERATORS AND COMPOUND CONDITIONS
-
 // Nested Conditional Statements
 // We wrote some code to illustrate our decision-making process when taking an elevator. Read through the code to make sense of the process:
 
