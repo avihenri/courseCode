@@ -138,3 +138,41 @@
       echo duckDuckGoose(false);
       echo duckDuckGoose(false);
       echo duckDuckGoose(true);
+
+  // The Xor Operator
+      // exclusive or not
+      // takes 2 different booleans or expressions & returns single boolean value
+      // regular or = evaluates to TRUE if either operands are TRUE
+      // xor = evaluates to True if either operand the left or the right is TRUE but not both TRUE
+      TRUE xor TRUE;   // Evaluates to: FALSE
+      FALSE xor TRUE;  // Evaluates to: TRUE      
+      TRUE xor FALSE;  // Evaluates to: TRUE      
+      FALSE xor FALSE; // Evaluates to: FALSE
+      // used for either or questions like - Did you wear either glasses or contacts today?
+      $is_wearing_glasses = TRUE;
+      $is_wearing_contacts = TRUE;      
+      if ($is_wearing_glasses xor $is_wearing_contacts){
+          echo "Your vision is corrected!";
+      } else {
+          echo "Your vision is impaired.";
+      }
+      // if neither glasses or contacts = vision impaired
+      // if both = vision impaired
+      // if contacts =  vision corrected
+      // if glasses = vision corrected
+
+      // Pie example
+      $banana_cream = ["whole milk", "sugar", "cornstarch", "salt", "egg yolks", "butter", "vanilla extract", "bananas", "heavy cream", "powdered sugar"];
+      $experimental_pie = ["whole milk", "sugar", "bananas", "chicken", "salmon", "garlic"];
+      
+      // Write your code below:
+      function eatPie($ingredients){
+        if (in_array("chicken", $ingredients) xor in_array("bananas", $ingredients)){
+          return "Delicious pie!";
+        } else {
+          return "Disgusting!";
+        }
+      }      
+      echo eatPie($banana_cream);
+      echo "\n\n";
+      echo eatPie($experimental_pie);
