@@ -99,3 +99,42 @@
       echo clapYourHands(true, true); // CLAP!
       echo clapYourHands(false, true); // :(
       echo clapYourHands(true, false); // :(
+
+
+    // The Not Operator ( ! )
+      // Takes only a right operand - reverses the boolean value
+      // very high order precedence - use parenthese to evalute code intended
+      !TRUE;    // Evaluates to: FALSE
+      !FALSE;   // Evaluates to: TRUE
+      !10 < 11; // Evaluates to: TRUE
+      !(10 < 11);  // Evaluates to: FALSE
+      !TRUE || TRUE; // Evaluates to: TRUE
+      !(TRUE || TRUE); // Evaluates to: FALSE
+
+      // LOGIN EXAMPLE
+      $is_logged_in = FALSE; 
+      if (!$is_logged_in){
+        echo "You must log in to continue.";
+      }
+      // IF WE DON'T USE THE NOT OPERATOR YOU WOULD NEED TO WRITE THE BELOW FOR THE SAME AFFECT
+      $is_logged_in = FALSE; 
+      if ($is_logged_in){
+       // Do nothing... 
+      } else {
+        echo "You must log in to continue.";
+      }
+
+      // DUCK, DUCK, GOOSE
+      function duckDuckGoose($is_goose) {
+        if (!$is_goose) {
+          return "duck\n";
+        } else {
+          return "goose!\n";
+        }
+      }
+      echo duckDuckGoose(false);
+      echo duckDuckGoose(false);
+      echo duckDuckGoose(false);
+      echo duckDuckGoose(false);
+      echo duckDuckGoose(false);
+      echo duckDuckGoose(true);
