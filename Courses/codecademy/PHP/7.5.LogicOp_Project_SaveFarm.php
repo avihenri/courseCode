@@ -8,6 +8,8 @@ Welcome to the world of interactive fiction. In this project you’ll be buildin
 You’ll be practicing everything you’ve learned about booleans, conditionals, and logical operators to create a fun, silly game. You can customize the game to your taste. Once you’ve completed this project, you’ll understand the mechanics of building an interactive text game, so, from there, the world is your oyster (as Uncle Boris always used to say).
 
 Take your time and have fun!
+
+Remember: Enter php index.php in the terminal.
 */
 
 // READ CODE & UNDERSTAND IT THEN ADD TO IT
