@@ -128,3 +128,11 @@ ANSWER - \d?\s?\(?\d{3}\)?\s?\-?\.?\d{3}\-?\s?\.?\d{3,4}
 ✅(917)5551298
 ✅212.555.8731 */
    
+// FORM HANDLING
+    // Method POST = data submitted will be available to superglobal associtive array array - $_POST
+        // using the name attribute we can gather the data - the name will be the key and the input will be the value
+        <form method="post" action="">
+            Your Favorite Programming Language: <input type="text" name="language">
+            <input type="submit" value="Submit Language">
+        </form>
+            
