@@ -126,13 +126,32 @@ ANSWER - \d?\s?\(?\d{3}\)?\s?\-?\.?\d{3}\-?\s?\.?\d{3,4}
 ✅9175552849
 ✅1 212 555 3821
 ✅(917)5551298
-✅212.555.8731 */
-   
+✅212.555.8731 */ ?>
+
 // FORM HANDLING
     // Method POST = data submitted will be available to superglobal associtive array array - $_POST
         // using the name attribute we can gather the data - the name will be the key and the input will be the value
         <form method="post" action="">
             Your Favorite Programming Language: <input type="text" name="language">
             <input type="submit" value="Submit Language">
-        </form>
+        </form> 
+
+    <!-- Simple Validation -->
+    <?php
+    $validation_error = "";
+    $user_language = "";
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $user_language = $_POST["language"];
+    if ($user_language != "PHP") {
+        $validation_error = "* Your favorite language must be PHP!";
+    } 
+    }
+    ?>
+
+    <form method="post" action="">
+    Your Favorite Programming Language: <input type="text" name="language" value="<?php echo $user_language;?>">
+    <p class="error"><?= $validation_error;?></p>
+    <input type="submit" value="Submit Language">
+    </form>
             
