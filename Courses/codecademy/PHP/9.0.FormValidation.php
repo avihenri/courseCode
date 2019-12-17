@@ -154,3 +154,77 @@ ANSWER - \d?\s?\(?\d{3}\)?\s?\-?\.?\d{3}\-?\s?\.?\d{3,4}
         <input type="submit" value="Submit Language">
         </form>
             
+        <!-- EXERCISE -->
+        <?php
+        function checkWord($input, $letter){
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && strtolower($input[0]) !== $letter) {
+            return "* This word must start with the letter ${letter}!";
+        } else {
+            return "";
+        }
+        }
+        ?>
+        
+        <h1>Time to Practice our ABCs</h1>
+        <form method="post" action="">
+            Enter a word that starts with the letter "a":
+            <br>
+            <input type="text" name="a-word" id="a-word" value=<?= $_POST["a-word"];?>>
+            <br>
+            <p class="error" id="a-error"><?= checkWord($_POST["a-word"], "a");?></p>
+            <br>            
+            Enter a word that starts with the letter "b":
+            <br>
+            <input type="text" id="b-word" name="b-word" value=<?= $_POST["b-word"];?>>
+            <br>
+            <p class="error" id="b-error"><?= checkWord($_POST["b-word"], "b");?></p>
+            <br>
+            Enter a word that starts with the letter "c":
+            <br>
+            <input type="text" id="c-word" name="c-word" value=<?= $_POST["c-word"];?>>
+            <br>
+            <p class="error" id="c-error"><?= checkWord($_POST["c-word"], "c");?></p>
+            <br>
+            <input type="submit" value="Submit Words">
+        </form>
+        <div>
+            <h3>"a" is for: <?= $_POST["a-word"];?><h3>
+            <h3>"b" is for: <?= $_POST["b-word"];?><h3>
+            <h3>"c" is for: <?= $_POST["c-word"];?><h3>    
+        <div>  
+
+        <!-- BASIC DATA SANITIZING -->
+        <!-- 
+            Make data safe to display on the browser
+            trim() - can be used to remove any whitespace before & after the input
+            htmlspecialchars() - can be used to transform HTML entitites so the php interpreter doesn't recognise them as HTML
+                this also prevents man-in-the-middle attacks
+            -->
+            <form method="post" action="">
+            Enter some HTML:
+            <br>
+            <input type="text" name="html">
+            <br>  
+            <input type="submit" value="Submit">
+            </form>
+            <div>
+            You entered:
+                <?= htmlspecialchars($_POST["html"]) ?> 
+            </div>  
+        
+        <!-- BASIC SANTITIZATION WITH filter_car() -->
+            <!-- 
+                https://www.php.net/manual/en/function.filter-var.php
+                filter_var ( mixed $variable [, int $filter = FILTER_DEFAULT [, mixed $options ]] ) : mixed
+                1st argument - variable
+                2nd arguement - ID representing the type of filtering that should be performed - https://www.php.net/manual/en/filter.filters.sanitize.php
+                - returns either the sanitized input or false
+             -->
+            <?=
+             $bad_email = '<a href="www.evil-spam.biz">@gmail.com';
+            echo filter_var($bad_email, FILTER_SANITIZE_EMAIL);
+            // Prints: ahref=www.evil-spam.biz@gmail.com  ?>
+            <!-- 
+                FILTER_SANITIZE_EMAIL - trims whitespace throughout input, removes dangerous characters
+                
+             -->
