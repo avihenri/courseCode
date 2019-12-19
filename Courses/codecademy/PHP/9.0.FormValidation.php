@@ -252,3 +252,68 @@ ANSWER - \d?\s?\(?\d{3}\)?\s?\-?\.?\d{3}\-?\s?\.?\d{3,4}
             </form>
             <p> <?= $form_message;?> </p> 
                 
+        
+<!-- USING OPTION WITH FILTER_VAR() -->
+    <?php
+        function validateAdult ($age){
+            $options = ["options" => ["min_range" => 18, "max_range" => 124]];  
+            if (filter_var($age, FILTER_VALIDATE_INT, $options)) {
+              echo("You are ${age} years old.");
+            } else {
+              echo("That is not a valid age.");
+            }
+          }
+          
+          validateAdult(18); // Prints: You are 18 years old.
+          validateAdult(124); // Prints: You are 124 years old.
+          validateAdult(8); // Prints: That is not a valid age.
+          validateAdult(200); // Prints: That is not a valid age. 
+    // $options = 3rd arguement - helps validate an integer within a specified range when using integer validation filter FILTER_VALIDATE_INT
+    $message = "";
+    $month_error = "";
+    $day_error = "";
+    $year_error = "";
+      
+    // Create your variables here:
+    $month_options = ["options"=>["min_range"=>1, "max_range"=>12]];
+    $day_options = ["options"=>["min_range"=>1, "max_range"=>31]];
+    $year_options = ["options"=>["min_range"=>1903, "max_range"=>2019]];
+    
+    // Define your function here:
+    function validateInput($type, &$error, $options_arr) {
+      if (!filter_var($_POST[$type], FILTER_VALIDATE_INT, $options_arr)) {
+        $error = "* Invalid ${type}";
+        return false;
+      } else {
+        return true;
+      }
+    } 
+    
+    
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Uncomment the code below:
+        $test_month= validateInput("month", $month_error, $month_options);
+        $test_day= validateInput("day", $day_error, $day_options);
+        $test_year= validateInput("year", $year_error, $year_options);    
+        if ($test_month && $test_day && $test_year){
+          $message = "Your birthday is: {$_POST["month"]}/{$_POST["day"]}/{$_POST["year"]}";
+        }  
+      }
+    
+    ?>
+    
+    <form method="post" action="">
+        Enter your birthday:
+        <br>
+        Month: <input type="number" name="month" value="<?= $_POST["month"];?>">
+        <span class="error"><?= $month_error;?>		</span>
+      <br>
+        Day: <input type="number" name="day" value="<?= $_POST["day"];?>">
+      <span class="error"><?= $day_error;?>		</span>
+        <br>  
+        Year: <input type="number" name="year" value="<?= $_POST["year"];?>">  
+        <span class="error"><?= $year_error;?>		</span>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+        <p><?= $message;?></p>
