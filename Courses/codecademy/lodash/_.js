@@ -27,8 +27,66 @@ With all of that said, let’s get started implementing some awesome new functio
 to test in command line - node file_name - eg. 
 */
 
+// clamp()
+const _ = {
+    clamp(num, lower, upper) {
+        var lowerResult = Math.max(num, lower);
+        var clampedResult = Math.min(lowerResult, upper);
+        return clampedResult;
+    }
+};
+// node test/clamp.js - passed
 
+// inRange()
+// takes 3 arguments - a number, start value and an end value
+//checks to see if the provided number falls within the range (start-end)
+// if num is smaller than start - returns false
+// if num is larger than or equal to the end - returns false
+// if num is between start & end - returns true
+// if no end specified, start will be 0 & the end value will be the provided start value
+// if the start value is larger than the end value the two values should be swapped
+// below is added to the _ object, separating clamp with a comma -
+inRange(num, start, end) {
+        if (!end) {
+            end = start;
+            start = 0;
+        }
+        if (start > end) {
+            var temp = end;
+            end = start;
+            start = temp;
+        }
+        var isInRange = start <= num && num < end
+        return isInRange;
+    }
+    // node test/is-range.js - passed 
 
+// words()
+// takes 1 argument - a string
+// splits the string into an array of words
+// a word is defined by a space-separated string of characters
+// below is added to the _ object, separating clamp with a comma -
+words(str) {
+        arr = str.split(' ');
+        return arr;
+    }
+    // node test/words.js - passed
+
+// pad() 
+// takes two arguments - a string and a length
+// adds spaces evenly to both sides of the string to make it reach the desired length
+// extra padding is added to the end of the string if an odd amount of padding is required to reach the specified length
+// below is added to the _ object, separating clamp with a comma -
+pad(str, len) {
+        if (str.length >= len) {
+            return str;
+        }
+        var startPaddingLength = Math.floor((len - str.length) / 2);
+        var endPaddingLength = len - str.length - startPaddingLength;
+        var paddingString = ' '.repeat(startPaddingLength) + str + ' '.repeat(endPaddingLength);
+        return paddingString;
+    }
+    //   node test/pad.js - passed
 
 // Do not write or modify code below this line.
 module.exports = _;
