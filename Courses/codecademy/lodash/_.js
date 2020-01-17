@@ -85,9 +85,24 @@ const _ = {
         var endPaddingLength = len - str.length - startPaddingLength;
         var paddingString = ' '.repeat(startPaddingLength) + str + ' '.repeat(endPaddingLength);
         return paddingString;
-    }
+    },
     //   node test/pad.js - passed
 
+    // has()
+    // takes 2 arguments - an object & a key
+    // checks to see of the provided object contains a value at the specified key
+    // returns true if the object contains a value to the key & will return false if not
+
+    has(obj, key) {
+        var hasValue = obj[key];
+        if (hasValue != undefined) {
+            return true;
+        }
+        return false;
+    },
+
+    // invert() 
+    // 
 };
 // Do not write or modify code below this line.
 module.exports = _;
