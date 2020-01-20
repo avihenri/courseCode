@@ -102,7 +102,74 @@ const _ = {
     },
 
     // invert() 
-    // 
+    // takes one argument - an object
+    // iterates through each key/value pair in the provided object & swaps the key and value
+    invert(object) {
+        let invertedObject = {};
+        for (let key in object) {
+            const originalValue = object[key];
+            invertedObject = { originalValue: key }
+        }
+        return invertedObject;
+    },
+
+    // findKey()
+    // takes two arguments - an object and a predicate function (a function that returns a boolean value)
+    // iterates through each key/value pair in the object & calls the function with the value
+    // returns the first key that has a value that returns a truthy value
+    // returns undefined if no values are truthy
+    findKey(object, predicate) {
+        for (let key in object) {
+            let value = object[key];
+            let predicateReturnValue = predicate(value);
+            if (predicateReturnValue) {
+                return key;
+            }
+        }
+        undefined;
+        return undefined;
+    },
+
+    // drop()
+    // takes two arguments - an array & a number representing the number of items to drop from the beginning of the array
+    // returns a new array which contains the elements from the original array, excluding the specified number of elements from the beginning of the array
+    // if the number of elements to drop is unspecified , the method should drop one element
+    drop(array, n) {
+        if (n === undefined) {
+            n = 1;
+        }
+        let droppedArray = array.slice(n, array.length);
+        return droppedArray;
+    },
+
+    // dropWhile() 
+    // takes two arguments - array & predicate func
+    // predicate func takes 3 arguments - current elements, current index, whole array
+    // creates a new copy of the supplied array, dropping elements from the beginning until an element causes the predicate func to return falsy
+    dropWhile(array, predicate) {
+        const cb = (element, index) => {
+            return !predicate(element, index, array);
+        };
+        let dropNumber = array.findIndex(cb);
+        let droppedArray = this.drop(array, dropNumber)
+        return droppedArray;
+    },
+
+    // chunk()
+    // takes two arguments - array & size
+    // breaks up the supplied array into arrays of specified size
+    // returns an array containing all the previously-created array chunks in the order of the original array
+    // if array cannot be broken up evenly, the last chunk will be smaller than the specified size
+    // if no size is specified the size is set to 1
+    chunk(array, size = 1) {
+        let arrayChunks = [];
+        for (let i = 0; i < array.length; i += size) {
+            let arrayChunk = array.slice(i, i + size);
+            arrayChunks.push(arrayChunk);
+        }
+        return arrayChunks;
+    }
+
 };
 // Do not write or modify code below this line.
 module.exports = _;
