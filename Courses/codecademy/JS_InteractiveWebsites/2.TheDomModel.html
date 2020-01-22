@@ -1,0 +1,171 @@
+<!-- 
+    DOM - Document Object Model
+ -->
+
+<!-- 
+        Powerful tree like structure - allows us to conceptualise hierarchy & access the elements on a web page
+        The DOM is a logical tree-like Model that organizes a web page’s HTML Document as an Object.
+            Note: There are other types of documents, such as XML and SVG, that are also modeled as DOM structures.
+     -->
+
+<!-- 
+         DOM is like a family tree - made up of family members & relationships
+         In data science a family member would be called a node
+         We define a node as an intersecting point in a tree that contains data.
+         In the DOM tree the top-most node is called the root node & descendants are the HTML Tags in the document
+      -->
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <h1></h1>
+    <div>
+        <p></p>
+        <p></p>
+    </div>
+</body>
+
+</html>
+
+<!-- 
+          PARENT CHILD RELATIONSHIPS IN THE DOM
+            Parent node - closest connected node to another node towards the root
+            Child node - closest connected node to another node away from the root
+
+       -->
+        document (root) 
+        html 
+        head (parent of title) - body (parent of most of document) 
+        title (child of head) - h1 - div (child of body)
+
+<!-- 
+           Review
+            Congratulations on completing our introduction to the Document Object Model, or DOM, as a structure!
+
+            Let’s review what you’ve learned so far:
+
+            The DOM is a structural model of a web page that allows for scripting languages to access that page.
+            The system of organization in the DOM mimics the nesting structure of an HTML document.
+            Elements nested within another are referred to as the children of that element. The element they are nested within is called the parent element of those elements.
+            The DOM also allows access to the regular attributes of an HTML element such as its style, id, etc.
+            With this understanding, you can begin to leverage the power of scripting languages to create, update, and maintain webpages!
+        -->
+        
+
+<!-- 
+JAVASCRIPT AND THE DOM
+The document keyword
+ -->
+
+    <!-- 
+       The document object in JS is the door to the DOM structure 
+       The document allows us to access the root node of the DOM
+       you can access with the keyword - document.body will access the body of the document
+       List of the keywords - https://developer.mozilla.org/en-US/docs/Web/API/Document
+    -->
+
+    <!-- 
+        Tweak an Element
+            To access & set the content of an element - .innerHTML            
+     -->
+     <script>document.body.innerHTML = 'The cat loves the dog.';</script>
+     <!-- You can also add HTML formatted elements -->
+     <script>document.body.innerHTML = '<h2>This is a heading</h2>'; </script>
+
+
+    <!-- 
+        Select and Modify Elements
+            .querySelector() =  allows us to access the CSS selector & returns the first matching element            
+    -->
+    <script>document.querySelector('p');</script>
+    <!-- 
+        or get by ID
+     -->
+     <script>document.getElementById('bio').innerHTML = 'The description';</script>
+
+
+     <!-- 
+         Style an element
+            .style = allows access to the inline style of a tag
+            format = element.style.property (property = css)
+      -->
+      <script>
+        let blueElement = document.querySelector('.blue');
+        blueElement.style.backgroundColor = 'blue';
+
+        document.querySelector('.blue').style.fontFamily = Roboto;
+      </script>
+
+
+      <!-- 
+          Create and Insert Elements
+            .createElement(tagName) = creates a new element (does not append to the document, it creates an empty element with no inner HTML)
+            To add it to the webpage - assign it to be a child of an element - .appendChild()
+       -->
+       <script>
+           let paragraph = document.createElement('p');
+            paragraph.id = 'info'; 
+            paragraph.innerHTML = 'The text inside the paragraph';
+            document.body.appendChild(paragraph);
+       </script>
+
+
+       <!-- 
+           Remove an Element
+            .removeChild() - removes element from child
+            .hidden = hides element - https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/hidden
+         -->
+         <script>
+             let paragraph = document.querySelector('p');
+             document.body.removeChild(paragraph);
+             document.getElementById('sign').hidden = true;
+         </script>
+
+
+         <!-- 
+             Interactivity with onclick
+             Using events
+             .onclick = runs on click
+          -->
+          <script>
+              let element = document.getElementById('interact');
+              element.onclick = function() { element.style.backgroundColor = 'blue' };
+
+              let element = document.querySelector("button");
+                function turnButtonRed (){
+                    element.style.backgroundColor = "red";
+                element.style.color = "white";
+                element.innerHTML = "Red Button"; 
+                }
+                element.onclick = turnButtonRed;
+          </script>
+
+
+          <!--  
+              Traversing the DOM
+              DOM has .parentNode & .children = will return null if no children or a list of children
+              .firstChild will access the first child
+           -->
+          <script>
+              let first = document.body.firstChild;
+              first.innerHTML = "First child";
+              first.parentNode.innerHTML = "I am the parent and my inner HTML has been replaced!";
+          </script>
+
+
+<!-- 
+    Review
+In this lesson, you manipulated a webpage structure by leveraging the Document Object Model interface in JavaScript.
+
+Let’s review what we learned:
+
+The document keyword grants access to the root of the DOM in JavaScript
+The DOM Interface allows you to select a specific element with CSS selectors by using the .querySelector() method
+You can also access an element directly by its ID with .getElementById()
+The .innerHTML and .style properties allow you to modify an element by changing its contents or style respectively
+You can create, append, and remove elements by using the .createElement(),.appendChild() and .removeChild() methods respectively
+The .onclick property can add interactivity to a DOM element based on a click event
+ -->
