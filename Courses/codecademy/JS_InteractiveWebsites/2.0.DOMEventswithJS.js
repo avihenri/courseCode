@@ -191,3 +191,19 @@
     Event object properties like .target, .type, and .timeStamp are used to provide information about the event.
     The .addEventListener() method can be used to add multiple event handler functions to a single event.
     The .removeEventListener() method stops specific event handlers from “listening” for specific events firing. */
+
+  // QUIZ
+      // Events can also be browser manipulations! Not just on the DOM
+
+      // Events are the user interactions and browser manipulations on the document object model, the event handler functions are the responses to this.
+
+      // not all DOM events have event handlers associated with them.
+
+      // JavaScript interprets events as event object that store event information residing in properties and methods.
+
+      // .addEventListener method is good for large code & it can be used to add multiple event handlers to a specific event
+
+      // The event target is the DOM element that the event fires on, which does not need to be the element being modified.
+
+      //  event properties can hold data like the event target or event type.
+
