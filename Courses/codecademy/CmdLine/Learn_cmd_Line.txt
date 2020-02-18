@@ -1,4 +1,5 @@
 https://www.codecademy.com/articles/command-line-commands
+CHEATSHEET - https://www.codecademy.com/learn/learn-the-command-line/modules/learn-the-command-line-navigation/reference
 
 ******* NAVAGATION *******
 ls -> displays files and folders of where you articles
@@ -6,6 +7,18 @@ pwd -> 'print working directory' it prints the name of the directory you are in
 cd -> 'change directory' it moves you into the directory folder you entered | cd .. -> moves you back/up
 mkdir -> 'make directory' it creates a directory and the name of the directory is the argument
 touch -> creates a new file inside the directory
+
+Review
+Congratulations! You’ve learned five commands commonly used to navigate the filesystem from the command line. What can we generalize so far?
+
+The command line is a text interface for the computer’s operating system. To access the command line, we use the terminal.
+A filesystem organizes a computer’s files and directories into a tree structure. It starts with the root directory. Each parent directory can contain more child directories and files.
+From the command line, you can navigate through files and folders on your computer:
+pwd outputs the name of the current working directory.
+ls lists all files and directories in the working directory.
+cd switches you into the directory you specify.
+mkdir creates a new directory in the working directory.
+touch creates a new file inside the working directory.
 
 ******* MANIPULATION *******
 ls -a -> shows the files starting with a dot which are usually hidden
@@ -19,6 +32,21 @@ mv -> moves files | source file first, directory last
 mv -> also renames files | old file first and new file last
 rm -> removes files
 rm -r -> removes all recursive files in directory
+
+Review
+Congratulations! You learned how to use the command line to view and manipulate the filesystem. What can we generalize so far?
+
+Options modify the behavior of commands:
+ls -a lists all contents of a directory, including hidden files and directories
+ls -l lists all contents in long format
+ls -t orders files and directories by the time they were last modified
+Multiple options can be used together, like ls -alt
+From the command line, you can also copy, move, and remove files and directories:
+cp copies files
+mv moves and renames files
+rm removes files
+rm -r removes directories
+Wildcards are useful for selecting groups of files and directories
 
 ******* REDIRECTION *******
 stdin -> Standard Input, info inputted into terminal through keyboard or input device
