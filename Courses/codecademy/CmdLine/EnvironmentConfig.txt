@@ -1,0 +1,62 @@
+ENVIRONMENT
+    Environment
+        nano - open file to edit
+            - only accepts keyboard input
+        Ctrl + O saves a file. ‘O’ stands for output.
+        Ctrl + X exits the nano program. ‘X’ stands for exit.
+        Ctrl + G opens a help menu.
+        
+    Bash Profile
+        nano ~/.bash_profile
+        bash profile is commonly called this 
+            when session starts - it loads the contents of the bash profile before executing commands
+        ~ represents the user's home directory
+        . indicates hidden files
+        ~/.bash_profile - is important since the cmd line recognises the bash profile
+        source ~/.bash_profile - activates the changes in the file for the session
+
+        nano ~/.bash_profile - added this in the file - alias pd="pwd"
+        source ~/.bash_profile 
+        pd = does the same as pwd
+
+    Aliases I
+        alias pd="pwd" - create keyboard shortcuts
+            now pd will do the same as pwd
+        source ~/.bash_profile - makes pd available in the current session
+
+    PS1
+        variable that defines the makeup style of the cmd line]
+        export PS1=">> " - changes $ to >>
+        source to make it available
+
+    HOME
+        ECHO $HOME - Displays the path to the home directory
+
+    PATH 
+        echo $PATH - stores list of directories separated by colon
+            /home/ccuser/.gem/ruby/2.0.0/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin
+    
+    env
+        cmd env = returns list of env variables
+
+
+ENVIRONMENT
+Generalizations
+Congratulations! You learned to use the bash profile to configure the environment. What can we generalize so far?
+
+The environment refers to the preferences and settings of the current user.
+
+The nano editor is a command line text editor used to configure the environment.
+
+~/.bash_profile is where environment settings are stored. You can edit this file with nano.
+
+environment variables are variables that can be used across commands and programs and hold information about the environment.
+
+export VARIABLE="Value" sets and exports an environment variable.
+USER is the name of the current user.
+PS1 is the command prompt.
+HOME is the home directory. It is usually not customized.
+PATH returns a colon separated list of file paths. It is customized in advanced cases.
+env returns a list of environment variables.
+         
+
