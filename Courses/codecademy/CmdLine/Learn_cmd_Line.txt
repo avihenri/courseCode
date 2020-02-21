@@ -7,6 +7,7 @@ pwd -> 'print working directory' it prints the name of the directory you are in
 cd -> 'change directory' it moves you into the directory folder you entered | cd .. -> moves you back/up
 mkdir -> 'make directory' it creates a directory and the name of the directory is the argument
 touch -> creates a new file inside the directory
+less -> like cat but handles larger files - shows one page at a time. -N -> adds line numbers
 
 Review
 Congratulations! You’ve learned five commands commonly used to navigate the filesystem from the command line. What can we generalize so far?
