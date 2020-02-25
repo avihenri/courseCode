@@ -1,0 +1,19 @@
+Build a Build Script
+One common use of bash scripts is for releasing a “build” of your source code. 
+Sometimes your private source code may contain developer resources or private 
+information that you don’t want to release in the published version.
+
+Objective of our script is to copy from source folder to build folder with a could exceptions & modifications
+
+
+***************Start*************** 
+
+#!/bin/bash
+
+echo "🔥🔥🔥 Beginning build!! 🔥🔥🔥"
+
+
+
+
+
+****************End**************** 
