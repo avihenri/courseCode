@@ -1,0 +1,25 @@
+Thinking About Errors in Your Code Differently
+
+    Errors in your code mean you’re trying to do something cool
+        - The more code you write the more errors you will encounter
+        - Site reliability engineer = finds errors in web platforms
+        - Test engineer - creates automated tests to discover errors
+
+    Tools to tackle code errors
+        - The steps are mostly a combination of reading the error carefully or copy pasting it in a Google search!
+            1. Dissect the error.
+                - Find the line the error is on
+            2. Ask yourself, is the solution in the error?
+                - Sometime you get syntax errors which shows what is missing
+            3. Search for other people who have encountered this error.
+                - Delve a little deeper if not syntax error
+                - Copy and paste the error into google to see how other people dealt with it
+                - Stack Overflow is you buddy
+            4. Compare their use case to yours.
+                - You might find someone is doing something different but gets the same error
+                - Compare their code with yours
+            5. Try to implement the solution.
+                - try the solution out to see if it fixes the error - if not keep trying new things
+            6. If it doesn’t work, repeat steps 2-4.
+                -
+

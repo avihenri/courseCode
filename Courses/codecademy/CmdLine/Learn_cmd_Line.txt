@@ -1,18 +1,32 @@
 https://www.codecademy.com/articles/command-line-commands
+CHEATSHEET - https://www.codecademy.com/learn/learn-the-command-line/modules/learn-the-command-line-navigation/reference
 
 ******* NAVAGATION *******
 ls -> displays files and folders of where you articles
 pwd -> 'print working directory' it prints the name of the directory you are in
 cd -> 'change directory' it moves you into the directory folder you entered | cd .. -> moves you back/up
-mkdir -> 'make directory' it creates a directory and the name of the directoryis the argument
+mkdir -> 'make directory' it creates a directory and the name of the directory is the argument
 touch -> creates a new file inside the directory
+less -> like cat but handles larger files - shows one page at a time. -N -> adds line numbers
+
+Review
+Congratulations! You’ve learned five commands commonly used to navigate the filesystem from the command line. What can we generalize so far?
+
+The command line is a text interface for the computer’s operating system. To access the command line, we use the terminal.
+A filesystem organizes a computer’s files and directories into a tree structure. It starts with the root directory. Each parent directory can contain more child directories and files.
+From the command line, you can navigate through files and folders on your computer:
+pwd outputs the name of the current working directory.
+ls lists all files and directories in the working directory.
+cd switches you into the directory you specify.
+mkdir creates a new directory in the working directory.
+touch creates a new file inside the working directory.
 
 ******* MANIPULATION *******
 ls -a -> shows the files starting with a dot which are usually hidden
 ls -l -> lists all contents in long format (shows permissions)
 ls -t -> orders files & directories  by time they were modified
 ls -alt -> lists contents, includes hidden files in long format ordered by date & time it was last modified
-cp -> copies files or directories | cp frida.txt lincoln.txt = we copy the contents of frida.txt into lincoln.txt.
+cp -> copies files or directories | cp frida.txt lincoln.txt = we copied the contents of frida.txt into lincoln.txt.
 cp * = selects all items
 cp m*.txt = selects all files starting with m & ending in .txt
 mv -> moves files | source file first, directory last 
@@ -20,14 +34,54 @@ mv -> also renames files | old file first and new file last
 rm -> removes files
 rm -r -> removes all recursive files in directory
 
+Review
+Congratulations! You learned how to use the command line to view and manipulate the filesystem. What can we generalize so far?
+
+Options modify the behavior of commands:
+ls -a lists all contents of a directory, including hidden files and directories
+ls -l lists all contents in long format
+ls -t orders files and directories by the time they were last modified
+Multiple options can be used together, like ls -alt
+From the command line, you can also copy, move, and remove files and directories:
+cp copies files
+mv moves and renames files
+rm removes files
+rm -r removes directories
+Wildcards are useful for selecting groups of files and directories
+
 ******* REDIRECTION *******
 stdin -> Standard Input, info inputted into terminal through keyboard or input device
 stdout -> Standard Output, info outputted after a process is run
 stderr -> Standard Error, error message outputted if failed
->  -> redircts stdout to a file | echo "Hello" > hello.txt = The standard output "Hello" is redirected by > to the file hello.txt.
+>  -> redirects stdout to a file | echo "Hello" > hello.txt = The standard output "Hello" is redirected by > to the file hello.txt.
 cat -> outputs the contents of a file
->>  -> stdout on left & appends it to fileon right
+>>  -> stdout on left & appends it to file on right
 < --> takes stdin from a file on right & inputs it into the program on left
 | -> takes stdout on left & pipes it as stndin to cmd on right
 wc ->  displays number of lines, words & characters
 sort -> sorts contents alphabetically.. cat lakes.txt | sort > sorted-lakes.txt ..this will sort contents of lakes and put it into sorted-lakes
+uniq -> stands for unique & filters out adjacent duplicates. Should sort the file then use uniq to ensure duplicates are adjacent
+grep -> 'global reg exp print'. Searches files for lines that match a pattern, case sensitive - grep -i Mount mountains.txt - searches for Mount in mountains.txt -i makes it case sensitive so mount can be Mount or mount
+         grep -Rl Arctic /home/ccuser/workspace/geography - R - searches all files recursive in directory & returns filenames & lines with results, Rl does the same but only returns filenames with matched results
+sed -> 'stream editor' takes stdin & modifies it based on expressions & displays output (find & replace)
+        $ sed 's/snow/rain/g' forests.txt, s= substitution. snow = search string, rain = replacement string (only replaces first 1st instance in a line), g = global replaces all instances
+
+
+REDIRECTION REVIEW
+Generalizations
+Congratulations! You learned how to use the command line to redirect standard input and standard output. What can we generalize so far?
+
+Redirection reroutes standard input, standard output, and standard error.
+
+The common redirection commands are:
+
+> redirects standard output of a command to a file, overwriting previous content.
+>> redirects standard output of a command to a file, appending new content to old content.
+< redirects standard input to a command.
+| redirects standard output of a command to another command.
+A number of other commands are powerful when combined with redirection commands:
+
+sort: sorts lines of text alphabetically.
+uniq: filters duplicate, adjacent lines of text.
+grep: searches for a text pattern and outputs it.
+sed : searches for a text pattern, modifies it, and outputs it.

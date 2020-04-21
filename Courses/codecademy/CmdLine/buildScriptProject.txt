@@ -1,0 +1,55 @@
+Build a Build Script
+One common use of bash scripts is for releasing a “build” of your source code. 
+Sometimes your private source code may contain developer resources or private 
+information that you don’t want to release in the published version.
+
+Objective of our script is to copy from source folder to build folder with a could exceptions & modifications
+
+
+***************Start*************** 
+
+#!/bin/bash
+
+echo "🔥🔥🔥 Beginning build!! 🔥🔥🔥"
+
+firstline=$(head -n 1 source/changelog.md)
+read -a splitfirstline <<< $firstline
+version=${splitfirstline[1]}
+echo "You are building version " $version
+
+echo 'Do you want to continue? (enter "1" for yes, "0" for no)'
+read versioncontinue
+if [ $versioncontinue -eq 1 ] 
+  then 
+  echo "OK"
+    for filename in source/*
+      do 
+      echo $filename
+      if [ $filename == "source/secretinfo.md" ]
+        then
+          echo $filename "is not being copied"
+        else
+         echo "Copyng..." $filename 
+         cp $filename build/.
+        fi
+    done
+    cd build/
+    cd ..
+    echo "Build version $version contains:"
+    ls
+else 
+  echo "Please come back when you are ready"
+fi
+
+
+
+****************End**************** 
+Line 15 - Reads the first line in the changelog.md file
+Line 16 - Removes formatting from version number - read splits the string into an array
+Line 17 - saves the first line of splitfirstline to variable version
+Line 18 - echo's out the version (run ./script.sh)
+Line 20 - asks if user wants to exit
+Line 21 - reads the answer
+Line 22 - condition to check if user wants to exit or not, then checks if the file is secretinfo if it is dont copy if not then copy
+Line 36 - moves directory 
+Line 39 - prints the files in directory
