@@ -1,0 +1,32 @@
+BASIC GIT WORKFLOW
+A Working Directory: where you’ll be doing all the work: creating, editing, deleting and organizing files
+A Staging Area: where you’ll list changes you make to the working directory
+A Repository: where Git permanently stores those changes as different versions of the project
+
+git init - initalises into a git project
+git status - checks working directory  
+git add <filename> - addeds to staging area
+git diff <filename> - checks the changes between the staging and working areas. If you are happy git add the changes.
+git commit - permanently stores changes to staging area. It requires -m for a message
+git commit -m 'Your reason for commit'
+Standard Conventions for Commit Messages:
+Must be in quotation marks
+Written in the present tense
+Should be brief (50 characters or less) when using -m
+git log - storage of commits in chronological order use q to quit
+
+HOW TO BACK TRACK
+The most reason commit is the HEAD
+git show HEAD - shows the current commit like the git log
+git checkout HEAD <filename> git checkout -- <filename> - will restore the file in your working directory to look exactly as it did when you last made a commit.
+git add filename_1 filename_2 - add multiple files
+git reset HEAD <filename> - unstage file (It does not discard file changes from the working directory, it just removes them from the staging area.)
+git reset 5d69206 - the number is first 7 characters of the SHA commit number (do git log to get that)
+Before reset:
+HEAD is at the most recent commit
+After resetting:
+HEAD goes to a previously made commit of your choice
+The gray commits are no longer part of your project
+You have in essence rewound the project’s history
+
+
