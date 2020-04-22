@@ -10,10 +10,10 @@ git diff <filename> - checks the changes between the staging and working areas. 
 git commit - permanently stores changes to staging area. It requires -m for a message
 git commit -m 'Your reason for commit'
 Standard Conventions for Commit Messages:
-Must be in quotation marks
-Written in the present tense
-Should be brief (50 characters or less) when using -m
-git log - storage of commits in chronological order use q to quit
+    Must be in quotation marks
+    Written in the present tense
+    Should be brief (50 characters or less) when using -m
+    git log - storage of commits in chronological order use q to quit
 
 HOW TO BACK TRACK
 The most reason commit is the HEAD
@@ -23,10 +23,23 @@ git add filename_1 filename_2 - add multiple files
 git reset HEAD <filename> - unstage file (It does not discard file changes from the working directory, it just removes them from the staging area.)
 git reset 5d69206 - the number is first 7 characters of the SHA commit number (do git log to get that)
 Before reset:
-HEAD is at the most recent commit
+    HEAD is at the most recent commit
 After resetting:
-HEAD goes to a previously made commit of your choice
-The gray commits are no longer part of your project
-You have in essence rewound the project’s history
+    HEAD goes to a previously made commit of your choice
+    The gray commits are no longer part of your project
+    You have in essence rewound the project’s history
+
+BRANCHING
+git branch - checks what branch you are on
+git branch <branch-name> - creates a new branch of current repo 
+git checkout <branch-name> - will switch to that branch
+git merge <branch-name> - will merge branch into master (checkout master first)
+ Keep in mind:
+    Your goal is to update master with changes you made to fencing.
+    fencing is the giver branch, since it provides the changes.
+    master is the receiver branch, since it accepts those changes.
+ if there is a conflict, the merge will fail and said you should fix them. In the code editor it should show you what is conflicted with HEAD and branch-name
+git branch -d <branch-name> - will delete a branch
+
 
 
