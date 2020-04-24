@@ -1,21 +1,59 @@
-<!-- 
-INTRODUCTION TO VUE
-    Adding Vue - <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
- -->
- <!-- // app.js -->
- <script>
-const app = new Vue({
-    el: '#app' // access elemant
-});
-</script>
-
-<!-- DATA -->
-    <!-- Display dynamic data = need a place to store the data & syntax for displaying -->
-    <script>
-        const app = new Vue({
-        el: '#app',
-        data: {
-            username: 'Michael'
-        }
-        });
-    </script>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Vue View</title>
+  <link rel="stylesheet" type="text/css" href="./css/reset.css">
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+  <script src="./js/app.js" defer></script>
+</head>
+<body>
+    <!-- 
+        NOTES:
+         - Directives - https://vuejs.org/v2/api/#Directives
+            - v-if = like a an if statement and can be placed within an element
+                <button v-if="userIsLoggedIn">Log Out</button>
+                <button v-if="!userIsLoggedIn">Log In</button>
+            - v-for = like a for loop and can be placed within an element
+                <ul>
+                <li v-for="todo in todoList">{{ todo }}</li>
+                </ul>
+            - v-model = hooked up to a form field and can modify the vue data if a user changes a field
+            - v-on:click = like JS onclick event, takes code that will be run as the value
+                <button v-on:click="tweets.push(newTweet)">Add Tweet</button>
+        - Components - reusable HTML code
+     -->
+     <div id="app">
+        <h1>THE VUE VIEW</h1>
+        <div class="user">
+          <div class="user-information">
+            <div class="image-container">
+              <img src="https://s3.amazonaws.com/codecademy-content/courses/what-is-vue/profile.jpeg" alt="profile picture">
+            </div>
+            <h3>{{ username }}</h3>
+          </div>
+          <div class="user-bio" v-if="bio">
+            <em>Bio: </em> {{ bio }}
+          </div>
+        </div>
+        <div class="tweets">
+          <div class="tweet" v-for="tweet in tweets">
+            <h3>{{ username }}</h3>
+            <p>{{ tweet }}</p>
+          </div>
+        </div>
+        <div class="settings">
+          <h2>Settings</h2>
+          <label for="username">Username</label>
+          <input type="text" value="username" placeholder="Username" v-model="username" />
+          <label for="bio">Bio</label>
+          <textarea value="bio" placeholder="Bio" v-model="bio"></textarea>
+          <label for="tweet" >New Tweet</label>
+          <div class="new-tweet">
+            <input type="text" value="tweet" placeholder="New Tweet" v-model="newTweet" />
+            <button v-on:click="tweets.push(newTweet)">Add Tweet</button>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
