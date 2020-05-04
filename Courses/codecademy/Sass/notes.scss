@@ -1,0 +1,88 @@
+/*
+
+WHY SASS??
+
+Sass = Syntactically Awesome StyleSheets
+- extension to css
+- can write clean, sustainable CSS code & solve common repitition & maintenance issues
+
+
+COMPILING SASS
+- Browsers cannot directly interpret Sass = compile to css so browsers can understand it
+- Compiling = converting code to lower level
+- to compile - in a terminal = sass main.scss main.css
+    - The Sass command - takes two arguments
+        - input - main.scss
+        - location where to put input main.css
+    - once run, Sass code will automatically be compiled when run is clicked 
+
+SASS: OVERVIEW
+- Sass - enables us to write short and to point, readable code
+- with Variables, Mixins, Nests
+
+NESTING SELECTORS
+- Nesting = process of placing selectors inside the scope of another selector
+- Sass selector scope - anything between the curly braces {  } 
+- Nested selectors are the children and former selectors are the parents
+EXAMPLE - 
+*/
+.parent { // parent
+    color: blue;
+    .child { // child
+        font-size: 12px;
+    }
+}
+/*
+- This would be the same as -
+.parent {
+  color: blue;
+}
+
+.parent .child {
+    font-size: 12px;
+}
+
+NESTED PROPERTIES
+- You can nest properties by appending : colon after the name of the property
+*/
+.parent {
+    font : {
+      family: Roboto, sans-serif;
+      size: 12px;
+      decoration: none;
+    }
+  }
+/*
+Would compile to -
+.parent {
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  font-decoration: none;
+}
+
+VARIABLES IN SASS
+- Set variables with a value and use it throughout your file then if you need to change it, you can change it once for all
+     - $translucent-white: rgba(255,255,255,0.3);
+     - add variables to the top of the page
+     - variables should have the same naming convention 
+
+SASSY TYPES
+- There are different data types you can assign to variables in CSS
+    - color
+    - numbers - 8.11 or 12 or 10px (px can be added and the number will be seen)
+    - Strings - "potato"
+    - Booleans - true or false
+    - null - empty
+
+    type number - $icon-square-length: 300px;
+        then in selector add - 
+        width: $icon-square-length;
+        height: $icon-square-length;
+
+MAPS & LISTS
+- Two other data types - Maps & Lists
+- Lists - can be separated by either spaces or commas - 1.5em Helvetica bold; OR Helvetica, Arial, sans-serif;
+    - you can also add parentheses to create lists made up of lists
+- Maps - Similar to lists but is key-value pair - (key1: value1, key2: value2);
+    - the value of a key can also be a list or a map
+*/
