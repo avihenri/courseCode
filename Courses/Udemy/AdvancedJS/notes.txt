@@ -1,0 +1,181 @@
+ADVANCED JS
+
+BASICS
+JS VERSIONS
+- Ecma TC39 Committee meet to add features from popsals
+- Git with poposals - TC-39/Proposals
+- Each ECMAScript versionS ON WIKI https://en.wikipedia.org/wiki/ECMAScript
+- All are 100% backwards compatable
+- Can I use.com helps for versioning on browsers
+- EC6 = brought classes
+- EC7 = Object Orientated
+- we should understand main features from different version
+
+COMPILER Vs POLYFILL
+- Compiler = means we can write the latest version of JS but we can put it into a compiler (babel) to change it to older code for browsers
+- Eg - let will change to let
+     - multi line strings old JS used \n within strings and concatenating them with strings and variables
+- Polyfill = code fillers for browsers that don't have new JS features
+- Eg - Promises are newer so we need the promise-polyfill
+
+USE STRICT
+- makes a program use strict operating context
+- makes it easier to debugging
+- any errors that would happen silently will show & direct you to the error in your code
+- How to use: 
+"use strict" at the top of script
+if older systems (legacy) you need to use it in a function 
+function strict(){
+ "use strict"
+ your code here
+}
+- to ensure your variables are declared properly strict will pick it up
+- if you use reserved words it will pick it up
+- you can't delete variables, functions or arguements
+- when using evail to evalute code
+   - nonstrict = will allow a variable to leak out of eval()
+   - strict = will stop this from happening
+
+DOES JS PASS VARIABLES BY REFERENCE OR BY VALUE?
+- Primitive types (string, numbers, booleans) are by value
+- Objects are passed by reference
+- Passed by value = changes tp a primitive variable in a function won't change the value in the outer scope as it is a copy of the variable when in the scope of the function
+- Reference = its pointing at a direct property value so will change the value in the outer scope
+- In an object, you can change the property value but you can't change the referenced property itself. You can add another instead.
+var a = {'moo': 'too'};
+function foo(a) {
+   a = {'too': 'moo'}; // BAD - you cannot change the property
+   a.too = 'moo'; // GOOD - Adding another  
+   a.moo = 'foo'; // GOOD - changing value
+}
+
+
+WHAT ARE THE REST OPERATORS? ...
+- Intro to EC6
+- collapses a num of single elements into an array
+- Eg -
+function sum(a,b) {
+   return a+b;
+}
+sum(1,2) // = 3
+sum(1,2,3,4) // = 3 (3, 4 are ignored but doesn't fail)
+sum(1) // = NaN (doesn't fail but not good)
+
+- You can print all arguments inside a function - 
+console.log(arguments) = [0:1, 1:2, 2:3, 3:4]
+- we can do this -
+function sum() {
+   var total = 0;
+   for (var i =0; i< arguments.length; i++) {
+	total += arguments[i];
+   }
+  return total;
+}
+sum() // = 10
+- Arguments has issues 
+  - You don't know by looking at sum() if it needs arguments or how many ir needs unless you look at the source code - not good practice
+  - It's not an array!! Can't use any helper functions like slice(). You would need to do - Array.prototype.slice.call(arguments, 1)
+
+We can use the REST operator -
+function login(...options) {
+   console.log(options) 
+}
+login("facebook", 1, 2, 3, 4) = [0:"facebook", 1:1, 2:2, 3:3, 4:4];
+function login(method, moo, ...options) {
+  log - method
+  log - moo
+  log - options
+}
+login("facebook", 1, 2, 3, 4) 
+facebook
+1
+[2, 3, 4]
+The REST operator means the rest of the arguments
+- nothing can go after it as it picks up the rest ;)
+
+WHAT IS THE SPREAD OPERATOR? ...
+- similar to the REST
+- it's used in a different context
+- takes a single array value & explodes it into a number of separate elements
+var ar1 = [4,5,6];
+var ar2 = [1,2,3, ...ar1]
+log ar2 = [1,2,3,4,5,6]
+it concatenated the two arrays together
+- unlike the REST, you can put it anywhere you want 
+var ar3 [1, ...ar1, 2, 3]
+Use cases -
+- to concatenating  to array
+- Coping an array ar2 = [...ar1]
+SO it won't change the original unlike - ar2 = ar1; which points at the original array
+
+EXAMPLE OF REST & SPREAD
+var meth = "twitter";
+var opts = ["key", "callbackUrl"];
+function login(method, ...options) { - REST
+   log method
+   log options
+}
+login(meth, opts);
+You get - twitter \n [0: ["key", "callbackUrl"]];
+login(meth, ...opts)
+You get - twitter \n [0:"key", 1:"callbackUrl"]
+REST & SPREAD = same but used in different contexts
+REST = rest of the arguments taken in a function
+SPREAD = Manipulating arrays, adding, inserting, coping, explode arguments passed into a function
+
+WHAT ARE TEMPLATE STRINGS?
+- template literals `   ` - backtick
+Use cases
+- multi line string (has more)
+- single or double quotes - better to have double so its easier if you use a single quote in the string like - won't
+- Back ticks = allows multi line and variable interpolation or expression interpolation - ${var}
+- Can take expressions like - ${1+2} will show 3
+var isBold = true;
+${isBold ? "<b>asim</b>" : "asim"};
+if isBold is true it will show with tags
+Template tags
+- styled-components.com - react components with tags
+- es2015-i18n-tag - helpful prebuilt tags
+- tags that joins a a literal string
+tag`string`
+Create your own =
+function h1(strings) {
+  return "<h1>" + string[0] + "</h1>";
+  log = h1`asim` = <h1>asim</h1>
+}
+
+WHAT ARE TEMPLATE STRING TAGS?
+- Useful with react & creating complex template strings for components
+- Turns into react nodes
+- Internalisation = process of taking a string & rendering it differently like il8n tag examples
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
