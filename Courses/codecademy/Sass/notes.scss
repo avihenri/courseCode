@@ -1,5 +1,6 @@
 /*
 
+LESSON ONE - MY FIRST SASS STYLESHEET
 WHY SASS??
 
 Sass = Syntactically Awesome StyleSheets
@@ -85,4 +86,255 @@ MAPS & LISTS
     - you can also add parentheses to create lists made up of lists
 - Maps - Similar to lists but is key-value pair - (key1: value1, key2: value2);
     - the value of a key can also be a list or a map
+
+
+
+LESSON TWO - MIXINS & SELECTORS
+
+THE & SELECTOR IN NESTING
+- Pseudo-element is used to style parts of an element
+    - ::before or ::after - style before and after an element
+    - :hover - set properties on element if mouseover
+- & character is used to specify exactly where a parent selector should be inserted
+*/
+.notecard { 
+    &:hover{
+    @include transform (rotatey(-180deg));  
+    }
+}
+/*
+- this is the same as this in css
+.notecard:hover {
+  transform: rotatey(-180deg);
+}
+
+
+WHAT IS A MIXIN?
+- lets you create groups of css
+- this is how to create a mixin -
+*/
+@mixin backface-visibility {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+}
+/*
+- mixin names & all other Sadd identifiers use hyphens & underscores
+- to include the mixin -
+*/
+.notecard {
+    .front, .back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        @include backface-visibility;
+    }
+}  
+/*
+- The equivalent in CSS 
+.notecard .front, .notecard .back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; 
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+}
+
+MIXINS: ARGUMENTS
+- Mixins can also take a value
+- you should only really use a mixin if it takes a value
+*/
+@mixin backface-visibility($visibility) {
+    backface-visibility: $visibility;
+    -webkit-backface-visibility: $visibility;
+    -moz-backface-visibility: $visibility;
+    -ms-backface-visibility: $visibility;
+    -o-backface-visibility: $visibility;
+}
+@include backface-visibility(hidden); // you could put hidden or visible
+/*
+
+DEFAULT VALUE ARGUMENTS
+- Mixin arguments can be assigned a default value in the mixin definition by using a special notation
+- Defining a default value for each argument is optional
+*/  
+@mixin backface-visibility($visibility: hidden) {
+    backface-visibility: $visibility;
+   -webkit-backface-visibility: $visibility;
+   -moz-backface-visibility: $visibility;
+   -ms-backface-visibility: $visibility;
+   -o-backface-visibility: $visibility;
+ }
+ @include backface-visibility(); // removed value
+
+ /*
+MIXIN FACTS
+- Can take multiple arguments
+- Can explicitly define arguments in @include statement
+- If values are explicitly specified you can send them out of order
+- if mixin def has a combo of arguments with/without default - ones with default value should go first
+- Mixins can be nested
+EXAMPLES
+ */
+ @mixin dashed-border($width, $color: #FFF) { // MULTIPLE ARGUMENTS
+    border: {
+       color: $color;
+       width: $width;
+       style: dashed;
+    }
+  }
+  
+  span { //only passes non-default argument
+      @include dashed-border(3px);
+  }
+  
+  p { //passes both arguments
+      @include dashed-border(3px, green);
+  }
+  
+  div { //passes out of order but explicitly defined
+     @include dashed-border(color: purple, width: 5px); 
+  }
+
+/*
+LIST ARGUMENTS
+- You can pass in multiple arguments in a list or map format
+For example, take the multiple properties needed to create the college-ruled stripes in the back of our notecard.
+*/
+@mixin stripes($direction, $width-percent, $stripe-color, $stripe-background: #FFF) {
+  background: repeating-linear-gradient(
+    $direction,
+    $stripe-background,
+    $stripe-background ($width-percent - 1),
+    $stripe-color 1%,
+    $stripe-background $width-percent
+  );
+}
+/*
+We can create a map of the above properties - so we can update/reference them
+*/
+$college-ruled-style: ( 
+    direction: to bottom,
+    width-percent: 15%,
+    stripe-color: blue,
+    stripe-background: white
+);
+// When we include the mixin, we can pass the map with ... notation
+.definition {
+    width: 100%;
+    height: 100%;
+    @include stripes($college-ruled-style...);
+}
+// NOTE: prioritize readability over writing less code
+
+/*
+STRING INTERPOLATION
+- when you put a variable string into another string - in SASS we use #{$variable}
+*/
+@mixin photo-content($file) {
+    content: url(#{$file}.jpg); //string interpolation
+    object-fit: cover;
+}
+
+.photo { 
+    @include photo-content('titanosaur');
+    width: 60%;
+    margin: 0px auto; 
+}
+
+/*
+THE & SELECTOR IN MIXINS
+- Sass allows & usage inside of mixins
+    - & gets assigned the value of the parent at the point where the mixin is included
+    - if no parent, the value is null & Sas will throw an error
+*/
+@mixin text-hover($color){
+    &:hover {
+        color: $color; 
+    }
+  }
+  .word { //SCSS: 
+    display: block; 
+    text-align: center;
+    position: relative;
+    top: 40%;
+    @include text-hover(red);
+  }
+//The above will compile to the following CSS:
+  .word{ 
+    display: block;
+    text-align: center;
+    position: relative;
+    top: 40%;
+  }
+  .word:hover{
+    color: red;
+  }
+
+/*
+
+Generalizations
+This lesson has introduced you to some of the most powerful concepts Sass has to offer!
+
+Mixins are a powerful tool that allow you to keep your code DRY. Their ability to take in arguments, 
+assign default values to those arguments, and accept said arguments in whatever format is most readable 
+and convenient for you makes the mixin Sass’s most popular directive.
+
+The & selector* is a Sass construct that allows for expressive flexibility by referencing the parent 
+selector when working with CSS psuedo elements and classes.
+
+String interpolation is the glue that allows you to insert a string in the middle of another when it is 
+in a variable format. Its applications vary, but the ability to interpolate is especially useful for passing in file names.
+
+Let’s keep up the awesome job in the next lesson, where we will learn about functions, arithmetic, and color operations in Sass!
+
+
+QUIZ - 
+Which of the following situations needs string interpolation in order for the code to compile?
+Incorrect:
+background-image: url($string).jpg;
+Correct:
+    Both “background-image: url($string).jpg;” and “.$string{ width: 100px; height: 100px;}”
+Incorrect:
+content: $string;
+Incorrect:
+.$string{ width: 100px; height: 100px;}
+
+Which of the following is not allowed inside a mixin?
+Correct:
+All are allowed
+Incorrect:
+Defining a child class inside the mixin
+Incorrect:
+Including another mixin
+Incorrect:
+The use of the “&” parent selector
+
+
+What is the value of “&” in the code below?
+
+.container{
+  .icon{
+    font-size: 12px;
+    
+    &:before{
+      position: absolute;
+      content: """; 
+    }
+  }
+}
+Incorrect:
+.container::before
+Incorrect:
+.icon::before
+Correct:
+.container .icon
+Incorrect:
+::before
 */
