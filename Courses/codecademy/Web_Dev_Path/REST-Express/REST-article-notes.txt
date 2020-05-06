@@ -1,0 +1,54 @@
+What is REST?
+
+REpresentational State Transfer
+- architectural style to provide standards between computer systems on the web
+- making it easier for systems to communicate 
+- RESTful systems
+  - characterised by how they are stateless & separate concerns of client & server
+
+Separation of Client & server
+- Implementation of client & server done independently 
+- Meaning - code on the client side can be changed at any time - not affecting the server
+  - vice versa for server > client (no affect)
+- As long as each side knows what format messages are to each other, they can be kept modular & separate
+- Benefits of separating client/server concerns from each other 
+  - improve flexibility of interfaces across platforms
+  - improve scalability by simplifying server components
+  - Each can evolve independently
+
+Statelessness
+- Systems that follow REST paradigm = stateless
+  - Meaning - 
+    - server does not need to know anything about the state of the client & vice versa
+    - both can understand messages received even without seeing previous messages
+    - enforced with resources instead of commands
+      - resources describe any object, document... that needs stored or sent to other services
+      - do not reply on implementation of interfaces
+    - Benefits of these constraints 
+      - reliability, quick performance, scalability, components that can be managed, updated & reused with no affect on system as a whole
+
+Communication between Client and Server
+- In REST architecture -
+  - clients send requests to retrieve or modify resources
+  - servers send responses to these requests
+
+  Making Requests
+    - REST requires a client to make a request to the server to retrieve or modify data on the server
+      - HTTP - defines the kind of operation to perform (GET, POST etc)
+      - a header - allows the client to pass along info about the request
+      - a path - to the resource
+      - optional message - body with data
+    
+    HTTP
+      GET — retrieve a specific resource (by id) or a collection of resources
+      POST — create a new resource
+      PUT — update a specific resource (by id)
+      DELETE — remove a specific resource by id
+
+Headers and Accept parameters
+- in header of request 
+  - clients sends the type of content = Accept field
+    - this ensures the server does not send data that cannot be understood or processed by the client
+    - Options
+      - MIME Types - Multipurpose Internet Mail Extensions - https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types
+        - 
