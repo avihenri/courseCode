@@ -338,3 +338,207 @@ Correct:
 Incorrect:
 ::before
 */
+/*
+FUNCTIONS IN SCSS
+- functions in Sass allow computing & iterating on styles
+    - Operate on color values
+    - Iterate on lists & maps
+    - Apply Styles based on conditions
+    - Assign values that result from math operations
+
+ARITHMETIC & COLOR
+- Sass comes with funcs that make colors easier
+- alpha parameter in color (RGBA OR HSLA) is a mask denoting opacity
+    - how one color should be merged with another when two are on top of each other
+    - fade-out - makes color more transparent - number between 0 and 1
+        decreasing opacity or alpha channel byt the amount
+*/
+$color: rgba(39, 39, 39, 0.5);
+$amount: 0.1;
+$color2: fade-out($color, $amount); //rgba(39, 39, 39, 0.4) 
+/*
+    - Fade-in - changes color by increasing opacity
+*/
+$color: rgba(55,7,56, 0.5);
+$amount: 0.1;
+$color2: fade-in($color, $amount); //rgba(55,7,56, 0.6)
+/*
+    - adjust-hue function adjust-hue($color, $degrees) 
+        - changes the hue of a color by taking color & degrees (-360 > 360) & rotate the color wheel by the amount
+
+COLOR FUNCTIONS
+- Sass allows math functions to compute measurements
+    - Performed on red, green, blue components
+    - Computes answer by operating on every two digits
+        - $color: #010203 + #040506; - would operate on:
+            01 + 04 = 05
+            02 + 05 = 07
+            03 + 06 = 09
+            = color: #050709;
+        - color: red + blue; = purple
+
+ARITHMETIC
+- Sass arithmetic operations:
+    - add +, subtract -, multiply *, divide /, modulo % (remainder in given division - 9 % 2 = 1 as there are 8 2s and 1 left over)
+    - units need to be compatible - so you can't multiply pixels by ems
+    - As in normal Maths - multiplying 2 units results in squared units: 10px * 10px = 100px * px - this would throw an error in CSS so 
+        you do the following - 10px * 10 = 100px
+    height: $width/6; - 1/6th
+    line-height: $width/6; - 1/6th
+    border-radius: $width/30; - is 1/30th 
+
+DIVISION CAN BE SPECIAL
+- The / character is both divide & a separator
+- Some Instances of / as division:
+    - if a value is stored in a variable or returned by a function - width: $variable/6; //division
+    - if the value is surrounded by () unless those () are outside a list & the value is inside - line-height: (600px)/9; //division
+    - if value is used as part of another arithmetic expression - margin-left: 20-10 px/ 2; //division  
+    - font-size: 10px/8px; //not division
+
+    font-size: $width/6/2; - first / is after variable so division, second / after operation so division
+
+EACH LOOPS
+- More complex functions
+    - Each Loop - iterate on each of the values on a list
+*/
+@each $item in $list {
+    //some rules and or conditions
+  }
+/*
+  - $item is dynamically assigned to the value of the object in the list, according to the position & iteration in the loop
+*/
+$list: (orange, purple, teal);
+@each $item in $list {
+    .#{$item} { // . for the class #{} for the variable that the loop is iterating from the list
+      background: $item;
+    }
+  }
+
+/*
+FOR LOOPS
+- Used to style numerous elements or assign properties all at once
+*/
+@for $i from $begin through $end {
+    //some rules and or conditions
+ }
+/*
+    - $i - index in the list
+    - $begin & $end - placeholders for the start & end points in the loop
+    - Keywords through or to are interchangeable in Sass
+*/
+$total: 10; //Number of .ray divs in our html
+$step: 360deg / $total; //Used to compute the hue based on color-wheel
+.ray {
+  height: 30px;
+}
+@for $i from 1 through $total {
+  .ray:nth-child(#{$i}) {
+    background: adjust-hue(blue, $i * $step); // makes a rainbow on the page with each child 30px high
+   }
+}
+/*
+CONDITIONS
+-   In Sass - if() can be used inline to assign a value of a property
+    - width: if( $condition, $value-if-true, $value-if-false);
+    - for more than two outcomes - @if, @else-if & @else can be used
+*/
+@mixin deck($suit) { // how to handle color of a deck of cards
+    @if($suit == hearts || $suit == spades){
+      color: blue;
+    }
+    @else-if($suit == clovers || $suit == diamonds){
+      color: red;
+    }
+    @else{
+      //some rule
+    }
+}
+/*
+The following changes the above rainbow to the width of a .ray, based on if te element falls on an even or off number
+- to get even odd - we used the modulo % 
+*/
+$total: 10; //Number of .ray divs in our html
+$step: 360deg / $total; //Used to compute the hue based on color-wheel
+.ray {
+  height: 30px;
+}
+//Add your for-loop here:
+@for $i from 1 through $total {
+  .ray:nth-child(#{$i}) {
+    width: if($i % 2 == 0, 300px, 350px);
+    margin-left: if($i % 2 == 0, 0px, 50px);
+    background: adjust-hue(blue, $i * $step);
+   }
+}
+/*
+Generalizations
+Functions in Sass allow for an easier way to style pages, work with colors, and iterate on DOM elements.
+
+Having both for loops and each loops gives the programmer different formats to iterate on both lists and maps.
+
+The introduction of conditional statements allows you to create logic-based styling rules using SCSS.
+
+There are other native Sass functions available to use, and you can even make your own custom functions if 
+you have a good foundation in Ruby, check out more information - https://sass-lang.com/documentation/modules
+*/
+
+/* PROJECT 3 NOTES
+Index function
+- $i: index($list, $element);
+*/
+@each $food, $tons-produced in $topfoods {
+  // index function
+$i: index($top-foods,($food $tons-produced)); 
+    // $topfoods has a list of goods with name and tons - ("Sugar Beets" 247);
+}
+
+/* Quiz 3 
+What is the benefit of using a color function to change opacity of a color?
+Correct:
+You can isolate the transparency of a single component of the element.
+Incorrect:
+You change the transperency of the entire element.
+Incorrect:
+The alpha channel cannot be affected.
+Incorrect:
+No benefit, you should just use RGB and hsl colors.
+👏
+By using a color type with an alpha channel, you can set the color transparency of a single component of a selector, 
+for example the background color can be different but the color of the text will be full opacity.
+
+Which of the following is a characteristic of color computation in SCSS?
+Incorrect:
+You can add and subtract colors, but you cannot multiply or divide them.
+Correct:
+You can conduct arithmetic on all colors, but it will be computed piece-wise by every 2 digits.
+Incorrect:
+You can conduct arithmetic on all colors, and the numbers will be computed a digit at a time.
+Incorrect:
+There is no such thing as color arithmetic.
+👏
+Indeed, arithmetic in color values is computed piece-wise by every 2 digits.
+
+In which of the following scenarios is “/“ not acting as division, but as a separator?
+Incorrect:
+padding: 50-10 px/ 2;
+Incorrect:
+width: $variable/2;
+Correct:
+font-size: 12px/14px;
+Incorrect:
+height: (800px)/3;
+👏
+No operation or variable is preceding the / symbol, therefore it is interpreted as a regular separator.
+
+Which of the following is incorrect loop syntax?
+Incorrect:
+@each $item in $map
+Incorrect:
+@for $item from $begin through $end
+Incorrect:
+@for $item from $begin to $end
+Correct:
+All are valid
+👏
+Both “through” and “to” are valid in a for-loop.
+
