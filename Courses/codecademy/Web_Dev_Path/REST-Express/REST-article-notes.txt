@@ -51,4 +51,169 @@ Headers and Accept parameters
     - this ensures the server does not send data that cannot be understood or processed by the client
     - Options
       - MIME Types - Multipurpose Internet Mail Extensions - https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types
-        - 
+        - MIME_types used to specify content Types  - type and subtype (separated by /)
+          - text/html - Text file containing HTML 
+          - text/css - Text file containing css
+          - text/plain - Text file
+            - this is the default value
+            - not a catch allows
+            - if client expects text/css and text/plain arrives it won't recognise it
+          - Other Types 
+            - image - image/png, image/jpeg, image/gif
+            - audio - audio/wav, image/mpeg
+            - video - video/mp4, video/ogg
+            - application - application/json, application/pdf, application/xml, application/octetstream
+          - EXAMPLE - GET RESOURCE 23 IN ARTICLES RESOURCE WITH TYPE HTML OR XHTML
+            GET /articles/23
+            Accept: text/html, application/xhtml
+
+Paths
+- All requests require a path to the resource
+- Conventionally - first part of a path should be the plural of the resource
+  - keeps nested paths simple to read
+- fashionboutique.com/customers/223/orders/12
+  - clear, hierarchical & descriptive
+  - order with id 12 for customer with id 223
+- Paths should be specific
+- No need to add an ID to a POST as the server will generate an id for a new object
+- Accessing single resource we need ID
+  -  GET fashionboutique.com/customers/:id - gets the item in customers with id 
+  - DELETE fashionboutique.com/customers/:id - deletes the item in customers with id 
+  
+SENDING REQUESTS
+CONTENT TYPES 
+- If server is sending a data payload to client
+  - server must include content-type in the header of the response
+  - content-type = alerts client to the type of data it is sending in the response body
+  - These are MIME Types
+  - it should be one of the types that client sent in the Accept field
+  - Request
+    GET /articles/23 HTTP/1.1
+    Accept: text/html, application/xhtml
+  - Response 
+    HTTP/1.1 200 (OK)
+    Content-Type: text/html
+
+RESPONSE CODES
+- most common -
+   Code	 Meaning
+    200 (OK)	This is the standard response for successful HTTP requests.
+    201 (CREATED)	This is the standard response for an HTTP request that resulted in an item being successfully created.
+    204 (NO CONTENT)	This is the standard response for successful HTTP requests, where nothing is being returned in the response body.
+    400 (BAD REQUEST)	The request cannot be processed because of bad request syntax, excessive size, or another client error.
+    403 (FORBIDDEN)	The client does not have permission to access this resource.
+    404 (NOT FOUND)	The resource could not be found at this time. It is possible it was deleted, or does not exist yet.
+    500 (INTERNAL SERVER ERROR)	The generic answer for an unexpected failure if there is no more specific information available.
+
+    GET — return 200 (OK)
+    POST — return 201 (CREATED)
+    PUT — return 200 (OK)
+    DELETE — return 204 (NO CONTENT) If the operation fails, return the most specific status code possible corresponding 
+    to the problem that was encountered.
+
+EXAMPLES OF REQUESTS & RESPONSES
+If we wanted to view all customers, the request would look like this:
+
+GET http://fashionboutique.com/customers
+Accept: application/json
+A possible response header would look like:
+
+Status Code: 200 (OK)
+Content-type: application/json
+followed by the customers data requested in application/json format.
+
+Create a new customer by posting the data:
+
+POST http://fashionboutique.com/customers
+Body:
+{
+  “customer”: {
+    “name” = “Scylla Buss”
+    “email” = “scylla.buss@codecademy.org”
+  }
+}
+The server then generates an id for that object and returns it back to the client, with a header like:
+
+201 (CREATED)
+Content-type: application/json
+To view a single customer we GET it by specifying that customer’s id:
+
+GET http://fashionboutique.com/customers/123
+Accept: application/json
+A possible response header would look like:
+
+Status Code: 200 (OK)
+Content-type: application/json
+followed by the data for the customer resource with id 23 in application/json format.
+
+We can update that customer by _PUT_ting the new data:
+
+PUT http://fashionboutique.com/customers/123
+Body:
+{
+  “customer”: {
+    “name” = “Scylla Buss”
+    “email” = “scyllabuss1@codecademy.com”
+  }
+}
+
+
+PRACTICE WITH REST
+Let’s imagine we are building a photo-collection site for a different want to make an API to keep track of users, venues, and photos of 
+those venues. This site has an index.html and a style.css. Each user has a username and a password. Each photo has a venue and an owner 
+(i.e. the user who took the picture). Each venue has a name and street address. Can you design a REST system that would accommodate:
+
+storing users, photos, and venues
+accessing venues and accessing certain photos of a certain venue
+Start by writing out:
+
+what kinds of requests we would want to make
+what responses the server should return
+what the content-type of each response should be
+
+Possible Solution - Models
+{
+  “user”: {
+    "id": <Integer>,
+    “username”: <String>,
+    “password”:  <String>
+  }
+}
+{
+  “photo”: {
+    "id": <Integer>,
+    “venue_id”: <Integer>,
+    “author_id”: <Integer>
+  }
+}
+{
+  “venue”: {
+    "id": <Integer>,
+    “name”: <String>,
+    “address”: <String>
+  }
+}
+
+Possible Solution - Requests/Responses
+GET Requests
+Request- GET /index.html Accept: text/html Response- 200 (OK) Content-type: text/html
+Request- GET /style.css Accept: text/css Response- 200 (OK) Content-type: text/css
+Request- GET /venues Accept:application/json Response- 200 (OK) Content-type: application/json
+Request- GET /venues/:id Accept: application/json Response- 200 (OK) Content-type: application/json
+Request- GET /venues/:id/photos/:id Accept: application/json Response- 200 (OK) Content-type: image/png
+
+POST Requests
+Request- POST /users Response- 201 (CREATED) Content-type: application/json
+Request- POST /venues Response- 201 (CREATED) Content-type: application/json
+Request- POST /venues/:id/photos Response- 201 (CREATED) Content-type: application/json
+
+PUT Requests
+Request- PUT /users/:id Response- 200 (OK)
+Request- PUT /venues/:id Response- 200 (OK)
+Request- PUT /venues/:id/photos/:id Response- 200 (OK)
+
+DELETE Requests
+Request- DELETE /venues/:id Response- 204 (NO CONTENT)
+Request- DELETE /venues/:id/photos/:id Response- 204 (NO CONTENT)
+
+    

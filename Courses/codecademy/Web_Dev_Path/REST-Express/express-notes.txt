@@ -1,0 +1,194 @@
+======================================================================================
+LESSON ONE - ROUTES
+======================================================================================
+INTRO
+- Express is powerful but flexible JS framework for creating web servers & APIs
+- Will learn CRUD (create, read, update, delete)
+
+STARTING A SERVER 
+- Express a node module
+    - need to import it into your program file
+- To create a server 
+    - the imported express function must be invoked
+        const express = require('express'); / import the express library
+        const app = express(); // we invoke, this returns an instance of an Express application
+        - this application can be used to start a server & specify server behaviour 
+
+    - we need to tell the server where to listen for new requests with a port number in the method app.listen()
+    - the second argument is the callback function
+        const PORT = 4001;
+        app.listen(PORT, () => {
+            console.log(`Server is listening on port ${PORT}`);
+        });
+
+START YOUR FIRST ROUTE
+- Once started the server can respond to any requests
+- How does it know what to return?
+    - we need to register a series of routes
+    - Routes define the control flow for the requests based on the requests path & HTTP
+    - Express uses app.get(); to register routes to match GET requests 
+        - usually 2 arguments, a path & callback function
+            const moods = [{ mood: 'excited about express!'}, { mood: 'route-tastic!' }];
+            app.get('/moods', (req, res, next) => { // req - request send, res = response received, next = callback func??
+            // Here we would send back the moods array in response
+            });
+        - if no routes found it will throw a 404
+
+SENDING A RESPONSE
+- Each client expects exactly one response per request 
+- send responses using .send() on response object (res)
+    - takes any input & includes it in the response body
+        const monsters = [{ type: 'werewolf' }, { type: 'hydra' }, { type: 'chupacabra' }];
+        app.get('/monsters', (req, res, next) => {
+            res.send(monsters); // res.send() method will send back an array of spooky monsters.
+        });
+    - .json() can e used to explicitly send JSON-formatted responses
+
+MATCHING ROUTE PATHS
+- Express tries to match up with any route
+    - server will search through any registered routes to match 
+    - searches through them in order they are registered in the code
+    - 1st one that matches will be used
+
+GETTING A SINGLE EXPRESSION
+- Routes can be be more powerful if used dynamically
+- E.servers provide functionality with named route parameters.
+    - Parameters = route path segments & begin with :
+        - act as wildcards - matching any text at the path segments 
+            /monsters/:id = /monsters/1 & /monsters/45
+- express parses any parameters, extracts their values & attaches them to an object = req.params
+    - req.param object keys are parameter names in the route & each key's value is the value of the field per request 
+    const monsters = { hydra: { height: 3, age: 4 }, dragon: { height: 200, age: 350 } };
+        // GET /monsters/hydra
+        app.get('/monsters/:name', (req, res, next) => {
+            console.log(req.params) // { name: 'hydra' };
+            res.send(monsters[req.params.name]);
+        });
+
+SETTING STATUS CODES
+- Express allows us to set status codes on responses before they are segments- 
+- res.send() has a default of 200 OK
+- res object has a .status() method to set the status
+const monsterStoreInventory = { fenrirs: 4, banshees: 1, jerseyDevils: 4, krakens: 3 };
+app.get('/monsters-inventory/:name', (req, res, next) => {
+  const monsterInventory = monsterStoreInventory[req.params.name];
+  if (monsterInventory) {
+    res.send(monsterInventory);
+  } else {
+    res.status(404).send('Monster not found');
+  }
+});
+
+MATCHING LONGER PATHS 
+- Parameters - v.helpful in making server routes dynamic & able to respond to different inputs
+- Matches any part of their path -
+    /monsters/:name will match with all of the below -
+        /monsters/hydra
+        /monsters/jörmungandr
+        /monsters/manticore
+        /monsters/123
+- You need to match a full route path through
+    - /expression won't match with /expression/:id due to the parameter
+
+OTHER HTTP METHODS
+- PUT, POST, DELETE
+- app.put(), app.post(), app.delete()
+- PUT = updating existing resource
+
+USING QUERIES
+- Query strings (QS) - more info
+    - appear at the end of a path in URLs
+    - indicated with ?
+    - /monsters/1?name=chimera&age1
+        - QS ?name=chimera&age1 & the rest is the path
+    - don't count as part of the path    
+        - Express parses them into a JS object & attaches it to the request body with value - req.query
+        - key: value relationship uses = in QS
+        const monsters = { '1': { name: 'cerberus', age: '4'  } };
+        // PUT /monsters/1?name=chimera&age=1
+        app.put('/monsters/:id', (req, res, next) => {
+            const monsterUpdates = req.query;
+            monsters[req.params.id] = monsterUpdates;
+            res.send(monsters[req.params.id]);
+        });
+
+MATCHING BY HTTP 
+- Express matches routes using both path & HTTP method
+
+CREATING AN EXPRESSION
+- POST = creates
+- ends in a type of resource to be created
+- uses app.post() 
+- Success - 201 Created
+
+DELETING OLD EXPRESSIONS
+- DELETE 
+    - end in a route parameters to indicate which resource
+    - .delete()
+    - servers 204 No Content
+
+======================================================================================
+LESSON TWO - ROUTERS
+======================================================================================
+- Express router - subset of express methods 
+- To use - we invoke - .Router() on the top level Express import
+    - mount at certain path - app.use() & pass router as the second argument
+    - that router will then be used for all paths begin with that path segment
+    - Monster router:
+    const express = require('express');
+    const app = express();
+    const monsters = {
+    '1': {
+        name: 'godzilla',
+        age: 250000000
+    },
+    '2': {
+        Name: 'manticore',
+        age: 21
+    }
+    }
+    const monstersRouter = express.Router();
+    app.use('/monsters', monstersRouter);
+    monstersRouter.get('/:id', (req, res, next) => {
+    const monster = monsters[req.params.id];
+    If (monster) {
+        res.send(monster);
+    } else {
+        res.status(404).send();
+    }
+    });
+
+USING MULTIPLE TOURER FILES
+- we can require in router files 
+- separate files for different things so the monsters ne would be - monsters.js 
+    const express = require('express'); // always need to add express 
+    const monstersRouter = express.Router();
+    const monsters = {
+    '1': {
+        name: 'godzilla',
+        age: 250000000
+    },
+    '2': {
+        Name: 'manticore',
+        age: 21
+    }
+    }
+    monstersRouter.get('/:id', (req, res, next) => {
+    const monster = monsters[req.params.id];
+    if (monster) {
+        res.send(monster);
+    } else {
+        res.status(404).send();
+    }
+    });
+    module.exports = monstersRouter; // exports so other files can access the monstersRouter
+
+    main.js
+    const express = require('express');
+    const app = express();
+    const monstersRouter = require('./monsters.js'); // required
+    app.use('/monsters', monstersRouter); // mounted
+
+MATCHING IN NESTED ROUTERS
+- important to remember - path can be segmented
+- 
