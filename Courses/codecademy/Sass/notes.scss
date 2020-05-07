@@ -542,3 +542,205 @@ All are valid
 👏
 Both “through” and “to” are valid in a for-loop.
 
+/ *
+
+SASS STRUCTURE
+Good to be organised and have things in separate areas -
+
+Top level folder Sass
+- Components/ 
+	- _buttons.scss
+	- _carousel.scss
+	- _cover.scss 
+	- etc..
+- Helpers/
+	- _variables.scss
+	- _functions.scss
+	- _mixins.scss
+	- etc..
+- Layout/ 
+	- _grid.scss
+	- _header.scss
+	- _footer.scss
+	- etc..
+- Pages/ 
+	- _home.scss
+	- _contact.scss
+	- etc
+
+@IMPORT IN SCSS
+Sass extends the exiting CSS @import rule to allow including other SCSS & Sass files
+- all imported SCSS files are imported in a main.scss file to make one file
+- main SCSS has access to all variables & mixins imported with @import command that takes a filename to import
+@import looks at a Sass file in same/specified directory but few situations it behaves with the css import rules -
+- extensions ends in css
+- filename begins with http://
+- filename is a url()
+- @import has media queries
+
+ORGANISE WITH PARTIALS
+- Partials = are files you split up to organise functionality
+- prefixed with _
+	- tells Sass to hold from compling file & import it
+-To import a partial into a main file, omit the underscore
+- @import "variables"; instead of _variables
+ 
+
+@EXTEND
+- when we want to have styles that are in one class to be in another we usually add both classes to an element in the HTML
+<span class="lemonade"></span>
+<span class="lemonade strawberry"></span>
+- can be a bug in maintainability - both classes need to be in the HTML
+- Sass uses @extend
+  - we can make strawberry extend lemonade
+  */
+.lemonade {
+  border: 1px yellow;
+  background-color: #fdd;
+}
+.strawberry {
+  @extend .lemonade;
+  border-color: pink;
+}
+/*
+%PLACEHOLDERS
+- behaves just like a class or id selector but uses % notation
+- prevents rules from being rendered to css
+- become active once they are extended anywhere an id or class can be extended
+*/
+a%drink {
+    font-size: 2em;
+    background-color: $lemon-yellow;
+ }
+ .lemonade {
+  @extend %drink;
+  //more rules
+ }
+// translates to:
+  a.lemonade {
+    font-size: 2em;
+    background-color: $lemon-yellow;
+ }
+.lemonade {
+  //more rules
+}
+/*
+@EXTEND VS @MIXIN
+- As a rule 
+	- only create mixins that take arguments, otherwise extend a placeholder
+	-Look at your CSS output to make sure your extend is behaving as you intend
+
+Generalizations
+Sustainability is key in Sass, planning out the structure of your files and sticking to naming conventions for both variables, mixins, and selectors can reduce complexity.
+
+Understanding CSS output is also essential to writing sustainable SCSS. In order to make the best choices about what functions and directives to use, it is important to first understand how this will translate in CSS.
+
+Mixins should only be used if they take in an argument, otherwise, you should extend the selector’s rules, whether it be a class, id, or placeholder.
+https://sass-lang.com/documentation
+
+QUIZ
+In the following examples, when is @import behaving as a SCSS import, not a CSS import?
+Incorrect:
+When the filename is a url()
+Incorrect:
+If the file has any media queries
+Correct:
+When the file’s extension is .scss
+Incorrect:
+If the file name begins with http://
+👏
+The import statement solely behaves as a SCSS import if the file’s extension is .scss
+
+When should you extend a class as opposed to including a mixin?
+
+Incorrect:
+When the mixin takes parameters
+
+Incorrect:
+When you need to use the & parent selector
+
+Correct:
+When the mixin takes no parameters
+
+Incorrect:
+When you already wrote the code necessary in the rules of a different class
+
+👏
+Mixins that take no parameters are acting like copy and paste, making for verbose stylesheets. It is best to extend in this situation.
+
+
+Where in the codebase should you include your import statement?
+
+Incorrect:
+At the top of your main output CSS file
+
+Incorrect:
+Inside the <head> section of index.html
+
+Correct:
+At the top of your global or main SCSS file, or inside the file that will make use of its contents.
+
+Incorrect:
+In the <script> section in the body of index.html
+
+👏
+Partials should only be imported at the top of the file where they are needed.
+
+
+What is a good characteristic of a sustainable SCSS code base?
+
+Incorrect:
+Having multiple naming conventions for variables
+
+Incorrect:
+Using mixins, and avoiding extending in order to reduce complexity
+
+Incorrect:
+Keeping all the logic inside one file for easy access
+
+Correct:
+Good isolation of code logic inside of partials in appropriately named sub-folders
+
+👏
+Keeping all the logic inside one file can make for cluttered spreadsheets, partials were invented to solve this problem.
+
+
+
+What document has access to the mixins, variables, placeholders from an imported file?
+
+Incorrect:
+None of these
+
+Incorrect:
+Access is only limited to functions inside the file that imports them
+
+Correct:
+The file that imports them has full access to the variables as though they were defined in that very file.
+
+Incorrect:
+There is no access in the file that includes the import, variables are only available within the partial.
+
+👏
+The components defined in an imported file are accessible anywhere inside the file that imports them.
+
+
+
+When should you make a placeholder class?
+
+Incorrect:
+When you want to reduce use of mixins
+
+Incorrect:
+When you need to use the class name in your HTML
+
+Incorrect:
+When you have another class of the same name
+
+Correct:
+When your HTML code actually never uses the class you are extending, only your SCSS code uses it to extend other classes
+
+👏
+There is no reason to compile a class to your CSS output if it only ever gets extended, it will clutter your stylesheet. Using a placeholder is the best way to avoid this situation.
+
+*/
+
