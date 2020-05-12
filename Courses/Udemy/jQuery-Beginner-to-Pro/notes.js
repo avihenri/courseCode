@@ -29,6 +29,34 @@ IMAGES & ATTRIBUTES
 - Placeholder images - placeholders.com
 
 SELECTORS & UPDATING MULTIPLE ITEMS
+eq - equal to
+gt - greater than
+lt - less than
+$('li:gt(3)').css('color, 'red);
+nth-child
+filter() - filter elements with the same selector
+$(this).filter('.highlight).css('color', 'red');
+has() - any descendants with a selector
+
+ADVANCED FILTERING
+map - passes elements in a set into a function to create a new object
+var elObj = $('.highlight').map(function() {
+    return $(this).html(); // brings back an array of the html for el's that have highlight class
+});
+slice - similar to map - reduces el's to a subset/array
+$('li).slice(3).css('background-color', 'yellow'); starts from the 3rd element (0,1,2,3)
+$('li).slice(3, 7).css('background-color', 'yellow'); starts from the 3rd el and ends on 7th el 
+
+INTRO TO TRAVERSING
+Similar to filtering
+children() - gets any children of an element
+var elKids = $('p').children();
+parent() - gets the parent of an element
+var elParent = $(this).parent();
+
+next()
+previous()
+closest()
 
 
 

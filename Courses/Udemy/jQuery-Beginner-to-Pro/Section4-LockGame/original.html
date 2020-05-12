@@ -1,0 +1,118 @@
+<html>
+
+<head>
+    <title>jQuery Complete Course</title>
+</head>
+
+<body>
+    <h1>Welcome to jQuery Course</h1>
+    <div id="start" class="btn">Start</div>
+    <div id="output"><small>Message</small>
+        <input type="number" name="lock1" min="0" max="9">
+        <input type="number" name="lock2" min="0" max="9">
+        <input type="number" name="lock3" min="0" max="9">
+        <div class="btn" id="checkLock">Open Lock &#128274</div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#output').hide(); // HIDE MESSAGE 
+            $('#start').click(startGame); // CLICK LISTENER TO THE START BUTTON
+            $('#checkLock').click(openLock); // CLICK LISTENER FOR THE CHECK LOCK BUTTON
+            var ourSecretNum = '';
+
+            // OPEN LOCK FUNC
+            function openLock() {
+                var win = 0; // STARTS AT 0
+                // LOOP THROUGH NUMBERS TO CHECK IF CORRECT
+                for (x = 0; x < $('input[type="number"]').length; x++) {
+                    var guessNumber = $('input[type="number"]').eq(x); // THE GUESS NUMBER ON ONE BIT
+                    var result = checkNumber(guessNumber.val(), ourSecretNum[x]); // CHECK THE GUESS NUMBERS
+                    guessNumber.css({
+                        backgroundColor: result.backgrd // CHANGE THE BACKGROUND COLOR DEPENDING ON CHECKNUMBER FUNC
+                    })
+                    if (result.checker) {
+                        win++ // ADDS TO WIN IF ONE IS CORRECT
+                    }
+                }
+                if (win == 3) { // IF WIN IS 3 THEN ITS SOLVED
+                    $('#start').show(); // SHOW START BTN AGAIN
+                    $('small').html('You got it<br> ' + ourSecretNum) // YOU SOLVED IT MESSAGE
+                }
+            }
+
+            // CHECKS THE NUMBERS GUESS
+            function checkNumber(a, b) { // A IS THE GUESS & B IS THE SECRET NUMBER
+                var response = {};
+                if (a < b) { // IF GUESS IS LOWER THEN WRONG AND BACKGROUND COLOR OF RED
+                    response.checker = false;
+                    response.backgrd = 'red';
+                }
+                if (a > b) { // IF GUESS IS GREATER THEN WRONG AND BACKGROUND COLOR OF BLUE
+                    response.checker = false;
+                    response.backgrd = 'blue';
+                }
+                if (a == b) { // IF GUESS IS EQUAL THEN CORRECT AND BACKGROUND COLOR OF GREEN
+                    response.checker = true;
+                    response.backgrd = 'green';
+                }
+                return response; // RETURN BACK OUR RESPONSE
+            }
+
+            // START GAME FUNC
+            function startGame() {
+                // CREATES A NUMBER UP TO 999 & CONVERTS TO STRING
+                ourSecretNum = Math.floor(Math.random() * (999 - 100 + 1) + 100).toString(); 
+                $('#start').hide(); // HIDE START BUTTON
+                $('#output').show(); // SHOW HELP MESSAGE
+                // FOR ALL INPUTS MAKE THEM ALL 5
+                for (x = 0; x < $('input[type="number"]').length; x++) {
+                    $('input[type="number"]').eq(x).val('5');
+                }
+                // OUTPUT MESSAGE SMALL TAGS
+                $('small').html('Red Background guess is low : Blue background guess is high');
+            }
+
+            // THE STYLING FOR THE NUM INPUTS
+            $('input[type="number"]').css({
+                color: 'white', 
+                fontSize: '3em', 
+                width: '60px', 
+                border: '1px solid black', 
+                backgroundColor: 'black'
+            });
+
+            // STYLING FOR THE BUTTONS
+            $('.btn').css({
+                backgroundColor: 'black', 
+                color: 'white', 
+                width: '160px', 
+                fontSize: '1.5em', 
+                padding: '15px', 
+                margin: '25px auto 0px', 
+                border: '1px solid black', 
+                textAlign: 'center'
+            });
+
+            // STYLING FOR THE OUTPUT MESSAGE
+            $('#output').css({
+                backgroundColor: '#333', 
+                width: '300px', 
+                padding: '15px', 
+                border: '1px solid black', 
+                textAlign: 'center'
+            });
+
+            // STYLING FOR THE SMALL TAGS IN THE MESSAGE
+            $('small').css({
+                color: 'white', 
+                fontSize: '1em', 
+                padding: '15px', 
+                marginBottom: '15px', 
+                display: 'block'
+            })
+        })
+    </script>
+</body>
+
+</html>
