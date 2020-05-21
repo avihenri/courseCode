@@ -116,7 +116,7 @@ LEFT JOIN february
   ON january.user_id = february.user_id
 WHERE february.user_id IS NULL;
 
--- Code Challenge 5
+-- Code Challenge 5 & 6
 -- For this challenge, you’ll use the following tables:
 
 -- months
@@ -139,3 +139,76 @@ WHERE february.user_id IS NULL;
 -- cancel_date from premium_users
 -- months from months
 
+ SELECT premium_users.user_id,
+ 	premium_users.purchase_date,
+  premium_users.cancel_date,
+  months.months,
+  CASE
+    WHEN (
+      premium_users.purchase_date <= months.months
+      )
+      AND
+      (
+        premium_users.cancel_date >= months.months
+        OR
+        premium_users.cancel_date IS NULL
+      )
+    THEN 'active'
+    ELSE 'not_active'
+  END AS 'status'
+FROM premium_users
+CROSS JOIN months;
+
+-- Code Challenge 7
+-- If you need help, check out this Reference Guide to multiple tables in SQL.
+-- Songify has added some new songs to their catalog.
+-- Combine songs and bonus_songs using UNION and select all columns from the result.
+-- Since the songs table is so big, just look at a sample by LIMITing the results to 10 rows.
+SELECT *
+FROM songs
+UNION 
+SELECT *
+FROM bonus_songs
+LIMIT 10;
+
+-- Code Challenge 8
+-- Besides stacking one table on top of another, we can also use UNION to quickly make a “mini” dataset:
+
+SELECT '2017-01-01' AS 'month'
+UNION
+SELECT '2017-02-01' AS 'month'
+-- will produce:
+-- month
+-- 2017-01-01
+-- 2017-02-01
+
+SELECT '2017-01-01' as month
+UNION
+SELECT '2017-02-01' as month
+UNION 
+SELECT '2017-03-01' as month;
+
+-- Code Challenge 9
+-- The following exercise uses the Songify tables explained before.
+-- The following query will give us the number of times that each song was played:
+SELECT song_id,
+   COUNT(*) AS 'times_played'
+FROM plays
+GROUP BY song_id;
+-- Use a WITH statement to alias this code as play_count.
+-- Join play_count with songs and select (in this order):
+-- songs table’s title column
+-- songs table’s artist column
+-- play_count‘s times_played column
+-- Remember that play_count.song_id will match songs.id.
+WITH play_count AS (
+   SELECT song_id,
+      COUNT(*) AS 'times_played'
+   FROM plays
+   GROUP BY song_id)
+SELECT songs.title,
+  songs.artist,
+  play_count.times_played
+FROM play_count
+JOIN songs
+  ON play_count.song_id = songs.id;
