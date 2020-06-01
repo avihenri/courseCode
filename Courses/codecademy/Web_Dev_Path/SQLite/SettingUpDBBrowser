@@ -1,0 +1,25 @@
+Setting Up DB Browser
+
+Avatar
+Setting Up DB Browser
+Learn about this tool that allows you to perform SQL tasks visually.
+
+Setting Up DB Browser
+What is DB Browser
+DB Browser is a visual tool used to organize commands sent to SQLite. With databases, it’s easy to lose track of commands that have been run. DB Browser lets you see exactly the sequence of commands you are executing before you run them. DB Browser will also allow you to see the column structure for the tables within the database you’re working with, so inserting data or other manipulation of data is more manageable and doesn’t require performing queries every time you need to remember the structure of your data.
+
+Installing DB Browser
+DB Browser has packages available for each operating system on the right panel of the DB Browser website. Follow along with this video for installation instructions:
+https://youtu.be/1Vaqh24HLKU
+
+After following the installation process, open up the software and you will presented with an interface for opening or creating a new database.
+
+Using DB Browser to Create a New Table
+Steps: Creating a new database with DB Browser will open a File dialog box, where you can set where the SQLite database will live in your file structure. After creating a db, you will be presented with an interface for creating a table. Add a name for the table at the top, and then add and remove fields in the Fields window. Each field has a free-text name, a dropdown for its type, and four checkboxes for not-null, primary key, autoincrement, and unique attributes, as well as other parameters. You will see the SQL query that DB Browser executes to create this table update as you add information to this table. Update these and press “OK”. You will see the Database Structure tab of DB Browser refresh with the updated information. Note that no changes have been made to any database file yet, and queries are only executed by DB Browser when the “Write Changes” button is pressed. Press the “Write Changes” button and create your table.
+
+Adding Data to a SQLite Table Using DB Browser
+Steps: Switch from the Database Structure tab to the Browse Data tab. You can add a row to the table with the New Record button. Click it, and update the columns in the viewport as you would a spreadsheet. Remember that no data will be inserted into the SQLite database until the “Write Changes” button is pressed. Press that button and you will have successfully added a row to your table.
+
+Conclusion
+You’ve installed DB Browser and used it to perform SQL tasks visually. You can now use DB Browser to visualize what SQL commands will accomplish without worrying about affecting the state of your database. Verify these commands do what you want, and press “Write Changes” to commit to them. Congratulations! You’re ready to manage a database.
+
