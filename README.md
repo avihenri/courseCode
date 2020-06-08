@@ -8,3 +8,5 @@ My course code notes
 - Laracasts
 - Lynda
 - W3Schools
+
+Previous courses notes are not in git
