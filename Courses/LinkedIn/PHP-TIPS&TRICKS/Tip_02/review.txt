@@ -1,0 +1,5 @@
+Direct access to specific array element returned by a function
+- $value = some_function($args)['key'];
+- easier to read code
+- uses less memory
+

@@ -1,0 +1,4 @@
+Store the function name as a string ina variable
+Append parentheses to the variable to use the function
+Pass arguments to the function as normal
+Variable acts as an alias for the function
