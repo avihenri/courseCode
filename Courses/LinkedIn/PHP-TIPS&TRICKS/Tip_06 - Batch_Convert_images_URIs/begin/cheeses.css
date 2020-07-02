@@ -1,0 +1,28 @@
+body {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, sans-serif;
+    color: #1b1b1b;
+    background-color: #fff;
+    margin-left: 3%;
+}
+h1 {
+    color: #0e61bc;
+}
+.flag {
+    background-repeat: no-repeat;
+    background-size: 50px auto;
+    background-position: left center;
+    list-style-type: none;
+    padding: 1em 0 1em 60px;
+}
+.france {
+    background-image: url(images/france.gif);
+}
+.uk {
+    background-image: url(images/uk.png);
+}
+.usa {
+    background-image: url(images/usa.jpg);
+}
+.germany {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAA8CAIAAAAfXYiZAAABS2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxMzggNzkuMTU5ODI0LCAyMDE2LzA5LzE0LTAxOjA5OjAxICAgICAgICAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+CiA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgo8P3hwYWNrZXQgZW5kPSJyIj8+IEmuOgAAATtJREFUeJzt2L1KA1EUReFz7pwEU6QXSxFLX9dn8jFsBMsoRtSZuy0sxTG7mgmsr7rlZjE/cPP25vp4fBuqAjMyclINNbQ21ECsf/TsJUlSV196zNpJaktvOCfEMhDLQCwDsQzEMhDLQCwDsQzEMhDLQCwDsQzEMhDLUM+TDlJJSy9ZtRZtVK+7TR2rqjZL71k7qdV9XIw5ttguPWb9VLsx9JUKXsN5mVK9t5gyMpces3YSf0MLsQzEMhDLQCwDsQzEMhDLQCwDsQzEMhDLQCwDsQzEMtR46NNr5JbLv3mpSbW9zL6P3PCIzUsp8vPhKvuTcrf0mpWr1Ef2x5a9i2vlE1R/2Wc/BLFOwKfKQCwDsQzEMhDLQCwDsQzEMhDLQCwDsQzEMhDLQCwDsQz164C/jBUx/ZwWXnIOvgE1J08zpVqLdQAAAABJRU5ErkJggg==");
+}

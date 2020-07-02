@@ -1,0 +1,10 @@
+Uses two recursive iterators from the standard php library (SPL)
+- RecursiveArrayIterator
+- RecursiveIteratorIterator
+    - we can override the below methods
+        - beginIteration()
+        - endIteration()
+        - beginChildren()
+        - endChildren()
+        - nextElement()
+        

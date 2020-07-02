@@ -1,0 +1,6 @@
+Data URI Format
+
+'data:image/jpeg;base64,<encoded image>'
+
+it embeds it into the css - so it doesn't need a call to collect it from the server
+should only be used for small images
