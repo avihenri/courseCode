@@ -1,0 +1,17 @@
+body {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, sans-serif;
+    color: #1b1b1b;
+    background-color: #fff;
+    margin-left: 3%;
+}
+h1 {
+    color: #0e61bc;
+}
+p {
+    text-indent: 3em;
+    margin-bottom: 0.1em;
+    margin-top: 0.1em;
+}
+p:first-of-type {
+    text-indent: 0;
+}
