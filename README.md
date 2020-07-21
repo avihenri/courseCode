@@ -8,5 +8,6 @@ My course code notes
 - Laracasts
 - Lynda
 - W3Schools
+- LinkedIn
 
 Previous courses notes are not in git
