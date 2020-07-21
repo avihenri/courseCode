@@ -1,0 +1,5 @@
+This regular expression matches a map reference in
+the format "37.780696, -122.456292", and captures
+the two numbers as separate values.
+
+'/(-?\d+\.\d+),\s(-?\d+\.\d+)/'
