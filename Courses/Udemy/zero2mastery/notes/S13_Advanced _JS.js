@@ -39,3 +39,34 @@ console.log("this is a side effect");
 
 // FUNCTIONAL PURITY = Deterministic - should always do the same thing
 // input -> into a function -> complete function -> return a value
+
+// ADVANCED ARRAYS
+
+const array = [1, 2, 10, 16];
+
+const double = [];
+const newArray = array.forEach((num) => {
+  // should use map for this
+  double.push(num * 2);
+});
+
+// MAP
+
+const mapArray = array.map((num) => {
+  return num * 2; // always has to return something & creates a new array
+});
+
+// Shorthand
+const newArr = array.map((num) => num * 2);
+
+// FILTER
+
+const filterArray = array.filter((num) => {
+  return num > 5; // only add items that are greater than 5
+});
+
+// REDUCE
+// can filter & map
+const reduceArray = array.reduce((accumulator, num) => {
+  return accumulator + num;
+}, 5); // 34 - all array calculated together plus 5
