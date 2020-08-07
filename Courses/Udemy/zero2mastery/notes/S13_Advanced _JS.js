@@ -70,3 +70,59 @@ const filterArray = array.filter((num) => {
 const reduceArray = array.reduce((accumulator, num) => {
   return accumulator + num;
 }, 5); // 34 - all array calculated together plus 5
+
+// ADVANCED OBJECTS
+
+// REFERENCING TYPE
+var object1 = { value: 10 };
+var object2 = object1;
+var object3 = { value: 10 };
+object1 = object2; // true
+object1 = object3; // false;
+
+object1.value = 15;
+object1.value; // 15
+object2.value; // 15
+
+// object 1 & 2 are in their own box & object2 is referencing everything in object1's box
+// object 3 is in its own box so results in false if compared with object 1 or 2
+
+// CONTEXT VS SCOPE
+// context is where we are and you can use this keyword
+
+console.log(this); // would be the window object
+this.alert("blah"); // this is like window.alert
+
+function a() {
+  console.log(this); // still the window object - window.a
+}
+
+const object4 = {
+  a: function () {
+    console.log(this); // is the a function in object4 - object4.a
+  },
+};
+
+// INSTANTIATION
+// make a copy of an object & reuse the code
+class Player {
+  constructor(name, type) {
+    this.name = name;
+    this.type = type;
+  }
+  introduce() {
+    console.log(`Hi I am ${this.name}, I'm a ${this.type}`);
+  }
+}
+
+class Wizard extends Player {
+  constructor(name, type) {
+    super(name, type);
+  }
+  play() {
+    console.log(`WEEEEEE I'm a ${this.type}`);
+  }
+}
+
+const wizard1 = new Wizard("Shelly", "Healer");
+const wizard2 = new Wizard("Shawn", "Dark Magic");
