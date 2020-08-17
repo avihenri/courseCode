@@ -203,3 +203,71 @@ console.log(clone2); // { a: 'a', b: 'b', c: { deep: 'clone me' }  }
 let superClone = JSON.parse(JSON.stringify(obj2)); // changes obj2 to a string then parses it back into an object
 console.log(superClone); // { a: "a", b: "b", c: { deep: "clone me" } }
 // WARNING: be careful - performance complications with big objects
+
+// TYPE COERCION
+
+// It converts a type to another type with ==
+
+1 == "1"; // true - will change the '1' to 1
+1 === "1"; // false
+
+if (1) {
+  // 1 = true
+  console.log(5);
+}
+
+// https://dorey.github.io/JavaScript-Equality-Table/
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
+
+/****************************/
+/* **** ES7 (ES2016) **** */
+/****************************/
+
+"Hellooo".includes("o"); // true
+
+const pets = ["cat", "dog", "bat"];
+pets.includes("dog"); // true
+
+const square = (x) => x ** 2; // power of 2
+square(5); // 25
+
+const cube = (y) => y ** 5; // power of 5
+cube(4); // 64
+
+/****************************/
+/* **** ES8 (ES2017) **** */
+/****************************/
+
+// string padding
+// .padStart() & .padEnd()
+"Turtle".padStart(10); // will have 10 spaces at the beginning
+
+const fun = (a, b, c, d) => {
+  console.log(a);
+};
+fun(1, 2, 3, 4); // no error for the end comma
+
+Object.values;
+Object.entries;
+Object.keys;
+
+let obj = {
+  username0: "Santa",
+  username1: "Rudolf",
+  username2: "Mr.Grinch",
+};
+Object.keys(obj).forEach((key, index) => {
+  console.log(key, onj[key]);
+}); // iterate like its an array
+
+Object.values(obj).forEach((value) => {
+  console.log(value);
+}); // loops through al the values
+
+Object.entries(obj).forEach((value) => {
+  console.log(value);
+}); // gives key & value
+
+Object.entries(obj).map((value) => {
+  return value[1] + value[0].replace("username", "");
+}); // ["Santa0", "Rudolf1", "MR.Grinch2"]
