@@ -271,3 +271,72 @@ Object.entries(obj).forEach((value) => {
 Object.entries(obj).map((value) => {
   return value[1] + value[0].replace("username", "");
 }); // ["Santa0", "Rudolf1", "MR.Grinch2"]
+
+/****************************/
+/* **** ES10 (ES2019) **** */
+/****************************/
+// .flat() - flattens arrays and cleans up arrays
+const arr = [1, [2, 3], [4, 5]];
+arr.flat(); // [1,2,3,4,5]
+const arr2 = [1, 2, [3, 4, [5]]];
+arr.flat(); // [1,2,3,4,[5]]
+const arr3 = [1, 2, [3, 4, [5]]];
+arr.flat(2); // [1,2,3,4,5]
+
+const entries = ["bob", "sally", , , , , , "cindy"];
+entries.flat(); // ['bob', 'sally, 'cindy']
+
+// flatMap()
+// flattens arrays to 1 level and can create a new array
+
+let userEmail = "                 blah@blah.com";
+let userEmail2 = "blahde@blahda.com              ";
+userEmail.trimStart();
+userEmail2.trimEnd();
+
+let userProfiles = [
+  ["commanderTom", 23],
+  ["derekZlander", 40],
+  ["hansels", 30],
+];
+Object.fromEntries(userProfiles); // turns the above into an object
+// object.entries - turns objects into arrays
+
+try {
+} catch (err) {
+  // ES10 not forced to add the error to catch
+}
+
+/****************************/
+/* ****ADVANCED LOOPS **** */
+/****************************/
+
+const basket = ["apples", "bananas", "grapes"];
+const detailedBasket = {
+  apples: 5,
+  bananas: 5,
+  grapes: 100,
+};
+// for
+for (let i = 0; i < basket.length; i++) {
+  console.log(basket[i]);
+}
+
+// forEach
+basket.forEach((item) => {
+  console.log(item);
+});
+
+// for of
+// Iterating - arrays, strings
+for (item of basket) {
+  console.log(item);
+}
+
+// for in - objects
+// returns the object properties apples, bananas, grapes
+// we are enumerating over object properties
+// objects are not iterable
+for (item in detailedBasket) {
+  console.log(item);
+}
