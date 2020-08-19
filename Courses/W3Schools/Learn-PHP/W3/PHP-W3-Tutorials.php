@@ -193,77 +193,82 @@
 // PHP: $_REQUEST, $_POST, $_GET
         // super global variable which is widely used to collect data after submitting html forms.
         // Suppose we want to see what data have been entered by the user in the name field, then code to do that will be:
-        <?php
+        // <?php
         $name=$_REQUEST['name']; // $_POST is in the form so method
         echo $name;
         ?>
-        // $_POST
-            // This super global variable is widely used to handle form data
-            <form name="contact" method="post" action="next.php"> </form>
-            // Code of msg.php file:.
-            <?php
+// $_POST
+// This super global variable is widely used to handle form data
+<form name="contact" method="post" action="next.php"> </form>
+// Code of msg.php file:.
+<?php
             echo "YOU have submitted the form"; 
             ?>
-            <?php
+<?php
             if ($_POST['send'])
             include ('msg.php');
             ?>
-        // $_GET
-            // Here is an example:
-            <html>
-            <head>
-            <title>Php contact form</title>
-            </head>
-            <body>
-            <a href="get-pass.php?r=w3resourse.com&s=online-tutorial">This is to send data</a>  
-            </body>
-            </html>
-            // Code of get-pass.php file:
-            <?php 
+// $_GET
+// Here is an example:
+<html>
+
+<head>
+    <title>Php contact form</title>
+</head>
+
+<body>
+    <a href="get-pass.php?r=w3resourse.com&s=online-tutorial">This is to send data</a>
+</body>
+
+</html>
+// Code of get-pass.php file:
+<?php 
             echo $_GET['r']."is an ".$_GET['s'];
             ?>
 
 // PHP : $_FILES, $_ENV, $_COOKIE, $_SESSION
-        // $_FILES
-            // super global variable which can be used to upload files.
-            // Here is the html code (upload.php): 
-            <html>
-            <body>
-            <form action="upload_file.php" method="post"
-            enctype="multipart/form-data">
-            <label for="file">Filename:</label>
-            <input type="file" name="file" id="file" />
-            <br />
-            <input type="submit" name="submit" value="Submit" />
-            </form>
-            </body>
-            </html>
-            // Code of files.php file:
-            <?php
+// $_FILES
+// super global variable which can be used to upload files.
+// Here is the html code (upload.php):
+<html>
+
+<body>
+    <form action="upload_file.php" method="post" enctype="multipart/form-data">
+        <label for="file">Filename:</label>
+        <input type="file" name="file" id="file" />
+        <br />
+        <input type="submit" name="submit" value="Submit" />
+    </form>
+</body>
+
+</html>
+// Code of files.php file:
+<?php
             if ($_FILES["file"] > 0)
             {
             echo "You have selected a file to upload";
             }
             ?>
-        
-        // $_ENV
-            // used to return the environment variables from the web server.
-            <?php
+
+// $_ENV
+// used to return the environment variables from the web server.
+<?php
             echo "my username is ".$_ENV['username'];
             ?>
 
-        // $_COOKIE
-            // Cookies are small text files loaded from a server to a client computer storing some information regarding 
-            // the client computer, so that when the same page from the server is visited by the user, necessary information can 
-            // be collected from the cookie itself, decreasing the latency to open the page.
-            <?php
+// $_COOKIE
+// Cookies are small text files loaded from a server to a client computer storing some information regarding
+// the client computer, so that when the same page from the server is visited by the user, necessary information can
+// be collected from the cookie itself, decreasing the latency to open the page.
+<?php
             setrawcookie();
             print_r($_COOKIE);
             ?>
 
-        // $_SESSION
-            // start a session by session_start();Then all the variables you store within a $_SESSION, you can access it from anywhere on the server.
-            <?php
+// $_SESSION
+// start a session by session_start();Then all the variables you store within a $_SESSION, you can access it from
+anywhere on the server.
+<?php
             session_start();
             $_SESSION['w3resource']='The largest online tutorial';
             echo $_SESSION['w3resource'];

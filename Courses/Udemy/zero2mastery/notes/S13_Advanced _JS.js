@@ -340,3 +340,53 @@ for (item of basket) {
 for (item in detailedBasket) {
   console.log(item);
 }
+
+/****************************/
+/* ****  DEBUGGING  **** */
+/****************************/
+
+// HOW TO DEBUG THE BELOW -
+// const flatbread = [[0, 1], [2, 3], [4, 5]].reduce((a, b) => a.concat(b), []);
+
+const flattened = [
+  [0, 1],
+  [2, 3],
+  [4, 5],
+].reduce((accum, arr) => {
+  // console.log(arr);
+  // console.log(accum);
+  debugger;
+  return accum.concat(arr);
+}, []);
+
+/****************************/
+/* **** How does JS work *** */
+/****************************/
+
+// WHAT IS A PROGRAM
+// - allocates memory
+// - parse & execute scripts (read & run commands)
+
+// JAVASCRIPT ENGINE
+// - memory heap
+const a = 1; // allocated to memory
+// - call stack
+
+// single threaded - one call at a time = synchronous programming, no deadlocks
+// other languages are multi-thread
+// we can use asynchronous with JS
+console.log(1);
+setTimeout(() => {
+  console.log(2);
+}, 2000);
+console.log(3);
+// result = 1, 3, 2
+
+// JS RUN-TIME ENVIRONMENT
+// web api's, DOM, AJAX, EVENT LOOP (Timeout)
+
+// recursion - function that calls itself
+function foo() {
+  foo();
+}
+foo();

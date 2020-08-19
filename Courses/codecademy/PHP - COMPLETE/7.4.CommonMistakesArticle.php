@@ -47,9 +47,9 @@
         echo "Insufficient Funds";
         } 
         // And check out the following broken code:
-        if ($age < 0) || ($age > 120) { // if statement not in parentheses
-            echo "That's an invalid age!";
-        }
+        // if ($age < 0) || ($age > 120) { // if statement not in parentheses
+            // echo "That's an invalid age!";
+        // }
         if ( ($age < 0) || ($age > 120) ) {
             echo "That's an invalid age!";
           }
@@ -67,4 +67,3 @@
       if ($response !== "yes" && $response !== "no"){
         echo "You must type either yes or no";
       }
-

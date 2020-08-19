@@ -131,13 +131,13 @@ ANSWER - \d?\s?\(?\d{3}\)?\s?\-?\.?\d{3}\-?\s?\.?\d{3,4}
 // FORM HANDLING
     // Method POST = data submitted will be available to superglobal associtive array array - $_POST
         // using the name attribute we can gather the data - the name will be the key and the input will be the value ?>
-        <form method="post" action="">
-            Your Favorite Programming Language: <input type="text" name="language">
-            <input type="submit" value="Submit Language">
-        </form> 
+<form method="post" action="">
+    Your Favorite Programming Language: <input type="text" name="language">
+    <input type="submit" value="Submit Language">
+</form>
 
-    <!-- Simple Validation -->
-        <?php
+<!-- Simple Validation -->
+<?php
         $validation_error = "";
         $user_language = "";
 
@@ -148,14 +148,14 @@ ANSWER - \d?\s?\(?\d{3}\)?\s?\-?\.?\d{3}\-?\s?\.?\d{3,4}
         } 
         }
         ?>
-        <form method="post" action="">
-        Your Favorite Programming Language: <input type="text" name="language" value="<?php echo $user_language;?>">
-        <p class="error"><?= $validation_error;?></p>
-        <input type="submit" value="Submit Language">
-        </form>
-            
-        <!-- EXERCISE -->
-        <?php
+<form method="post" action="">
+    Your Favorite Programming Language: <input type="text" name="language" value="<?php echo $user_language;?>">
+    <p class="error"><?= $validation_error;?></p>
+    <input type="submit" value="Submit Language">
+</form>
+
+<!-- EXERCISE -->
+<?php
         function checkWord($input, $letter){
         if ($_SERVER["REQUEST_METHOD"] === "POST" && strtolower($input[0]) !== $letter) {
             return "* This word must start with the letter ${letter}!";
@@ -164,70 +164,70 @@ ANSWER - \d?\s?\(?\d{3}\)?\s?\-?\.?\d{3}\-?\s?\.?\d{3,4}
         }
         }
         ?>
-        
-        <h1>Time to Practice our ABCs</h1>
-        <form method="post" action="">
-            Enter a word that starts with the letter "a":
-            <br>
-            <input type="text" name="a-word" id="a-word" value=<?= $_POST["a-word"];?>>
-            <br>
-            <p class="error" id="a-error"><?= checkWord($_POST["a-word"], "a");?></p>
-            <br>            
-            Enter a word that starts with the letter "b":
-            <br>
-            <input type="text" id="b-word" name="b-word" value=<?= $_POST["b-word"];?>>
-            <br>
-            <p class="error" id="b-error"><?= checkWord($_POST["b-word"], "b");?></p>
-            <br>
-            Enter a word that starts with the letter "c":
-            <br>
-            <input type="text" id="c-word" name="c-word" value=<?= $_POST["c-word"];?>>
-            <br>
-            <p class="error" id="c-error"><?= checkWord($_POST["c-word"], "c");?></p>
-            <br>
-            <input type="submit" value="Submit Words">
-        </form>
-        <div>
-            <h3>"a" is for: <?= $_POST["a-word"];?><h3>
-            <h3>"b" is for: <?= $_POST["b-word"];?><h3>
-            <h3>"c" is for: <?= $_POST["c-word"];?><h3>    
-        <div>  
 
-        <!-- BASIC DATA SANITIZING -->
-        <!-- 
+<h1>Time to Practice our ABCs</h1>
+<form method="post" action="">
+    Enter a word that starts with the letter "a":
+    <br>
+    <input type="text" name="a-word" id="a-word" value=<?= $_POST["a-word"];?>>
+    <br>
+    <p class="error" id="a-error"><?= checkWord($_POST["a-word"], "a");?></p>
+    <br>
+    Enter a word that starts with the letter "b":
+    <br>
+    <input type="text" id="b-word" name="b-word" value=<?= $_POST["b-word"];?>>
+    <br>
+    <p class="error" id="b-error"><?= checkWord($_POST["b-word"], "b");?></p>
+    <br>
+    Enter a word that starts with the letter "c":
+    <br>
+    <input type="text" id="c-word" name="c-word" value=<?= $_POST["c-word"];?>>
+    <br>
+    <p class="error" id="c-error"><?= checkWord($_POST["c-word"], "c");?></p>
+    <br>
+    <input type="submit" value="Submit Words">
+</form>
+<div>
+    <h3>"a" is for: <?= $_POST["a-word"];?><h3>
+            <h3>"b" is for: <?= $_POST["b-word"];?><h3>
+                    <h3>"c" is for: <?= $_POST["c-word"];?><h3>
+                            <div>
+
+                                <!-- BASIC DATA SANITIZING -->
+                                <!-- 
             Make data safe to display on the browser
             trim() - can be used to remove any whitespace before & after the input
             htmlspecialchars() - can be used to transform HTML entitites so the php interpreter doesn't recognise them as HTML
                 this also prevents man-in-the-middle attacks
             -->
-            <form method="post" action="">
-            Enter some HTML:
-            <br>
-            <input type="text" name="html">
-            <br>  
-            <input type="submit" value="Submit">
-            </form>
-            <div>
-            You entered:
-                <?= htmlspecialchars($_POST["html"]) ?> 
-            </div>  
-        
-        <!-- BASIC SANTITIZATION WITH filter_car() -->
-            <!-- 
+                                <form method="post" action="">
+                                    Enter some HTML:
+                                    <br>
+                                    <input type="text" name="html">
+                                    <br>
+                                    <input type="submit" value="Submit">
+                                </form>
+                                <div>
+                                    You entered:
+                                    <?= htmlspecialchars($_POST["html"]) ?>
+                                </div>
+
+                                <!-- BASIC SANTITIZATION WITH filter_car() -->
+                                <!-- 
                 https://www.php.net/manual/en/function.filter-var.php
                 filter_var ( mixed $variable [, int $filter = FILTER_DEFAULT [, mixed $options ]] ) : mixed
                 1st argument - variable
                 2nd arguement - ID representing the type of filtering that should be performed - https://www.php.net/manual/en/filter.filters.sanitize.php
                 - returns either the sanitized input or false
              -->
-            <?=
+                                <?=
              $bad_email = '<a href="www.evil-spam.biz">@gmail.com';
             echo filter_var($bad_email, FILTER_SANITIZE_EMAIL);
             // Prints: ahref=www.evil-spam.biz@gmail.com  ?>
-            <!-- 
+                                <!-- 
                 FILTER_SANITIZE_EMAIL - trims whitespace throughout input, removes dangerous characters                
              -->
-             <?php
+                                <?php
             $validation_error = "";
             $user_url = "";
             $form_message = "";
@@ -242,19 +242,19 @@ ANSWER - \d?\s?\(?\d{3}\)?\s?\-?\.?\d{3}\-?\s?\.?\d{3,4}
             }            
             } 
             ?>
-            <form method="post" action="">
-            Your Favorite Website: 
-            <br>
-            <input type="text" name="url" value="<?php echo $user_url;?>">
-            <span class="error"><?= $validation_error;?></span>
-            <br>
-            <input type="submit" value="Submit">
-            </form>
-            <p> <?= $form_message;?> </p> 
-                
-        
-<!-- USING OPTION WITH FILTER_VAR() -->
-    <?php
+                                <form method="post" action="">
+                                    Your Favorite Website:
+                                    <br>
+                                    <input type="text" name="url" value="<?php echo $user_url;?>">
+                                    <span class="error"><?= $validation_error;?></span>
+                                    <br>
+                                    <input type="submit" value="Submit">
+                                </form>
+                                <p> <?= $form_message;?> </p>
+
+
+                                <!-- USING OPTION WITH FILTER_VAR() -->
+                                <?php
         function validateAdult ($age){
             $options = ["options" => ["min_range" => 18, "max_range" => 124]];  
             if (filter_var($age, FILTER_VALIDATE_INT, $options)) {
@@ -301,26 +301,26 @@ ANSWER - \d?\s?\(?\d{3}\)?\s?\-?\.?\d{3}\-?\s?\.?\d{3,4}
       }
     
     ?>
-    
-    <form method="post" action="">
-        Enter your birthday:
-        <br>
-        Month: <input type="number" name="month" value="<?= $_POST["month"];?>">
-        <span class="error"><?= $month_error;?>		</span>
-      <br>
-        Day: <input type="number" name="day" value="<?= $_POST["day"];?>">
-      <span class="error"><?= $day_error;?>		</span>
-        <br>  
-        Year: <input type="number" name="year" value="<?= $_POST["year"];?>">  
-        <span class="error"><?= $year_error;?>		</span>
-        <br>
-        <input type="submit" value="Submit">
-    </form>
-        <p><?= $message;?></p>
 
-<!-- CUSTOM VALIDATION -->
-      <!-- PRE_MATCH(string $pattern , string $subject [, array &$matches [, int $flags = 0 [, int $offset = 0 ]]] ) : int -->
-      <?php
+                                <form method="post" action="">
+                                    Enter your birthday:
+                                    <br>
+                                    Month: <input type="number" name="month" value="<?= $_POST["month"];?>">
+                                    <span class="error"><?= $month_error;?> </span>
+                                    <br>
+                                    Day: <input type="number" name="day" value="<?= $_POST["day"];?>">
+                                    <span class="error"><?= $day_error;?> </span>
+                                    <br>
+                                    Year: <input type="number" name="year" value="<?= $_POST["year"];?>">
+                                    <span class="error"><?= $year_error;?> </span>
+                                    <br>
+                                    <input type="submit" value="Submit">
+                                </form>
+                                <p><?= $message;?></p>
+
+                                <!-- CUSTOM VALIDATION -->
+                                <!-- PRE_MATCH(string $pattern , string $subject [, array &$matches [, int $flags = 0 [, int $offset = 0 ]]] ) : int -->
+                                <?php
       $pattern = '/^[(]*([0-9]{3})[- .)]*[0-9]{3}[- .]*[0-9]{4}$/';
       preg_match($pattern, "(999)-555-2222"); // Returns: 1      
       preg_match($pattern, "555-2222"); // Returns: 0
@@ -330,7 +330,7 @@ ANSWER - \d?\s?\(?\d{3}\)?\s?\-?\.?\d{3}\-?\s?\.?\d{3,4}
     if ($length > 2 && $length < 100){
       echo "That seems like a reasonable name to me...";
     } ?>
-    <?php
+                                <?php
 $feedback = "";
 $success_message = "Thank you for your donation!";
 $error_message = "* There was an error with your card. Please try again.";
@@ -368,26 +368,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 }
 ?>
-<form action="" method="POST">
-  <h1>Make a donation</h1>
-    <label for="amount">Donation amount?</label>
-      <input type="number" name="amount" value="<?= $donation_amount;?>">
-      <br><br>
-    <label for="credit">Credit card type?</label>
-      <select name="credit" value="<?= $card_type;?>">
-        <option value="mastercard">Mastercard</option>
-        <option value="visa">Visa</option>
-      </select>
-      <br><br>
-      <label for="card-num">Card number?</label>
-      <input type="number" name="card-num" value="<?= $card_num;?>">
-      <br><br>   
-      <input type="submit" value="Submit">
-</form>
-<span class="feedback"><?= $feedback;?></span>
+                                <form action="" method="POST">
+                                    <h1>Make a donation</h1>
+                                    <label for="amount">Donation amount?</label>
+                                    <input type="number" name="amount" value="<?= $donation_amount;?>">
+                                    <br><br>
+                                    <label for="credit">Credit card type?</label>
+                                    <select name="credit" value="<?= $card_type;?>">
+                                        <option value="mastercard">Mastercard</option>
+                                        <option value="visa">Visa</option>
+                                    </select>
+                                    <br><br>
+                                    <label for="card-num">Card number?</label>
+                                    <input type="number" name="card-num" value="<?= $card_num;?>">
+                                    <br><br>
+                                    <input type="submit" value="Submit">
+                                </form>
+                                <span class="feedback"><?= $feedback;?></span>
 
-<!-- Validating Against Back-end Data -->
-  <?php 
+                                <!-- Validating Against Back-end Data -->
+                                <?php 
   // In the example below, we model the database of users with the associative array $users, 
   // which contains keys in the format "username" => "password".
     $users = ["coolBro123" => "password123!", "coderKid" => "pa55w0rd*", "dogWalker" => "ais1eofdog$"];
@@ -408,36 +408,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // That the username is key on the array:
     isset($users[$username])
     // That the password is the same as that key’s value:
-    $users[$username] === $password
+    // $users[$username] === $password
     // EXAMPLE
-    $users = ["coolBro123" => "password123!", "coderKid" => "pa55w0rd*", "dogWalker" => "ais1eofdog$"];   // WOULD IN DATABASE
-    $feedback = "";
-    $message = "You're logged in!";
-    $validation_error = "* Incorrect username or password.";
-    $username = "";
+    // $users = ["coolBro123" => "password123!", "coderKid" => "pa55w0rd*", "dogWalker" => "ais1eofdog$"];   // WOULD IN DATABASE
+    // $feedback = "";
+    // $message = "You're logged in!";
+    // $validation_error = "* Incorrect username or password.";
+    // $username = "";
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-      $username = $_POST["username"];
-      $password = $_POST["password"];
-      if (isset($users[$username]) && $users[$username] === $password) {
-        $feedback = $message;
-      } else {
-        $feedback = $validation_error;
-      }
-    }
-    ?>  
-    <h3>Welcome back!</h3>
-    <form method="post" action="">
-    Username:<input type="text" name="username" value="<?php echo $username;?>">
-    <br>
-    Password:<input type="text" name="password" value="">
-    <br>
-    <input type="submit" value="Log in">
-    </form>
-    <span class="feedback"><?= $feedback;?></span>
-    
-<!-- Sanitizing for Back-end Storage -->
-    <?php
+    // if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    //   $username = $_POST["username"];
+    //   $password = $_POST["password"];
+    //   if (isset($users[$username]) && $users[$username] === $password) {
+    //     $feedback = $message;
+    //   } else {
+    //     $feedback = $validation_error;
+    //   }
+    // }
+    ?>
+                                <h3>Welcome back!</h3>
+                                <form method="post" action="">
+                                    Username:<input type="text" name="username" value="<?php echo $username;?>">
+                                    <br>
+                                    Password:<input type="text" name="password" value="">
+                                    <br>
+                                    <input type="submit" value="Log in">
+                                </form>
+                                <span class="feedback"><?= $feedback;?></span>
+
+                                <!-- Sanitizing for Back-end Storage -->
+                                <?php
     // TWO VERY IMPORTING THINGS TO DO TO HELP SECURITY -
       // SANITIZE DATA - preg_replace()
           $one = "codeacademy";
@@ -480,41 +480,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           }
         };
         ?>
-        <html>
-          <body>
-          <h3>Contact Form:</h3>
-            <form method="post" action="">
-              Name:
-              <br>
-              <input type="text" name="name" value="<?= $name;?>">
-              <br><br>
-              Phone Number:
-              <br>
-              <input type="text" name="number" value="<?= $number;?>">
-              <br><br> 
-              <input type="submit" value="Submit">
-            </form>
-            <div id="form-output">
-              <p id="response"><?= $message?></p>
-            </div>
-          </body>
-        </html>
+                                <html>
 
-<!-- Rerouting -->
-    <?php
+                                <body>
+                                    <h3>Contact Form:</h3>
+                                    <form method="post" action="">
+                                        Name:
+                                        <br>
+                                        <input type="text" name="name" value="<?= $name;?>">
+                                        <br><br>
+                                        Phone Number:
+                                        <br>
+                                        <input type="text" name="number" value="<?= $number;?>">
+                                        <br><br>
+                                        <input type="submit" value="Submit">
+                                    </form>
+                                    <div id="form-output">
+                                        <p id="response"><?= $message?></p>
+                                    </div>
+                                </body>
+
+                                </html>
+
+                                <!-- Rerouting -->
+                                <?php
     //  header()
         // use "Location: url"
         // after invoking the header() function we need to use the language construct.. exit ..to terminate the current script
         // header function needs to be run before anything output by the script so before our file outputs HTML
         
-        if (/* Is the submission data validated? */) {
-          header("Location: https://www.best-puppy-pix.com/");
-          exit;
-        }
+        // if (/* Is the submission data validated? */) {
+        //   header("Location: https://www.best-puppy-pix.com/");
+        //   exit;
+        // }
     
 ?>
 
-<!-- Review
+                                <!-- Review
 Great work! We covered a lot in this lesson. Let’s review:
 
 - Performing back-end form validations on the data submitted is an essential step to protect our website and its users.

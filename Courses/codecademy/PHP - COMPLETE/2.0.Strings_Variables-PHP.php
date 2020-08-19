@@ -3,7 +3,7 @@
     // Strings 
 
         //  Escape Sequences
-        echo "She said "hi" to the dog."; //syntax error, unexpected 'hi' (T_STRING)
+        echo "She said 'hi' to the dog."; //syntax error, unexpected 'hi' (T_STRING)
         echo "She said \"hi\" to the dog."; // Prints: She said "hi" to the dog.
 
         echo "1. Go to gym";

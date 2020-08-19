@@ -13,46 +13,48 @@ Be sure to include two number inputs for each form and a submit button.
 
 // index.php
 
-<html>
-<body>
-<!--Your code goes here-->
-  <h2> Addition Calculator </h2>
-<form action="addition.php" method="GET">  
-  First Num: <input type="number" name="firstNum"> <br>
-  Second Num: <input type="number" name="secondNum"> <br>
-  <button type="submit" >Go</button><br>
-</form>
+// <html>
+// <body>
+// <!--Your code goes here-->
+//   <h2> Addition Calculator </h2>
+// <form action="addition.php" method="GET">  
+//   First Num: <input type="number" name="firstNum"> <br>
+//   Second Num: <input type="number" name="secondNum"> <br>
+//   <button type="submit" >Go</button><br>
+// </form>
   
-    <h2> Division Calculator </h2>
-<form action="division.php" method="GET">  
-  Numerator: <input type="number" name="numerator"><br>
-  Denominator: <input type="number" name="denominator"><br>
-  <button type="submit" >Go</button><br>
-</form>
+//     <h2> Division Calculator </h2>
+// <form action="division.php" method="GET">  
+//   Numerator: <input type="number" name="numerator"><br>
+//   Denominator: <input type="number" name="denominator"><br>
+//   <button type="submit" >Go</button><br>
+// </form>
   
-<a href="index.php">Reset</a>
-</body>
-</html>
+// <a href="index.php">Reset</a>
+// </body>
+// </html>
 
-// addition.php
+// // addition.php
+
+// <html>
+// <body>
+// <!--Your code goes here-->
+// <?="The sum of ${_GET['firstNum']} and ${_GET['secondNum']} is:"?>
+<!-- // <h4><?=$_GET['firstNum']+$_GET['secondNum']?></h4>
+// <a href="index.php">Reset</a>
+// </body>
+// </html> -->
+
+<!-- //  division.php -->
 
 <html>
-<body>
-<!--Your code goes here-->
-<?="The sum of ${_GET['firstNum']} and ${_GET['secondNum']} is:"?>
-<h4><?=$_GET['firstNum']+$_GET['secondNum']?></h4>
-<a href="index.php">Reset</a>
-</body>
-</html>
 
-//  division.php
-
-<html>
 <body>
-<!--Your code goes here-->
-<?=$_GET['numerator']+$_GET['denominator']; ?>
-<?="${_GET['numerator']} divided by ${_GET['denominator']} is:"?>
-<h4><?=$_GET['numerator']+$_GET['denominator']?></h4>
-<a href="index.php">Reset</a>
+    <!--Your code goes here-->
+    <?=$_GET['numerator']+$_GET['denominator']; ?>
+    <?="${_GET['numerator']} divided by ${_GET['denominator']} is:"?>
+    <h4><?=$_GET['numerator']+$_GET['denominator']?></h4>
+    <a href="index.php">Reset</a>
 </body>
+
 </html>
