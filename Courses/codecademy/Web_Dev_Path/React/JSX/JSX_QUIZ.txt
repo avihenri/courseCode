@@ -1,0 +1,131 @@
+1. Place the following steps in the right order:
+
+a. Changes on the real DOM cause the screen to change.
+b. A JSX element renders.
+c. The virtual DOM is compared to what it looked like before it updated to figure out which objects have changed.
+d. The entire virtual DOM gets updated.
+e. The changed objects, and the changed objects only, get updated on the real DOM.
+
+ANSWER - b,d,c,e,a
+--------------------------------------------------------------------------------------------------------------------
+2. What is the correct way to attach the function yo to a click event?
+
+let yo = () => {
+  alert('Yo');
+};
+
+ANSWER - onCLick={yo}
+--------------------------------------------------------------------------------------------------------------------
+3. What’s wrong with this code?
+
+let skateboardDog = (
+  <img src="alfie.jpg" />
+  <h1>Hiya kids!  I'm a dog on a skateboard.</h1>
+);
+
+ANSWER - 
+JSX expressions need an outermost element.
+
+Incorrect:
+JSX expressions need to be compiled.
+
+Incorrect:
+Improper use of ‘let’.
+
+Incorrect:
+JSX expressions should be followed by full colons, not semicolons.
+--------------------------------------------------------------------------------------------------------------------
+4. Can a web browser read JSX directly?
+
+Incorrect:
+Yes.
+
+(Selected)Incorrect:
+No, a web browser must be compiled before it can read JSX.
+
+correct:
+No, JSX must be compiled before it can be read by a web browser.
+
+Incorrect:
+Only Internet Explorer.
+--------------------------------------------------------------------------------------------------------------------
+5. What should you pass to ReactDOM.render() for its second argument?
+
+
+ReactDOM.render() itself.
+
+(Selected)Correct:
+A selector that matches an HTML element.
+
+Incorrect:
+A JSX expression that you want to render.
+
+Incorrect:
+A JSX expression that you want to compile.
+--------------------------------------------------------------------------------------------------------------------
+6. Which will render 100 to the screen?
+
+Incorrect:
+ReactDOM.render(
+  {<h1>10 * 10</h1>}, 
+  document.getElementById('app')
+);
+Incorrect:
+ReactDOM.render(
+  <h1>{10} * {10}</h1>, 
+  document.getElementById('app')
+);
+(Selected)Correct:
+ReactDOM.render(
+  <h1>{10 * 10}</h1>, 
+  document.getElementById('app')
+);
+Incorrect:
+ReactDOM.render(
+  <h1>10 * 10</h1>, 
+  document.getElementById('app')
+);
+--------------------------------------------------------------------------------------------------------------------
+7. What’s a difference between a DOM object and a virtual DOM object?
+
+Incorrect:
+A virtual DOM object will be updated if ANY JSX element renders.
+
+(Selected)Incorrect:
+A virtual DOM object can update much faster than a regular DOM object.
+
+Incorrect:
+All presented answers are correct.
+
+Incorrect:
+A virtual DOM object can’t directly affect HTML.
+--------------------------------------------------------------------------------------------------------------------
+8. 
+What problem does the virtual DOM attempt to solve?
+
+(Selected)Incorrect:
+Updating the DOM will result in only partially rendered objects.
+
+Incorrect:
+Updating the DOM is not time efficient.
+
+Incorrect:
+Updating DOM objects doesn’t happen when it is supposed to.
+
+Incorrect:
+The regular DOM cannot recognize when an object has been updated.
+
+--------------------------------------------------------------------------------------------------------------------
+9. What should you pass to ReactDOM.render() for its first argument?
+
+Incorrect:
+A selector that matches an HTML element.
+
+Incorrect:
+ReactDOM.render() itself.
+
+(Selected)Correct:
+A JSX expression that you want to render.
+
+Incorrect:
+A JavaScript expression that you want to compile.
