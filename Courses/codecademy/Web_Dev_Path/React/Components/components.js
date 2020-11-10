@@ -143,12 +143,74 @@ ReactDOM.render(
 // Use this in a Component
 // used a lot - will see in the body of a class 
 class IceCreamGuy extends React.Component {
-    get food() {
-      return 'ice cream';
-    }
-   
-    render() {
-      return <h1>I like {this.food}.</h1>;
-    }
+  get food() {
+    return 'ice cream';
+  }
+ 
+  render() {
+    return <h1>I like {this.food}.</h1>;
+  }
+}
+// in above example what does this mean?
+// - refers to an instance of IceCreamGuy
+// - refers to the object on which this method = render()
+// IceCreamGuy has 2 methods - food and render
+// - this = instance of IceCreamGuy
+// - this.food = food method = ice cream
+// - this.food = getter method, does need ()
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class MyName extends React.Component {
+// name property goes here:
+get name() {
+  return 'Avril Henry';
+}
+
+render() {
+  return <h1>My name is {this.name}.</h1>;
+}
+}
+
+ReactDOM.render(<MyName />, document.getElementById('app'));
+
+// Use an Event Listener in a Component
+// - render functions often contain event listeners
+// render() {
+//   return (
+//     <div onHover={myFunc}>
+//     </div>
+//   );
+// }
+// event handler = func called in response to an event
+class MyClass extends React.Component {
+  myFunc() {
+    alert('Stop it.  Stop hovering.');
+  }
+ 
+  render() {
+    return (
+      <div onHover={this.myFunc}>
+      </div>
+    );
+  }
+}
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Button extends React.Component {
+  scream() {
+    alert('AAAAAAAAHHH!!!!!');
   }
 
+  render() {
+    return <button onClick={this.scream}>AAAAAH!</button>;
+  }
+}
+
+ReactDOM.render(
+  <Button />,
+  document.getElementById('app')
+);
